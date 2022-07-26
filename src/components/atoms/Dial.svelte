@@ -16,6 +16,7 @@
         let rounded = Math.round(diff + startPPM);
         if (rounded < 0) return (value = 0);
         if (rounded > 1100) return (value = 1100);
+        navigator.vibrate(1);
         value = rounded;
         rotate(value);
     }
