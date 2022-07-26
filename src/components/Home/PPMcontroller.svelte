@@ -2,26 +2,26 @@
     import { onMount } from "svelte";
     import Hammer from "hammerjs";
 
-    let el;
+    let el, dial;
     let ppm = 0;
     let startPos = 0;
     let startPPM = 0;
 
     function drag(event) {
-        if (event.center.x === 0) return;
-        let diff = startPos - event.center.x;
+        if (event.center.y === 0) return;
+        let diff = startPos - event.center.y;
         ppm = Math.round(diff + startPPM);
         rotate(ppm);
     }
     function start(event) {
-        startPos = event.center.x;
+        startPos = event.center.y;
         startPPM = ppm;
     }
     function rotate(deg) {
         el.style.transform = `translate(-50%, 0%) rotate(${deg/2}deg)`;
     }
     function mobileTouch() {
-        let mc = new Hammer(el);
+        let mc = new Hammer(dial);
         mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
         mc.get("press").set({ time: 1 });
         mc.on("panleft panright panup pandown", drag);
@@ -35,7 +35,7 @@
 </script>
 
 <div class="row h-300 border center">
-    <div class="round border h-200 w-200 relative overflow-hidden">
+    <div class="round border h-200 w-200 relative overflow-hidden" bind:this={dial} >
         <div class="absolute border round p-center shade2 h-150 w-150 z-3 shadow" />
         <div class="absolute p-center z-3 weight-300 text-center">
             <div class="col gap-10">
@@ -43,7 +43,7 @@
                 <span class="font-14 opacity-75">PPM</span>
             </div>
         </div>
-        <button draggable="true" class="triangle p-center pointer" bind:this={el} />
+        <button class="triangle p-center pointer" bind:this={el} />
     </div>
 </div>
 
