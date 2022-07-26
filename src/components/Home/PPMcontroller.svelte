@@ -1,5 +1,6 @@
 <script>
     import { onMount } from "svelte";
+    import Hammer from "hammerjs";
 
     let el;
     let ppm = 0;
@@ -7,21 +8,30 @@
     let startPPM = 0;
 
     function drag(event) {
-        if (event.clientY === 0) return;
-        let diff = startPos - event.clientY;
-        ppm = diff + startPPM;
+        if (event.center.x === 0) return;
+        let diff = startPos - event.center.x;
+        ppm = Math.round(diff + startPPM);
         rotate(ppm);
     }
     function start(event) {
-        startPos = event.clientY;
+        startPos = event.center.x;
         startPPM = ppm;
-        event.dataTransfer.setDragImage(event.target, 11111110, 10);
     }
     function rotate(deg) {
-        el.style.transform = `translate(-50%, 0%) rotate(${deg / 2}deg)`;
+        el.style.transform = `translate(-50%, 0%) rotate(${deg/2}deg)`;
+    }
+    function mobileTouch() {
+        let mc = new Hammer(el);
+        mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+        mc.get("press").set({ time: 1 });
+        mc.on("panleft panright panup pandown", drag);
+        mc.on("tap press", start);
     }
 
-    onMount(() => rotate(ppm));
+    onMount(() => {
+        rotate(ppm);
+        mobileTouch();
+    });
 </script>
 
 <div class="row h-300 border center">
@@ -33,13 +43,7 @@
                 <span class="font-14 opacity-75">PPM</span>
             </div>
         </div>
-        <button
-            draggable="true"
-            on:dragstart={start}
-            on:drag={drag}
-            class="triangle p-center pointer"
-            bind:this={el}
-        />
+        <button draggable="true" class="triangle p-center pointer" bind:this={el} />
     </div>
 </div>
 
