@@ -1,14 +1,18 @@
 <script>
+    let ppm = 240;
+    let calc = 0;
     let startPos = 0;
+    let startPPM = 0;
 
-    function drag(e) {
-       
-  
+    function drag(event) {
+        if (event.clientY === 0) return;
+        let diff = startPos - event.clientY;
+        ppm = diff + startPPM;
     }
     function start(event) {
         startPos = event.clientY;
-        let dragged = event.target;
-        event.dataTransfer.setDragImage(dragged, 11111110, 10);
+        startPPM = ppm;
+        event.dataTransfer.setDragImage(event.target, 11111110, 10);
     }
 </script>
 
@@ -17,16 +21,11 @@
         <div class="absolute border round p-center shade2 h-150 w-150 z-3 shadow" />
         <div class="absolute p-center z-3 weight-300 text-center">
             <div class="col gap-10">
-                <span class="font-28">240</span>
+                <span class="font-28 text-center">{ppm}</span>
                 <span class="font-14 opacity-75">PPM</span>
             </div>
         </div>
-        <button
-            draggable="true"
-            on:dragstart={start}
-            on:drag={drag}
-            class="triangle p-center"
-        />
+        <button draggable="true" on:dragstart={start} on:drag={drag} class="triangle p-center" />
     </div>
 </div>
 
