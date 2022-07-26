@@ -54,6 +54,7 @@
         <input bind:value={ppm} type="text" class="border pa-10 w-70 text-center curve row" />
         <span>Set PPM</span>
     </div>
+    {ppm}
     <PPMcontroller />
 </main>
 
