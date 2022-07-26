@@ -11,8 +11,8 @@
     let startPPM = 0;
 
     function drag(event) {
-        if (event.center.y === 0) return;
-        let diff = startPos - event.center.y;
+        if (event.center.x === 0) return;
+        let diff = startPos - event.center.x;
         let rounded = Math.round(diff + startPPM);
         if (rounded < 0) return (value = 0);
         if (rounded > 1100) return (value = 1100);
@@ -21,7 +21,7 @@
         rotate(value);
     }
     function start(event) {
-        startPos = event.center.y;
+        startPos = event.center.x;
         startPPM = value;
     }
     function rotate(deg) {
