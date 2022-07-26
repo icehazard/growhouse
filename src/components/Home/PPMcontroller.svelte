@@ -1,6 +1,8 @@
 <script>
-    let ppm = 240;
-    let calc = 0;
+    import { onMount } from "svelte";
+
+    let el;
+    let ppm = 0;
     let startPos = 0;
     let startPPM = 0;
 
@@ -8,12 +10,18 @@
         if (event.clientY === 0) return;
         let diff = startPos - event.clientY;
         ppm = diff + startPPM;
+        rotate(ppm);
     }
     function start(event) {
         startPos = event.clientY;
         startPPM = ppm;
         event.dataTransfer.setDragImage(event.target, 11111110, 10);
     }
+    function rotate(deg) {
+        el.style.transform = `translate(-50%, 0%) rotate(${deg / 2}deg)`;
+    }
+
+    onMount(() => rotate(ppm));
 </script>
 
 <div class="row h-300 border center">
@@ -25,7 +33,13 @@
                 <span class="font-14 opacity-75">PPM</span>
             </div>
         </div>
-        <button draggable="true" on:dragstart={start} on:drag={drag} class="triangle p-center" />
+        <button
+            draggable="true"
+            on:dragstart={start}
+            on:drag={drag}
+            class="triangle p-center pointer"
+            bind:this={el}
+        />
     </div>
 </div>
 
@@ -37,5 +51,9 @@
         border-bottom: 100px solid var(--primary);
         transform-origin: center top;
         transform: translate(-50%, 0%) rotate(180deg);
+    }
+
+    .triangle:active {
+        cursor: grabbing;
     }
 </style>
