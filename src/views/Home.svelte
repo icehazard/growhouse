@@ -1,9 +1,10 @@
 <script>
+    import PPMcontroller from "comp//Home/PPMcontroller.svelte";
     import Sensors from "comp/Home/Sensors.svelte";
 
     let state = {};
     let ws = null;
-    let ppm = 700
+    let ppm = 700;
 
     function startWs() {
         ws = new WebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
@@ -50,7 +51,10 @@
     <Sensors {state} />
     <div class="row align-center gap-20">
         <button class="border curve pa-10" on:click={setPPM}>SET</button>
-        <input bind:value={ppm} type="text" class="border pa-10 w-70 text-center curve row">
+        <input bind:value={ppm} type="text" class="border pa-10 w-70 text-center curve row" />
         <span>Set PPM</span>
     </div>
+    <PPMcontroller />
 </main>
+
+
