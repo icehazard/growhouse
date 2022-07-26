@@ -1,8 +1,9 @@
 <script>
-    import Icon from "@iconify/svelte";
-    import { Pulse } from "svelte-loading-spinners";
+    import Sensors from "comp/Home/Sensors.svelte";
+
     let state = {};
     let ws = null;
+    let ppm = 700
 
     function startWs() {
         ws = new WebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
@@ -41,44 +42,15 @@
 
     function setPPM(val) {
         console.log("Setting ppm to", val);
-        ws.send(JSON.stringify({ command: "setPPM", value: 700 }));
+        ws.send(JSON.stringify({ command: "setPPM", value: ppm }));
     }
 </script>
 
 <main class="col container my-50 gap-40 grow">
-    <div class="row ">
-        <div class="row border pa-20 gap-50 curve w100 h-130">
-            <div class="col align-center gap-10 grow space-between">
-                <Icon icon="carbon:humidity" height="24" class="primary--text" />
-                {#if state.humi}
-                    <span>{state.humi?.toFixed(2)}</span>
-                {:else}
-                    <Pulse color="var(--primary)" size="20" />
-                {/if}
-                <span class="opacity-75 font-14">Humidity</span>
-            </div>
-            <div class="col align-center gap-10 grow space-between">
-                <Icon icon="carbon:temperature-celsius" height="24" class="primary--text" />
-                {#if state.tempC}
-                    <span>{state.tempC?.toFixed(2)}</span>
-                {:else}
-                    <Pulse color="var(--primary)" size="20" />
-                {/if}
-                <span class="opacity-75 font-14">Temperature</span>
-            </div>
-            <div class="col align-center gap-10 grow space-between">
-                <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
-                {#if state.currentPPM}
-                    <span>{state.currentPPM?.toFixed(2)}</span>
-                {:else}
-                    <Pulse color="var(--primary)" size="20" />
-                {/if}
-                <span class="opacity-75 font-14">PPM</span>
-            </div>
-        </div>
-    </div>
+    <Sensors {state} />
     <div class="row align-center gap-20">
-        <button class='border curve pa-10' on:click={setPPM}>SET</button>
+        <button class="border curve pa-10" on:click={setPPM}>SET</button>
+        <input bind:value={ppm} type="text" class="border pa-10 w-70 text-center curve row">
         <span>Set PPM</span>
     </div>
 </main>
