@@ -79,7 +79,7 @@
         border-bottom: 100px solid var(--primary);
         transform-origin: center top;
         transform: translate(-50%, 0%) rotate(0deg);
-        transition: all 0.3s linear;
+        transition: all 0.3s ease-out;
     }
 
     button:active{

@@ -48,7 +48,7 @@ export function persist(name, data) {
 
 let headers = {
     Accept: "application/json",
-    token: token,
+    // token: token,
     "Content-Type": "application/json",
 }
 

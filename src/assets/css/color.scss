@@ -64,13 +64,7 @@ $primaryActive: #ef6698;
     background-color: $green;
 }
 
-.primary {
-    background-color: $primary;
-}
 
-.primary--text {
-    color: $primary;
-}
 
 .black--text {
     color: $black;
@@ -189,6 +183,14 @@ $primaryActive: #ef6698;
 
 .green--text {
     color: $green;
+}
+
+.primary {
+    background-color: $primary;
+}
+
+.primary--text {
+    color: $primary;
 }
 
 .gradient--text {

@@ -6,6 +6,7 @@
     export let disable = false;
     export let type = "button";
     export let block = '';
+    export let primary = '';
 
     let connect = () => {
         dispatch("click");
@@ -14,6 +15,7 @@
 
 <button
     class="curve center shine borderStrong shade2 py-10 px-40"
+    class:primary={primary}
     class:disable
     disabled={disable}
     class:grow={block}
