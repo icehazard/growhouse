@@ -1,11 +1,11 @@
 <script>
   import Dial from "../atoms/Dial.svelte";
   import { openModal } from "svelte-modals";
-  import ConfirmPhChange from "../modals/ConfirmPhChange.svelte";
-  import ConfirmPpmChange from "../modals/ConfirmPpmChange.svelte";
+  import ConfirmPhChange from "comp/modals/ConfirmPhChange.svelte";
+  import ConfirmPpmChange from "comp/modals/ConfirmPpmChange.svelte";
 
-  let ph = 50;
-  let ppm = 500;
+  let ph = 580;
+  let ppm = 580;
 
   function ppmEmit(val) {
     ppm = val.detail;
@@ -13,6 +13,7 @@
   }
   function phEmit(val) {
     ph = val.detail;
+    console.log("🚀 ~ ph", ph)
     openModal(ConfirmPhChange, { ph });
     
   }
