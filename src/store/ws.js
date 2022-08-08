@@ -1,5 +1,7 @@
 import { persist } from '@/assets/library/CommonFunctions.js'
 
+let ws = new WebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
+
 const data = {
     ws: {},
 }
@@ -12,11 +14,17 @@ context.setPPM = function (ppm) {
 context.setPh = function (ph) {
     ws.send(JSON.stringify({ command: "setPH", value: ph }));
 }
+context.runTest = function () {
+    ws.send(JSON.stringify({ command: "test"}));
+    console.log("SENDING TEST")
+}
 
-export default context
+export default context;
+
+export {ws};
 
 function start() {
-    let ws = new WebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
+
 
     ws.addEventListener("open", function (event) {
         console.log("WS connected");
