@@ -3,7 +3,7 @@
   import { openModal } from "svelte-modals";
   import ConfirmPhChange from "comp/modals/ConfirmPhChange.svelte";
   import ConfirmPpmChange from "comp/modals/ConfirmPpmChange.svelte";
-  import {ws} from '@/store/ws.js'
+  import ws from '@/store/ws.js'
 
   let ph = 580;
   let ppm = 580;
