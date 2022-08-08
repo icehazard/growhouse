@@ -1,6 +1,6 @@
 import { persist } from '@/assets/library/CommonFunctions.js'
 
-let ws = new WebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
+export let ws = new WebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
 
 const data = {
     ws: {},
@@ -20,8 +20,6 @@ context.runTest = function () {
 }
 
 export default context;
-
-export {ws};
 
 function start() {
 

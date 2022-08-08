@@ -1,6 +1,7 @@
 <script>
     import Icon from "@iconify/svelte";
     import { Pulse } from "svelte-loading-spinners";
+    import ws from '@/store/ws'
     export let state = {};
 </script>
 
