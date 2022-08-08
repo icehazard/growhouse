@@ -3,6 +3,7 @@
   import { openModal } from "svelte-modals";
   import ConfirmPhChange from "../modals/ConfirmPhChange.svelte";
   import ConfirmPpmChange from "../modals/ConfirmPpmChange.svelte";
+  import ws from '@/store/ws.js'
 
   let ph = 50;
   let ppm = 500;
@@ -24,6 +25,7 @@
     <Dial text="PPM" number={ppm} on:tap={ppmEmit} />
     <Dial text="pH" number={ph} on:tap={phEmit} decimal="100" />
   </div>
+  <button value="RUN TEST" on:click={ws.runTest}></button>
 </div>
 
 

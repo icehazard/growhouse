@@ -12,6 +12,9 @@ context.setPPM = function (ppm) {
 context.setPh = function (ph) {
     ws.send(JSON.stringify({ command: "setPH", value: ph }));
 }
+context.runTest = function (ph) {
+    ws.send(JSON.stringify({ command: "test"}));
+}
 
 export default context
 
