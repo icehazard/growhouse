@@ -7,13 +7,13 @@ const data = {
 const context = persist('ws', data)
 
 context.setPPM = function (ppm) {
-    ws.send(JSON.stringify({ command: "setPPM", value: ppm }));
+    data.ws.send(JSON.stringify({ command: "setPPM", value: ppm }));
 }
 context.setPh = function (ph) {
-    ws.send(JSON.stringify({ command: "setPH", value: ph }));
+    data.ws.send(JSON.stringify({ command: "setPH", value: ph }));
 }
 context.runTest = function () {
-    ws.send(JSON.stringify({ command: "test"}));
+    data.ws.send(JSON.stringify({ command: "test"}));
     console.log("SENDING TEST")
 }
 
