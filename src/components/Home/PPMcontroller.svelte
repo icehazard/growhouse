@@ -25,7 +25,7 @@
     <Dial text="PPM" number={ppm} on:tap={ppmEmit} />
     <Dial text="pH" number={ph} on:tap={phEmit} decimal="100" />
   </div>
-  <button value="RUN TEST" on:click={ws.runTest}></button>
+  <button class="shade5" value="RUN TEST" on:click={ws.runTest}>RUN TEST</button>
 </div>
 
 
