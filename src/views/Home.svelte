@@ -34,7 +34,7 @@
                 let json = JSON.parse(event.data);
                 //console.log(x.humi)
                 state = json;
-                state.avgDistance.push(json.distance);
+                avgDistance.push(json.distance);
 
                 ws.send(JSON.stringify({ ping: "back" }), { binary: false });
             } catch (e) {
