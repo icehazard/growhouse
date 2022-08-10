@@ -5,6 +5,7 @@
     import _ from "lodash"
 
     export let state = {};
+    export let avgDistance = [];
 </script>
 
 <div class="col gap-20 ">
@@ -41,7 +42,7 @@
         <div class="col align-center gap-10 grow space-between">
         <Icon icon="fa6-solid:glass-water-droplet" height="24" class="primary--text" />
         {#if state.distance}
-            <span>{(((66-_.mean(state.avgDistance)) / 66) * 100).toFixed(2)}</span>
+            <span>{(((66-_.mean(avgDistance)) / 66) * 100).toFixed(2)}</span>
         {:else}
             <Pulse color="var(--primary)" size="20" />
         {/if}

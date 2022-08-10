@@ -63,7 +63,7 @@
 </script>
 
 <main class="col container my-50 gap-40 grow">
-    <Sensors {state} />
+    <Sensors {state} {avgDistance} />
     <!-- <div class="row align-center gap-20">
         <button class="border curve pa-10" on:click={setPPM}>SET</button>
         <input bind:value={ppm} type="text" class="border pa-10 w-70 text-center curve row" />
