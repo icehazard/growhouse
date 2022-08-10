@@ -2,6 +2,8 @@
     import Icon from "@iconify/svelte";
     import { Pulse } from "svelte-loading-spinners";
     import ws from '@/store/ws'
+    import _ from "lodash"
+
     export let state = {};
 </script>
 
@@ -37,9 +39,9 @@
         </div>
 
         <div class="col align-center gap-10 grow space-between">
-        <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
+        <Icon icon="fa6-solid:glass-water-droplet" height="24" class="primary--text" />
         {#if state.distance}
-            <span>{(((66-state.distance?.toFixed(2)) / 66) * 100).toFixed(2)}</span>
+            <span>{(((66-_.mean(state.avgDistance)) / 66) * 100).toFixed(2)}</span>
         {:else}
             <Pulse color="var(--primary)" size="20" />
         {/if}

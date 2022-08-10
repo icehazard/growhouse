@@ -32,13 +32,29 @@
             try {
                 let json = JSON.parse(event.data);
                 //console.log(x.humi)
-                state = json;
+                state = {...state, ...json};
+                if (!state.avgDistance)
+                    state.avgDistance = []
+                state.avgDistance.push(json.distance);
+
                 ws.send(JSON.stringify({ ping: "back" }), { binary: false });
             } catch (e) {
                 console.log("Couldnt parse WS message");
             }
         });
     }
+
+    setInterval(_ => {
+        const COUNT = 15;
+        let idx = state.avgDistance.length-COUNT;
+
+        if (idx < 0)
+            idx = 0;
+
+        state.avgDistance = state.avgDistance.splice(idx, COUNT);
+        console.log(state.avgDistance)
+    }, 120e3) //dont let array grow too big
+
     startWs();
 
     function setPPM(val) {
