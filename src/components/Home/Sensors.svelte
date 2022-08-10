@@ -39,11 +39,11 @@
         <div class="col align-center gap-10 grow space-between">
         <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
         {#if state.distance}
-            <span>{state.distance?.toFixed(2)}</span>
+            <span>{(((66-state.distance?.toFixed(2)) / 66) * 100).toFixed(2)}</span>
         {:else}
             <Pulse color="var(--primary)" size="20" />
         {/if}
-        <span class="opacity-75 font-14">Distance</span>
+        <span class="opacity-75 font-14">% Full</span>
     </div>
     </div>
 </div>
