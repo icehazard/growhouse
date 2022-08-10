@@ -45,7 +45,7 @@
     }
 
     setInterval(_ => {
-        const COUNT = 15;
+        const COUNT = 5;
         let idx = avgDistance.length-COUNT;
 
         if (idx < 0)
