@@ -18,8 +18,8 @@
     openModal(ConfirmPhChange, { ph });
     
   }
-  function test() {
-    ws.runTest();
+  function test(cmd) {
+    ws.cmd(cmd);
   }
 </script>
 
@@ -29,7 +29,9 @@
     <Dial text="PPM" number={ppm} on:tap={ppmEmit} />
     <Dial text="pH" number={ph} on:tap={phEmit} decimal="100" />
   </div>
-  <button class="shade5" value="RUN TEST" on:click={test}>RUN TEST</button>
+  <button class="shade5" value="RUN ON" on:click={() => test("on")}>RUN ON</button>
+  <button class="shade5" value="RUN OFF" on:click={() => test("off")}>RUN OFF</button>
+
 </div>
 
 

@@ -18,7 +18,10 @@ context.runTest = function () {
     ws.send(JSON.stringify({ command: "test"}));
     console.log("SENDING TEST")
 }
-
+context.cmd = function (cmd) {
+    ws.send(JSON.stringify({ command: cmd}));
+    console.log("SENDING CMD", cmd)
+}
 export default context;
 
 function start() {
