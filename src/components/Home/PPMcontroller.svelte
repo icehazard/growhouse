@@ -29,8 +29,10 @@
     <Dial text="PPM" number={ppm} on:tap={ppmEmit} />
     <Dial text="pH" number={ph} on:tap={phEmit} decimal="100" />
   </div>
-  <button class="shade5" value="RUN ON" on:click={() => test("on")}>RUN ON</button>
-  <button class="shade5" value="RUN OFF" on:click={() => test("off")}>RUN OFF</button>
+
+<!--  dawg dont touch this below-->
+<!--  <button class="shade5" value="RUN ON" on:click={() => test("on")}>RUN ON</button>-->
+<!--  <button class="shade5" value="RUN OFF" on:click={() => test("off")}>RUN OFF</button>-->
 
 </div>
 
