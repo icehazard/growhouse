@@ -52,7 +52,7 @@
 
         avgDistance = avgDistance.splice(idx, COUNT);
         console.log(avgDistance)
-    }, 120e3) //dont let array grow too big
+    }, 10e3) //dont let array grow too big
 
     startWs();
 
