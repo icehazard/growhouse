@@ -4,6 +4,7 @@
 
     let state = {};
     let ws = null;
+    let avgDistance = [];
     let ppm = 700;
 
     function startWs() {
@@ -32,9 +33,7 @@
             try {
                 let json = JSON.parse(event.data);
                 //console.log(x.humi)
-                state = {...state, ...json};
-                if (!state.avgDistance)
-                    state.avgDistance = []
+                state = json;
                 state.avgDistance.push(json.distance);
 
                 ws.send(JSON.stringify({ ping: "back" }), { binary: false });
@@ -46,13 +45,13 @@
 
     setInterval(_ => {
         const COUNT = 15;
-        let idx = state.avgDistance.length-COUNT;
+        let idx = avgDistance.length-COUNT;
 
         if (idx < 0)
             idx = 0;
 
-        state.avgDistance = state.avgDistance.splice(idx, COUNT);
-        console.log(state.avgDistance)
+        avgDistance = avgDistance.splice(idx, COUNT);
+        console.log(avgDistance)
     }, 120e3) //dont let array grow too big
 
     startWs();
