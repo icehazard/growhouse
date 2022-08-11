@@ -37,7 +37,7 @@
                 if (json.distance)
                     avgDistance.push(json.distance);
 
-                ws.send(JSON.stringify({ ping: "back" }), { binary: false });
+                //ws.send(JSON.stringify({ ping: "back" }), { binary: false });
             } catch (e) {
                 console.log("Couldnt parse WS message");
             }
