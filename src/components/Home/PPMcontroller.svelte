@@ -33,6 +33,7 @@
 <!--  dawg dont touch this below-->
 <!--  <button class="shade5" value="RUN ON" on:click={() => test("on")}>RUN ON</button>-->
 <!--  <button class="shade5" value="RUN OFF" on:click={() => test("off")}>RUN OFF</button>-->
+<button class="shade5" value="RESTART" on:click={() => test("restart")}>RESTART</button>
 
 </div>
 
