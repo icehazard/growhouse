@@ -37,6 +37,9 @@
                 if (json.distance)
                     avgDistance.push(json.distance);
 
+                if (state.currentPPM < 0)
+                    state.currentPPM = 0;
+
                 //ws.send(JSON.stringify({ ping: "back" }), { binary: false });
             } catch (e) {
                 console.log("Couldnt parse WS message");
