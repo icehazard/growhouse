@@ -44,7 +44,7 @@ function start() {
     ws.addEventListener("message", function (event) {
         try {
             let json = JSON.parse(event.data);
-            ws.send(JSON.stringify({ ping: "back" }), { binary: false });
+            //ws.send(JSON.stringify({ ping: "back" }), { binary: false });
             context.commit('ws', json)
         } catch (e) {
             console.log("Couldnt parse WS message");
