@@ -38,7 +38,7 @@
                     avgDistance.push(json.distance);
 
                 if (state.currentPPM < 0)
-                    state.currentPPM = 0;
+                    state.currentPPM = "N/A";
 
                 //ws.send(JSON.stringify({ ping: "back" }), { binary: false });
             } catch (e) {
