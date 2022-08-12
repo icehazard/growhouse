@@ -83,7 +83,8 @@
     {ppm} -->
     <PPMcontroller />
 
-    <iframe src="http://168.119.247.99:3000/d-solo/OKDhg5iVz/water-reservoir?orgId=1&from=1660324153588&to=1660327753588&panelId=2" width="450" height="200" frameborder="0"></iframe>
+    <iframe src="http://168.119.247.99:3000/d-solo/OKDhg5iVz/water-reservoir?orgId=1&panelId=2" width="650" height="450" frameborder="0"></iframe>
+
 </main>
 
 
