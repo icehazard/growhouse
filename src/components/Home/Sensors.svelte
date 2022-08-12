@@ -10,7 +10,7 @@
 
 <div class="col gap-20 ">
     <h4 class="weight-300">Sensor Data</h4>
-    <div class="row border pa-20 gap-50 curve w100 h-130 wrap">
+    <div class="row border pa-20 gap-50 curve w100 wrap">
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="carbon:humidity" height="24" class="primary--text" />
             {#if state.humi}
