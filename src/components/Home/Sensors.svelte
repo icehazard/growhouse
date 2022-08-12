@@ -72,7 +72,7 @@
 
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="carbon:humidity" height="24" class="primary--text" />
-            {#if state.waterSensorVal}
+            {#if state.hasOwnProperty("waterSensorVal")}
                 <span>{state.waterSensorVal?.toFixed(2)}</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
