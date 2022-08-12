@@ -49,6 +49,16 @@
             <Pulse color="var(--primary)" size="20" />
         {/if}
         <span class="opacity-75 font-14">Water Tank</span>
-    </div>
+        </div>
+
+        <div class="col align-center gap-10 grow space-between">
+            <Icon icon="carbon:humidity" height="24" class="primary--text" />
+            {#if state.waterSensorVal}
+                <span>{state.waterSensorVal?.toFixed(2)}</span>
+            {:else}
+                <Pulse color="var(--primary)" size="20" />
+            {/if}
+            <span class="opacity-75 font-14">Water Sens Val</span>
+        </div>
     </div>
 </div>
