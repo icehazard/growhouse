@@ -27,7 +27,16 @@
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}
-            <span class="opacity-75 font-14">Temperature</span>
+            <span class="opacity-75 font-14">Room Temp</span>
+        </div>
+        <div class="col align-center gap-10 grow space-between">
+            <Icon icon="carbon:temperature-celsius" height="24" class="primary--text" />
+            {#if state.hasOwnProperty("waterTemp")}
+                <span>{state.waterTemp?.toFixed(2)}</span>
+            {:else}
+                <Pulse color="var(--primary)" size="20" />
+            {/if}
+            <span class="opacity-75 font-14">Water Temp</span>
         </div>
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
