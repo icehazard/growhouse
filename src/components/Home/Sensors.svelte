@@ -43,10 +43,8 @@
 
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
-            {#if state.probePPM && state.probePPM !== "N/A"}
+            {#if state.hasOwnProperty("probePPM")}
                 <span>{state.probePPM?.toFixed(2)}</span>
-            {:else if state.probePPM && state.probePPM === "N/A"}
-                <span>0</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}
