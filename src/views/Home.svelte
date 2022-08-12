@@ -33,12 +33,19 @@
             try {
                 let json = JSON.parse(event.data);
                 //console.log(x.humi)
-                state = json;
-                if (json.distance)
-                    avgDistance.push(json.distance);
+                if (!json.log) {
+                    state = json;
+                    if (json.distance)
+                        avgDistance.push(json.distance);
 
-                if (state.currentPPM < 0)
-                    state.currentPPM = "N/A";
+                    if (state.currentPPM < 0)
+                        state.currentPPM = "N/A";
+                    if (state.probePPM < 0)
+                        state.probePPM = "N/A";
+                }
+                else {
+                    console.log(json.log)
+                }
 
                 //ws.send(JSON.stringify({ ping: "back" }), { binary: false });
             } catch (e) {
