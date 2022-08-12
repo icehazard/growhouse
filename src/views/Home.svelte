@@ -40,6 +40,8 @@
 
                     if (state.currentPPM < 0)
                         state.currentPPM = "N/A";
+                    if (state.probePPM < 0)
+                        state.probePPM = "N/A";
                 }
                 else {
                     console.log(json.log)
