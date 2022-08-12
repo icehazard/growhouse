@@ -84,7 +84,7 @@
     <PPMcontroller />
 
     <div class="col gap-20">
-    <iframe src="http://168.119.247.99:3000/d/OKDhg5iVz/water-reservoir?orgId=1&panelId=2" width="650" height="450" frameborder="0"></iframe>
+    <iframe src="http://168.119.247.99:3000/d/OKDhg5iVz/water-reservoir?orgId=1&panelId=2" height="450" frameborder="0"></iframe>
     </div>
 </main>
 
