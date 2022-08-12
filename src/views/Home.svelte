@@ -82,6 +82,8 @@
     </div>
     {ppm} -->
     <PPMcontroller />
+
+    <iframe src="https://drmrmixa.grafana.net/d-solo/OKDhg5iVz/water-reservoir?orgId=1&from=1660323388507&to=1660326988507&panelId=2" width="450" height="200" frameborder="0"></iframe>
 </main>
 
 
