@@ -79,5 +79,15 @@
             {/if}
             <span class="opacity-75 font-14">Water Sens Val</span>
         </div>
+
+        <div class="col align-center gap-10 grow space-between">
+            <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
+            {#if state.hasOwnProperty("ph")}
+                <span>{state.ph?.toFixed(2)}</span>
+            {:else}
+                <Pulse color="var(--primary)" size="20" />
+            {/if}
+            <span class="opacity-75 font-14">PH</span>
+        </div>
     </div>
 </div>
