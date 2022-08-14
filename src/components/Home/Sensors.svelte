@@ -41,7 +41,7 @@
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
             {#if state.currentPPM && state.currentPPM !== "N/A"}
-                <span>{state.currentPPM?.toFixed(2)}</span>
+                <span>{state.currentPPM}</span>
             {:else if state.currentPPM && state.currentPPM === "N/A"}
                 <span>0</span>
             {:else}
@@ -53,7 +53,7 @@
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
             {#if state.hasOwnProperty("probePPM")}
-                <span>{state.probePPM.toFixed(2)}</span>
+                <span>{state.probePPM}</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}
