@@ -40,10 +40,8 @@
         </div>
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
-            {#if state.currentPPM && state.currentPPM !== "N/A"}
+            {#if state.hasOwnProperty("currentPPM")}
                 <span>{state.currentPPM}</span>
-            {:else if state.currentPPM && state.currentPPM === "N/A"}
-                <span>0</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}
