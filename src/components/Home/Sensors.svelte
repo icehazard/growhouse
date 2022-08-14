@@ -13,8 +13,8 @@
     <div class="row border pa-20 gap-50 curve w100 wrap">
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="carbon:humidity" height="24" class="primary--text" />
-            {#if state.humi}
-                <span>{state.humi?.toFixed(2)}</span>
+            {#if state.hasOwnProperty("humi")}
+                <span>{state.humi.toFixed(2)}</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}
@@ -22,8 +22,8 @@
         </div>
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="carbon:temperature-celsius" height="24" class="primary--text" />
-            {#if state.tempC}
-                <span>{state.tempC?.toFixed(2)}</span>
+            {#if state.hasOwnProperty("tempC")}
+                <span>{state.tempC.toFixed(2)}</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}
@@ -32,7 +32,7 @@
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="carbon:temperature-celsius" height="24" class="primary--text" />
             {#if state.hasOwnProperty("waterTemp")}
-                <span>{state.waterTemp?.toFixed(2)}</span>
+                <span>{state.waterTemp.toFixed(2)}</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}
@@ -53,7 +53,7 @@
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
             {#if state.hasOwnProperty("probePPM")}
-                <span>{state.probePPM?.toFixed(2)}</span>
+                <span>{state.probePPM.toFixed(2)}</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}
@@ -73,7 +73,7 @@
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="carbon:humidity" height="24" class="primary--text" />
             {#if state.hasOwnProperty("waterSensorVal")}
-                <span>{state.waterSensorVal?.toFixed(2)}</span>
+                <span>{state.waterSensorVal.toFixed(2)}</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}
@@ -82,8 +82,8 @@
 
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
-            {#if state.ph}
-                <span>{state.ph?.toFixed(2)}</span>
+            {#if state.hasOwnProperty("ph")}
+                <span>{state.ph.toFixed(2)}</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}
