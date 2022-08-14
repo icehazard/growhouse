@@ -13,7 +13,7 @@
     <div class="row border pa-20 gap-50 curve w100 wrap">
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="carbon:humidity" height="24" class="primary--text" />
-            {#if state.hasOwnProperty("humi") && Number.isFinite(state.humi)}
+            {#if state.hasOwnProperty("humi") && Number.isFinite(state.humi) && state.humi}
                 <span>{state.humi.toFixed(2)}</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
@@ -22,7 +22,7 @@
         </div>
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="carbon:temperature-celsius" height="24" class="primary--text" />
-            {#if state.hasOwnProperty("tempC")}
+            {#if state.hasOwnProperty("tempC") && state.tempC}
                 <span>{state.tempC.toFixed(2)}</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
