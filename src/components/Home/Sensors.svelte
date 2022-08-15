@@ -49,16 +49,6 @@
         </div>
 
         <div class="col align-center gap-10 grow space-between">
-            <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
-            {#if state.hasOwnProperty("probePPM")}
-                <span>{state.probePPM}</span>
-            {:else}
-                <Pulse color="var(--primary)" size="20" />
-            {/if}
-            <span class="opacity-75 font-14">Unmod PPM</span>
-        </div>
-
-        <div class="col align-center gap-10 grow space-between">
         <Icon icon="fa6-solid:glass-water-droplet" height="24" class="primary--text" />
         {#if avgDistance.length}
             <span>{(((66-_.mean(avgDistance)) / 66) * 100).toFixed(1)}%</span>
