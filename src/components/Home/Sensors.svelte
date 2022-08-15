@@ -65,7 +65,7 @@
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}
-            <span class="opacity-75 font-14">Water Sens Val</span>
+            <span class="opacity-75 font-14">Water Sens</span>
         </div>
 
         <div class="col align-center gap-10 grow space-between">
