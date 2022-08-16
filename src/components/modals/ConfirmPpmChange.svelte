@@ -8,7 +8,7 @@
     export let ppm = 0;
 
     function save() {
-        ws.setPPM(ppm);
+        ws.setPPMByPPM(ppm);
         closeModal();
     }
 </script>

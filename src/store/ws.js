@@ -8,8 +8,8 @@ const data = {
 
 const context = persist('ws', data)
 
-context.setPPM = function (ppm) {
-    ws.send(JSON.stringify({ command: "setPPM", value: ppm }));
+context.setPPMByPPM = function (ppm) {
+    ws.send(JSON.stringify({ command: "setPPMByPPM", value: ppm }));
 }
 context.setPh = function (ph) {
     ws.send(JSON.stringify({ command: "setPH", value: ph }));
