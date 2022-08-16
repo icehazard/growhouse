@@ -84,7 +84,7 @@ module.exports = {
 	stats: 'errors-warnings',
 	devServer: {
 		hot: true,
-		disableHostCheck: true,
+		allowedHosts: "all",
 		client: {
 			logging: 'warn',
 			overlay: {
