@@ -18,7 +18,10 @@ context.runTest = function () {
     ws.send(JSON.stringify({ command: "test"}));
     console.log("SENDING TEST")
 }
-
+context.cmd = function (cmd) {
+    ws.send(JSON.stringify({ command: cmd}));
+    console.log("SENDING CMD", cmd)
+}
 export default context;
 
 function start() {
@@ -41,7 +44,7 @@ function start() {
     ws.addEventListener("message", function (event) {
         try {
             let json = JSON.parse(event.data);
-            ws.send(JSON.stringify({ ping: "back" }), { binary: false });
+            //ws.send(JSON.stringify({ ping: "back" }), { binary: false });
             context.commit('ws', json)
         } catch (e) {
             console.log("Couldnt parse WS message");

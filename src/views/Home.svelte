@@ -4,6 +4,7 @@
 
     let state = {};
     let ws = null;
+    let avgDistance = [];
     let ppm = 700;
 
     function startWs() {
@@ -32,13 +33,38 @@
             try {
                 let json = JSON.parse(event.data);
                 //console.log(x.humi)
-                state = json;
-                ws.send(JSON.stringify({ ping: "back" }), { binary: false });
+                if (!json.log) {
+                    state = json;
+                    if (json.distance)
+                        avgDistance.push(json.distance);
+
+                    if (state.currentPPM < 0)
+                        state.currentPPM = "N/A";
+                    if (state.probePPM < 0)
+                        state.probePPM = "N/A";
+                }
+                else {
+                    console.log(json.log)
+                }
+
+                //ws.send(JSON.stringify({ ping: "back" }), { binary: false });
             } catch (e) {
                 console.log("Couldnt parse WS message");
             }
         });
     }
+
+    setInterval(_ => {
+        const COUNT = 5;
+        let idx = avgDistance.length-COUNT;
+
+        if (idx < 0)
+            idx = 0;
+
+        avgDistance = avgDistance.splice(idx, COUNT);
+        //console.log(avgDistance)
+    }, 10e3) //dont let array grow too big
+
     startWs();
 
     function setPPM(val) {
@@ -48,7 +74,7 @@
 </script>
 
 <main class="col container my-50 gap-40 grow">
-    <Sensors {state} />
+    <Sensors {state} {avgDistance} />
     <!-- <div class="row align-center gap-20">
         <button class="border curve pa-10" on:click={setPPM}>SET</button>
         <input bind:value={ppm} type="text" class="border pa-10 w-70 text-center curve row" />
@@ -56,6 +82,10 @@
     </div>
     {ppm} -->
     <PPMcontroller />
+
+    <div class="col gap-20">
+    <iframe src="http://168.119.247.99:3000/d/OKDhg5iVz/water-reservoir?orgId=1&panelId=2" height="450" frameborder="0"></iframe>
+    </div>
 </main>
 
 
