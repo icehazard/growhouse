@@ -4,10 +4,27 @@
 	import { fade } from "svelte/transition";
 	import { Modals, closeModal } from "svelte-modals";
 	import "@/store/ws.js";
-	
+	import { Notifications, acts } from "@tadashi/svelte-notification";
+
+	function add(notification) {
+		return () => {
+			acts.add(notification);
+		};
+	}
+
+	let triggers = [
+		{ mode: "normal", message: "Nothing to say...", lifetime: 2 },
+		{ mode: "success", message: "Nice!!" },
+		{ mode: "info", message: "Leve a japona" },
+		{ mode: "warn", message: "Piso escorregadio" },
+		{ mode: "danger", message: "Alta tensão" },
+	];
 </script>
 
 <section class="col vh100">
+	<!-- {#each triggers as trigger}
+		<button type="button" on:click={add(trigger)}>Add {trigger.mode}</button>
+	{/each} -->
 	<Router {routes} />
 	<Modals>
 		<div
@@ -17,6 +34,7 @@
 			class="backdrop fixed p-center z-4 vh100 w100"
 		/>
 	</Modals>
+	<Notifications />
 </section>
 
 <style>
@@ -24,4 +42,10 @@
 		background: rgba(0, 0, 0, 0.15);
 		backdrop-filter: blur(5px);
 	}
+
+
+._tadashi_svelte_notifications{
+	bottom: 0 !important;
+}
+
 </style>
