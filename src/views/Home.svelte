@@ -43,7 +43,7 @@
 
                 if (json.notif) {
                     console.log(json.notif)
-                    sendNotif({mode: json.notif.mode, message: json.notif.message})
+                    sendNotif(json.notif)
                     return
                 }
 
