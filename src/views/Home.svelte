@@ -43,6 +43,7 @@
 
                 if (json.notif) {
                     sendNotif({mode: json.notif.mode, message: json.notif.message})
+                    return
                 }
 
                 if (!json.log) {
