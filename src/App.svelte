@@ -4,13 +4,6 @@
 	import { fade } from "svelte/transition";
 	import { Modals, closeModal } from "svelte-modals";
 	import "@/store/ws.js";
-	import { Notifications, acts } from "@tadashi/svelte-notification";
-
-	function add(notification) {
-		return () => {
-			acts.add(notification);
-		};
-	}
 
 	let triggers = [
 		{ mode: "normal", message: "Nothing to say...", lifetime: 2 },
@@ -22,9 +15,6 @@
 </script>
 
 <section class="col vh100">
-	{#each triggers as trigger}
-		<button type="button" on:click={add(trigger)}>Add {trigger.mode}</button>
-	{/each}
 	<Router {routes} />
 	<Modals>
 		<div

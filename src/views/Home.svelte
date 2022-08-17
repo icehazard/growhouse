@@ -1,6 +1,13 @@
 <script>
     import PPMcontroller from "comp//Home/PPMcontroller.svelte";
     import Sensors from "comp/Home/Sensors.svelte";
+    import { Notifications, acts } from "@tadashi/svelte-notification";
+
+    function sendNotif(notification) {
+        return () => {
+            acts.add(notification);
+        };
+    }
 
     let state = {};
     let ws = null;
@@ -74,6 +81,8 @@
 </script>
 
 <main class="col container my-50 gap-40 grow">
+    <button type="button" on:click={sendNotif({ mode: "success", message: "Nice!!" })}>Add Success</button>
+
     <Sensors {state} {avgDistance} />
     <!-- <div class="row align-center gap-20">
         <button class="border curve pa-10" on:click={setPPM}>SET</button>
