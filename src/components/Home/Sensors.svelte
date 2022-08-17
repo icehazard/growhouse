@@ -3,12 +3,23 @@
     import { Pulse } from "svelte-loading-spinners";
     import ws from '@/store/ws'
     import _ from "lodash"
+    import { getNotificationsContext } from 'svelte-notifications';
+
+    const { addNotification } = getNotificationsContext();
 
     export let state = {};
     export let avgDistance = [];
 </script>
 
 <div class="col gap-20 ">
+    <button
+            on:click={() => addNotification({
+    text: 'Notification',
+    position: 'bottom-center',
+  })}
+    >
+        Add notification
+    </button>
     <h4 class="weight-300">Sensor Data</h4>
     <div class="row border pa-20 gap-50 curve w100 wrap">
         <div class="col align-center gap-10 grow space-between">
