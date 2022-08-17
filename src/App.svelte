@@ -24,7 +24,6 @@
 			class="backdrop fixed p-center z-4 vh100 w100"
 		/>
 	</Modals>
-	<Notifications />
 </section>
 
 <style>
