@@ -10,7 +10,11 @@
 
     function save() {
         ws.setPPM(ppm);
-        closeModal();
+        $modal.editPPM = false;
+    }
+
+    function close() {
+        $modal.editPPM = false;
     }
 </script>
 
