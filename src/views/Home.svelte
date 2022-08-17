@@ -44,7 +44,7 @@
                 if (json.notif) {
                     console.log(json.notif)
                     console.log(typeof json.notif)
-                    sendNotif(json.notif)
+                    sendNotif(json.notif)()
                     return
                 }
 
