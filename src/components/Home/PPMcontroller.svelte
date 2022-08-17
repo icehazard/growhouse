@@ -4,18 +4,20 @@
   import ConfirmPhChange from "comp/modals/ConfirmPhChange.svelte";
   import ConfirmPpmChange from "comp/modals/ConfirmPpmChange.svelte";
   import ws from '@/store/ws.js'
+  import modal from '@/store/modal.js'
 
   let ph = 580;
   let ppm = 580;
 
   function ppmEmit(val) {
     ppm = val.detail;
-    openModal(ConfirmPpmChange, { ppm });
+    $modal.editPPM = true;
   }
   function phEmit(val) {
     ph = val.detail;
     console.log("🚀 ~ ph", ph)
-    openModal(ConfirmPhChange, { ph });
+    //openModal(ConfirmPhChange, { ph });
+    $modal.editPH = true
     
   }
   function test(cmd) {

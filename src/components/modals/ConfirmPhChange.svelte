@@ -2,14 +2,19 @@
     import Button from "comp/atoms/Button.svelte";
     import { closeModal } from "svelte-modals";
     import { scale } from "svelte/transition";
-    import ws from '@/store/ws.js'
+    import ws from "@/store/ws.js";
+    import modal from "@/store/modal.js";
 
     export let isOpen;
     export let ph = 0;
 
     function save() {
         ws.setPh(ph)
-        closeModal();
+        $modal.editPH = false;
+    }
+
+    function close() {
+        $modal.editPH = false;
     }
 </script>
 
@@ -21,12 +26,12 @@
     >
         <div class="shade3 curve  gap-20 col w-400 overflow-hidden autopointer">
             <div class="body pa-25 pt-30 gap-20 col">
-                <span class="font-24">Edit Logo</span>
+                <span class="font-24">Update pH</span>
                 <span>Are you sure you want to change the pH to {ph}?</span>
             </div>
             <div class="actions row shade2 pa-25 gap-10">
-                <Button block text="SAVE" primary='true' on:click={save}></Button>
-                <Button block text="CLOSE" on:click={closeModal}></Button>
+                <Button block text="SAVE" primary="true" on:click={save} />
+                <Button block text="CLOSE" on:click={close} />
             </div>
         </div>
     </div>

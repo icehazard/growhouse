@@ -5,6 +5,9 @@
 	import { Modals, closeModal } from "svelte-modals";
 	import "@/store/ws.js";
 	import { Notifications, acts } from "@tadashi/svelte-notification";
+	import ConfirmPhChange from "comp/modals/ConfirmPhChange.svelte";
+	import ConfirmPpmChange from "comp/modals/ConfirmPpmChange.svelte";
+	import modal from '@/store/modal.js'
 
 	function add(notification) {
 		return () => {
@@ -35,6 +38,9 @@
 		/>
 	</Modals>
 	<Notifications />
+	<ConfirmPhChange isOpen={$modal.editPH}/>
+	<ConfirmPpmChange isOpen={$modal.editPPM} />
+	{$modal.editPH}
 </section>
 
 <style>
