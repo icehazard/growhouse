@@ -43,7 +43,7 @@
 
                 if (json.notif) {
                     console.log(json.notif)
-                    sendNotif(json.notif)
+                    sendNotif(JSON.parse(json.notif))
                     return
                 }
 
