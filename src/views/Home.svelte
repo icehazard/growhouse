@@ -42,6 +42,7 @@
                 //console.log(x.humi)
 
                 if (json.notif) {
+                    console.log(json.notif)
                     sendNotif({mode: json.notif.mode, message: json.notif.message})
                     return
                 }
