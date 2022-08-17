@@ -3,6 +3,8 @@
     import { Pulse } from "svelte-loading-spinners";
     import ws from '@/store/ws'
     import _ from "lodash"
+    import Notifications from 'svelte-notifications';
+
     import { getNotificationsContext } from 'svelte-notifications';
 
     const { addNotification } = getNotificationsContext();
@@ -11,6 +13,7 @@
     export let avgDistance = [];
 </script>
 
+<Notifications>
 <div class="col gap-20 ">
     <button
             on:click={() => addNotification({
@@ -90,3 +93,4 @@
         </div>
     </div>
 </div>
+</Notifications>
