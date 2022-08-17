@@ -40,6 +40,11 @@
             try {
                 let json = JSON.parse(event.data);
                 //console.log(x.humi)
+
+                if (json.notif) {
+                    sendNotif({mode: json.notif.mode, message: json.notif.message})
+                }
+
                 if (!json.log) {
                     state = json;
                     if (json.distance)
