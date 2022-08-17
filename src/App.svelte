@@ -22,9 +22,9 @@
 </script>
 
 <section class="col vh100">
-	<!-- {#each triggers as trigger}
+	{#each triggers as trigger}
 		<button type="button" on:click={add(trigger)}>Add {trigger.mode}</button>
-	{/each} -->
+	{/each}
 	<Router {routes} />
 	<Modals>
 		<div
