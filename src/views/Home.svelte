@@ -1,6 +1,13 @@
 <script>
     import PPMcontroller from "comp//Home/PPMcontroller.svelte";
     import Sensors from "comp/Home/Sensors.svelte";
+    import { Notifications, acts } from "@tadashi/svelte-notification";
+
+    function sendNotif(notification) {
+        return () => {
+            acts.add(notification);
+        };
+    }
 
     let state = {};
     let ws = null;
@@ -33,6 +40,14 @@
             try {
                 let json = JSON.parse(event.data);
                 //console.log(x.humi)
+
+                if (json.notif) {
+                    console.log(json.notif)
+                    console.log(typeof json.notif)
+                    sendNotif(json.notif)()
+                    return
+                }
+
                 if (!json.log) {
                     state = json;
                     if (json.distance)
@@ -73,9 +88,10 @@
     }
 </script>
 
-<main class="col container  gap-40 grow">
+<main class="col container my-50 gap-40 grow">
     <Sensors {state} {avgDistance} />
     <PPMcontroller />
+    <Notifications />
 
     <div class="col gap-20">
     <iframe src="http://168.119.247.99:3000/d/OKDhg5iVz/water-reservoir?orgId=1&panelId=2" height="450" frameborder="0"></iframe>

@@ -5,9 +5,6 @@
 	import { Modals, closeModal } from "svelte-modals";
 	import "@/store/ws.js";
 	import { Notifications, acts } from "@tadashi/svelte-notification";
-	import ConfirmPhChange from "comp/modals/ConfirmPhChange.svelte";
-	import ConfirmPpmChange from "comp/modals/ConfirmPpmChange.svelte";
-	import modal from '@/store/modal.js'
 
 	function add(notification) {
 		return () => {
@@ -25,9 +22,6 @@
 </script>
 
 <section class="col vh100">
-	<!-- {#each triggers as trigger}
-		<button type="button" on:click={add(trigger)}>Add {trigger.mode}</button>
-	{/each} -->
 	<Router {routes} />
 	<Modals>
 		<div
@@ -38,9 +32,6 @@
 		/>
 	</Modals>
 	<Notifications />
-	<ConfirmPhChange isOpen={$modal.editPH}/>
-	<ConfirmPpmChange isOpen={$modal.editPPM} />
-	{$modal.editPH}
 </section>
 
 <style>
