@@ -28,8 +28,8 @@
 <div class="col gap-20">
   <h4 class="weight-300">pH / PPM Controller</h4>
   <div class="row gap-50  border curve center wrap pa-20">
-    <Dial text="PPM" number={ppm} on:tap={ppmEmit} />
-    <Dial text="pH" number={ph} on:tap={phEmit} decimal="100" />
+    <Dial text="PPM" number={ppm} on:click={ppmEmit} />
+    <Dial text="pH" number={ph} on:click={phEmit} decimal="100" />
   </div>
 
 <!--  dawg dont touch this below-->

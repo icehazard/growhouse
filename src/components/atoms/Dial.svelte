@@ -31,7 +31,7 @@
     }
     function tap(){
         navigator.vibrate(50);
-        dispatch('tap', value  / decimal);
+        dispatch('click', value  / decimal);
     }
     function rotate(deg) {
         el.style.transform = `translate(-50%, 0%) rotate(${deg / 3}deg)`;
@@ -49,7 +49,7 @@
         mc.get("press").set({ time: 1 });
         mc.on("panleft panright panup pandown", drag);
         mc.on("press", start);
-        mc.on("tap", tap);
+        // mc.on("tap", tap);
         mc.on("panend", round);
     }
 
@@ -61,7 +61,7 @@
 </script>
 
 <div class="round border h-200 w-200 relative overflow-hidden" bind:this={dial}>
-    <button class="absolute border round p-center shade2 h-150 w-150 z-3 shadow fast" />
+    <button class="absolute border round p-center shade2 h-150 w-150 z-3 shadow fast" on:click={tap} />
     <div class="absolute p-center z-3 weight-300 text-center nopointer">
         <div class="col gap-10">
             <span class="font-28 text-center" in:fly={{ y: -20 }}>{Math.round(value) / decimal }</span>
