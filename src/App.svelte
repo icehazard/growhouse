@@ -3,7 +3,7 @@
 	import routes from "./router/index";
 	import { fade } from "svelte/transition";
 	import { Modals, closeModal } from "svelte-modals";
-	import "@/store/ws.js";
+	// import "@/store/ws.js";
 	import { Notifications, acts } from "@tadashi/svelte-notification";
 	import ConfirmPhChange from "comp/modals/ConfirmPhChange.svelte";
   import ConfirmPpmChange from "comp/modals/ConfirmPpmChange.svelte";
@@ -44,10 +44,4 @@
 		background: rgba(0, 0, 0, 0.15);
 		backdrop-filter: blur(5px);
 	}
-
-
-._tadashi_svelte_notifications{
-	bottom: 0 !important;
-}
-
 </style>
