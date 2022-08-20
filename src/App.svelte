@@ -25,18 +25,19 @@
 </script>
 
 <section class="col vh100">
-	<Router {routes} />
 	<Modals>
 		<div
 			transition:fade={{ duration: 100 }}
 			on:click={() => closeModal()}
 			slot="backdrop"
-			class="backdrop fixed p-center z-4 vh100 w100"
+			class="backdrop fixed p-center z-4 vh100 w100 nopointer"
 		/>
 	</Modals>
+	<Router {routes} />
+	
 	<Notifications />
-	<ConfirmPhChange isOpen={$modal.editPH} />
-	<ConfirmPpmChange isOpen={$modal.editPPM}/>
+	<!-- <ConfirmPhChange isOpen={$modal.editPH} />
+	<ConfirmPpmChange isOpen={$modal.editPPM}/> -->
 </section>
 
 <style>
