@@ -10,11 +10,12 @@
 
     function save() {
         ws.setPh(ph)
-        $modal.editPH = false;
+        closeModal()
     }
 
     function close() {
-        $modal.editPH = false;
+        //$modal.editPH = false;
+        closeModal()
     }
 </script>
 

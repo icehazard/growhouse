@@ -11,13 +11,13 @@
 
   function ppmEmit(val) {
     ppm = val.detail;
-    $modal.editPPM = true;
+    openModal(ConfirmPpmChange, { ppm });
   }
   function phEmit(val) {
     ph = val.detail;
     console.log("🚀 ~ ph", ph)
-    //openModal(ConfirmPhChange, { ph });
-    $modal.editPH = true
+    openModal(ConfirmPhChange, { ph });
+    //$modal.editPH = true
     
   }
   function test(cmd) {
