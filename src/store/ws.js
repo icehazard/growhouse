@@ -1,5 +1,5 @@
 import { persist } from '@/assets/library/CommonFunctions.js'
-import { Notifications, acts } from "@tadashi/svelte-notification";
+import { acts } from "@tadashi/svelte-notification";
 export let ws = new WebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
 
 const data = {
@@ -62,7 +62,9 @@ function start() {
             if (!json.log) {
                 context.commit('ws', json)
                 let avg = context.val('avgDistance');
+                let log = context.val('log');
                 if (!avg) context.commit('avgDistance', [])
+                if (!log) context.commit('log', [])
                 if (json.distance) context.commit('avgDistance', [...avg, json.distance])
                 if (json.currentPPM < 0) json.currentPPM = "N/A";
                 if (json.probePPM < 0) json.probePPM = "N/A";
@@ -70,9 +72,12 @@ function start() {
                     avg.shift()
                     context.commit('avgDistance', avg)
                 }
+                if (json.log)  log = [...log, json.log]
+                if (log.length > 100)  log.shift()
+                if (json.log)  context.commit('log', log)
             }
             else {
-                context.commit('log', json.log)
+                // context.commit('log', json.log)
 
             }
         } catch (e) {
