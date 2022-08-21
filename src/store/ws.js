@@ -4,7 +4,7 @@ export let ws = new WebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=")
 
 const data = {
     ws: {},
-    log: {},
+    log: [],
     avgDistance: []
 }
 
@@ -79,8 +79,7 @@ function start() {
                 if (json.log)  context.commit('log', log)
             }
             else {
-                // context.commit('log', json.log)
-
+                context.commit('log', [...context.val('log'), json.log])
             }
         } catch (e) {
             console.log("Couldnt parse WS message");
