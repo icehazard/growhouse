@@ -8,6 +8,7 @@
 	import ConfirmPhChange from "comp/modals/ConfirmPhChange.svelte";
   import ConfirmPpmChange from "comp/modals/ConfirmPpmChange.svelte";
   import modal from '@/store/modal.js'
+  import MediaQuery from "@/assets/library/MediaQuery.svelte";
 
 	function add(notification) {
 		return () => {
@@ -25,6 +26,7 @@
 </script>
 
 <section class="col vh100">
+	<MediaQuery />
 	<Modals>
 		<div
 			transition:fade={{ duration: 100 }}

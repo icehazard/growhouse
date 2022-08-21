@@ -65,7 +65,7 @@ function start() {
                 let log = context.val('log');
                 if (!avg) context.commit('avgDistance', [])
                 if (!log) context.commit('log', [])
-                if (json.distance) context.commit('avgDistance', [...avg, json.distance])
+                if (json.distance && json.distance > 0) context.commit('avgDistance', [...avg, json.distance])
                 if (json.currentPPM < 0) json.currentPPM = "N/A";
                 if (json.probePPM < 0) json.probePPM = "N/A";
                 if (avg.length > 30) {
