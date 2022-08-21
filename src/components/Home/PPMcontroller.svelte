@@ -21,7 +21,7 @@
     openModal(ConfirmPhChange, { ph });
     //$modal.editPH = true
   }
-  function test(cmd) {
+  function runCommand(cmd) {
     ws.cmd(cmd);
   }
 </script>
@@ -33,19 +33,19 @@
   
   <div class="row gap-20 shade1 border curve wrap pa-20 grow center">
     <div class="col center gap-10">
-      <button class="h-100 shade3 w-100 center curve" value="RESTART" on:click={() => test("restart")}>
+      <button class="h-100 shade3 w-100 center curve" value="RESTART" on:click={() => runCommand("restart")}>
         <Icon icon="ic:twotone-restart-alt" height="30" />
       </button>
       <span class="font-14 opacity-75">Restart</span>
     </div>
     <div class="col center gap-10">
-      <button class="h-100 shade3 w-100 center curve" value="TEST NOTIF" on:click={() => test("notif")}>
+      <button class="h-100 shade3 w-100 center curve" value="TEST NOTIF" on:click={() => runCommand("notif")}>
         <Icon icon="akar-icons:bell" width="25" />
       </button>
       <span class="font-14 opacity-75">Test Notification</span>
     </div>
     <div class="col center gap-10">
-      <button class="h-100 shade3 w-100 center curve">
+      <button class="h-100 shade3 w-100 center curve" on:click={() => runCommand("on")}>
         <Icon icon="mdi:water-plus-outline" width="30" />
       </button>
       <span class="font-14 opacity-75">Refill Tank</span>
