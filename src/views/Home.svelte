@@ -26,7 +26,7 @@
         </div>
         <div class="h-500 shade1 overlay col pa-20 gap-10 curve border grow" bind:this={el}>
             {#each $ws.log as item}
-                {item}
+                {item}<br>
             {/each}
         </div>
     </div>
