@@ -11,7 +11,13 @@
     <Notifications />
     <div class="col gap-20">
     <iframe title='iframe' src="http://168.119.247.99:3000/d/OKDhg5iVz/water-reservoir?orgId=1&panelId=2" height="450" frameborder="0"></iframe>
+    <div class="h-500 shade1 overlay col pa-20 gap-10 curve border">
+        {#each $ws.log as item}
+            {item}
+        {/each}
+
     </div>
+   
 </main>
 
 
