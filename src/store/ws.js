@@ -89,4 +89,5 @@ function start() {
 }
 
 start()
+context.commit('avgDistance', [])
 

@@ -8,7 +8,7 @@
     export let avgDistance = [];
 </script>
 
-<div class="col gap-20">
+<div class="col gap-20 text-center">
     <div class="row border pa-20 gap-50 curve w100 wrap shade1">
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="carbon:humidity" height="24" class="primary--text" />
