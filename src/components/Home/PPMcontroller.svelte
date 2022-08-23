@@ -50,5 +50,11 @@
       </button>
       <span class="font-14 opacity-75">Refill Tank</span>
     </div>
+    <div class="col center gap-10">
+      <button class="h-100 shade3 w-100 center curve" on:click={() => runCommand("dinfo")}>
+        <Icon icon="mdi:water-plus-outline" width="30" />
+      </button>
+      <span class="font-14 opacity-75">DINFO</span>
+    </div>
   </div>
 </div>
