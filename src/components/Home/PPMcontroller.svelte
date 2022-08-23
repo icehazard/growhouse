@@ -56,5 +56,11 @@
       </button>
       <span class="font-14 opacity-75">DINFO</span>
     </div>
+    <div class="col center gap-10">
+      <button class="h-100 shade3 w-100 center curve" on:click={() => runCommand("fetchConfig")}>
+        <Icon icon="mdi:water-plus-outline" width="30" />
+      </button>
+      <span class="font-14 opacity-75">FETCH CONF</span>
+    </div>
   </div>
 </div>
