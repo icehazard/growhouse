@@ -18,10 +18,10 @@
         closeModal()
     }
 
-    let A = true
-    let B = true
-    let SILICA = true
-    let CALMAG = true
+    export let A = true
+    export let B = true
+    export let SILICA = true
+    export let CALMAG = true
 
     let MASK_SILICA = 1;
     let MASK_A = 2;
