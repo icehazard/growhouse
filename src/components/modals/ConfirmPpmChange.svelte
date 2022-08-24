@@ -32,10 +32,10 @@
                 <span class="font-24">Update PPM</span>
                 <span>Are you sure you want to change the PPM to {ppm}?</span>
             </div>
-            <Checkbox bind:A></Checkbox>
-            <Checkbox bind:B></Checkbox>
-            <Checkbox bind:SILICA></Checkbox>
-            <Checkbox bind:CALMAG></Checkbox>
+            <span>SILICA<input type="checkbox" checked={SILICA}></span>
+            <span>A<input type="checkbox" checked={A}></span>
+            <span>B<input type="checkbox" checked={B}></span>
+            <span>CALMAG<input type="checkbox" checked={CALMAG}></span>
 
             <div class="actions row shade2 pa-25 gap-10">
                 <Button block text="SAVE" primary="true" on:click={save} />
