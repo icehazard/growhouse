@@ -31,6 +31,8 @@
     let TOTAL_MASK = 0;
 
     function calcMask() {
+        TOTAL_MASK = 0;
+
         if (A)
             TOTAL_MASK |= MASK_A;
         if (B)
