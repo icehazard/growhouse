@@ -10,7 +10,7 @@
     export let ppm = 0;
 
     function save() {
-        ws.setPPMByPPM(ppm);
+        ws.setPPMByPPM(ppm, TOTAL_MASK);
         closeModal()
     }
 

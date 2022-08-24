@@ -10,8 +10,8 @@ const data = {
 
 const context = persist('ws', data)
 
-context.setPPMByPPM = function (ppm) {
-    ws.send(JSON.stringify({ command: "setPPMByPPM", value: ppm }));
+context.setPPMByPPM = function (ppm, TOTAL_MASK) {
+    ws.send(JSON.stringify({ command: "setPPMByPPM", value: ppm, mask: TOTAL_MASK }));
 }
 context.setPh = function (ph) {
     ws.send(JSON.stringify({ command: "setPH", value: ph }));
