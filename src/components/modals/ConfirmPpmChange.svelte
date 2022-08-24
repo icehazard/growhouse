@@ -4,6 +4,7 @@
     import { scale } from "svelte/transition";
     import ws from "@/store/ws.js";
     import modal from "@/store/modal.js";
+    import Checkbox from "svelte-checkbox";
 
     export let isOpen;
     export let ppm = 0;
@@ -16,6 +17,8 @@
     function close() {
         closeModal()
     }
+
+    let A, B, SILICA, CALMAG = true;
 </script>
 
 {#if isOpen}
@@ -29,6 +32,11 @@
                 <span class="font-24">Update PPM</span>
                 <span>Are you sure you want to change the PPM to {ppm}?</span>
             </div>
+            <Checkbox bind:A></Checkbox>
+            <Checkbox bind:B></Checkbox>
+            <Checkbox bind:SILICA></Checkbox>
+            <Checkbox bind:CALMAG></Checkbox>
+
             <div class="actions row shade2 pa-25 gap-10">
                 <Button block text="SAVE" primary="true" on:click={save} />
                 <Button block text="CLOSE" on:click={close} />

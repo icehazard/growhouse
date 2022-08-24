@@ -29,12 +29,14 @@
     "lodash": "^4.17.21",
     "node-polyfill-webpack-plugin": "^1.1.4",
     "smelte": "^1.1.8",
+    "svelte-checkbox": "^1.0.1",
     "svelte-loading-spinners": "^0.1.7",
     "svelte-modals": "^1.1.0",
     "svelte-notifications": "^0.9.96",
     "svelte-persistent-store": "^0.1.6",
     "svelte-select": "^4.4.7",
     "svelte-spa-router": "^3.2.0",
+    "svelte-toggle": "^3.1.0",
     "ws": "^8.8.1",
     "yarn": "^1.22.19"
   }
