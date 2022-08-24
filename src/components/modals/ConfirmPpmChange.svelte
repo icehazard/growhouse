@@ -45,7 +45,7 @@
 
     $:
     {
-        A, B, CALMAG, SILICA, () => (calcMask());
+        A, B, CALMAG, SILICA, calcMask();
     }
 </script>
 
