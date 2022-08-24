@@ -43,11 +43,10 @@
         console.log("New mask is", TOTAL_MASK);
     }
 
-    $: A, () => (calcMask());
-    $: B, () => (calcMask());
-    $: SILICA, () => (calcMask());
-    $: CALMAG, () => (calcMask());
-
+    $:
+    {
+        A, B, CALMAG, SILICA, () => (calcMask());
+    }
 </script>
 
 {#if isOpen}
