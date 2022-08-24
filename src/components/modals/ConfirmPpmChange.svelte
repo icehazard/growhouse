@@ -62,10 +62,10 @@
                 <span>Are you sure you want to change the PPM to {ppm}?</span>
             </div>
             <div class="body pa-25 pt-30 gap-20 col">
-                <span>SILICA<input type="checkbox" checked={SILICA}></span>
-                <span>A<input type="checkbox" checked={A}></span>
-                <span>B<input type="checkbox" checked={B}></span>
-                <span>CALMAG<input type="checkbox" checked={CALMAG}></span>
+                <span>SILICA<input type="checkbox" checked={SILICA} bind:value={SILICA}></span>
+                <span>A<input type="checkbox" checked={A} bind:value={A}></span>
+                <span>B<input type="checkbox" checked={B} bind:value={B}></span>
+                <span>CALMAG<input type="checkbox" checked={CALMAG} bind:value={CALMAG}></span>
             </div>
             <div class="actions row shade2 pa-25 gap-10">
                 <Button block text="SAVE" primary="true" on:click={save} />
