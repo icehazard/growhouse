@@ -18,7 +18,36 @@
         closeModal()
     }
 
-    let A, B, SILICA, CALMAG = true;
+    let A = true
+    let B = true
+    let SILICA = true
+    let CALMAG = true
+
+    let MASK_SILICA = 1;
+    let MASK_A = 2;
+    let MASK_B = 4;
+    let MASK_CALMAG = 8;
+
+    let TOTAL_MASK = 0;
+
+    function calcMask() {
+        if (A)
+            TOTAL_MASK |= MASK_A;
+        if (B)
+            TOTAL_MASK |= MASK_B;
+        if (SILICA)
+            TOTAL_MASK |= MASK_SILICA;
+        if (CALMAG)
+            TOTAL_MASK |= MASK_CALMAG;
+
+        console.log("New mask is", TOTAL_MASK);
+    }
+
+    $: A, () => (calcMask());
+    $: B, () => (calcMask());
+    $: SILICA, () => (calcMask());
+    $: CALMAG, () => (calcMask());
+
 </script>
 
 {#if isOpen}
