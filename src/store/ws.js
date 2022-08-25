@@ -1,5 +1,6 @@
 import { persist } from '@/assets/library/CommonFunctions.js'
 import { acts } from "@tadashi/svelte-notification";
+import dayjs from 'dayjs'
 export let ws = new WebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
 
 const data = {
@@ -28,6 +29,7 @@ context.clearLog = function () {
     context.commit('log', [])
 }
 context.sendNotif = function (notification) {
+    notification.lifetime = 5
     return () => {
         acts.add(notification);
     };
@@ -57,8 +59,6 @@ function start() {
             let json = JSON.parse(event.data);
 
             if (json.notif) {
-                console.log(json.notif)
-                console.log(typeof json.notif)
                 context.sendNotif(json.notif)()
                 return
             }
@@ -79,11 +79,11 @@ function start() {
                 }
     
                 if (json.log)  log = [...log, json.log]
-                if (log.length > 100)  log.shift()
-                 if (json.log)  context.commit('log', log)
+                // if (log.length > 100)  log.shift()
+                 if (json.log)  context.commit('log', {time: dayjs().format(), data: log})
             }
             else {
-              context.commit('log', [...context.val('log'), json.log])
+              context.commit('log', [...context.val('log'), {time: dayjs().format(), data: json.log}])
             }
         } catch (e) {
             console.log("Couldnt parse WS message");
@@ -92,8 +92,3 @@ function start() {
 }
 
 start()
-
-
-// setInterval(() => {
-//     context.commit('log', [...context.val('log'), Math.random()])
-// }, 1000);

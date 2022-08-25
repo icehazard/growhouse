@@ -2,27 +2,20 @@
     import ws from "@/store/ws";
     import { onMount } from "svelte";
     import Icon from "@iconify/svelte";
-    import { beforeUpdate, afterUpdate } from "svelte";
+    import { afterUpdate } from "svelte";
+    import dayjs from "dayjs";
     let el;
-    // $: $ws.log, scroll();
 
     function scroll() {
         if (!el) return;
         let dif = el.scrollTop + 500 - el.scrollHeight;
         if (dif < -50) return;
         if (el.lastChild.nodeName == "#text") return;
-        //goBot();
-        el.scroll({
-            top: el.scrollHeight,
-            behavior: "smooth",
-        });
+        el.scrollTop = el.scrollHeight;
     }
 
     function goBot() {
-        el.scroll({
-            top: el.scrollHeight,
-            behavior: "smooth",
-        });
+        el.scrollTop = el.scrollHeight;
     }
 
     afterUpdate(() => {
@@ -30,8 +23,8 @@
     });
 
     onMount(() => {
+        ws.clearLog();
         goBot();
-   
     });
 </script>
 
@@ -45,14 +38,13 @@
         </button>
     </div>
     {#each $ws.log as item}
-        <span> {item}</span>
+        <div class="row gap-10 align-end">
+            <span class="font-14 opacity-75">
+                {dayjs(item.time).format("HH:mm")}
+            </span>
+            <span>{item.data}</span>
+        </div>
     {/each}
-
-    <div class="fixed p-right p-bottom row justify-end ">
-        <button class="curve shade3 pa-7 shine center" on:click={ws.clearLog}>
-            <Icon icon="ant-design:close-outlined" />
-        </button>
-    </div>
 </div>
 
 <style>
