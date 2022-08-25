@@ -7,6 +7,7 @@
   import modal from "@/store/modal.js";
   import Icon from "@iconify/svelte";
   import { mq } from "@/assets/library/MediaQuery.svelte";
+  import "@lottiefiles/lottie-player";
 
   let ph = 580;
   let ppm = 580;
@@ -74,5 +75,6 @@
       </button>
       <span class="font-14 opacity-75">FEEDINFO</span>
     </div>
+
   </div>
 </div>

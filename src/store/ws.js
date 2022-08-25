@@ -48,12 +48,10 @@ function start() {
 
     ws.addEventListener("close", function (event) {
         console.log("Encountered close, trying to reconnect");
-        setTimeout(start, 5e3);
     });
 
     ws.addEventListener("error", function (event) {
         console.log("Encountered error, trying to reconnect");
-        setTimeout(start, 5e3);
     });
 
     ws.addEventListener("message", function (event) {
