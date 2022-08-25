@@ -53,7 +53,7 @@
 
 
         {#if state["RO_ON"]}
-            <lottie-player loop autoplay mode="normal" src={JSON.stringify(glass)} style="width: 30px" />
+            <lottie-player loop autoplay mode="normal" src={JSON.stringify(glass)} style="width: 50px" />
         {:else }
             <Icon icon="fa6-solid:glass-water-droplet" height="24" class="primary--text" />
         {/if}
