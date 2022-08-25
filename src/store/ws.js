@@ -1,7 +1,9 @@
 import { persist } from '@/assets/library/CommonFunctions.js'
 import { acts } from "@tadashi/svelte-notification";
 import dayjs from 'dayjs'
-export let ws = new WebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
+import ReconnectingWebSocket from 'reconnecting-websocket';
+
+export let ws;
 
 const data = {
     ws: {},
@@ -38,7 +40,7 @@ export default context;
 
 function start() {
 
-    ws = new WebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
+    ws = new ReconnectingWebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
 
     ws.addEventListener("open", function (event) {
         console.log("WS connected");
