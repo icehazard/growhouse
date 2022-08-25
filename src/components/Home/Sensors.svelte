@@ -3,6 +3,7 @@
     import { Pulse } from "svelte-loading-spinners";
     import ws from '@/store/ws'
     import _ from "lodash"
+    import glass from '@/assets/lottie/glass.json'
 
     export let state = {};
     export let avgDistance = [];
@@ -49,7 +50,7 @@
 
 
         {#if state["RO_ON"]}
-            <lottie-player loop autoplay mode="normal" src="https://assets4.lottiefiles.com/packages/lf20_QSqGL0.json" style="width: 70px" />
+            <lottie-player loop autoplay mode="normal" src={JSON.stringify(glass)} style="width: 70px" />
         {/if}
         <div class="col align-center gap-10 grow space-between">
 
