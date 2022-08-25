@@ -49,12 +49,15 @@
         </div>
 
 
-        {#if state["RO_ON"]}
-            <lottie-player loop autoplay mode="normal" src={JSON.stringify(glass)} style="width: 100px" />
-        {/if}
         <div class="col align-center gap-10 grow space-between">
 
-        <Icon icon="fa6-solid:glass-water-droplet" height="24" class="primary--text" />
+
+        {#if state["RO_ON"]}
+            <lottie-player loop autoplay mode="normal" src={JSON.stringify(glass)} style="width: 30px" />
+        {:else }
+            <Icon icon="fa6-solid:glass-water-droplet" height="24" class="primary--text" />
+        {/if}
+
         {#if avgDistance.length}
             <span>{(((66-_.mean(avgDistance)) / 66) * 100).toFixed(1)}%</span>
         {:else}
