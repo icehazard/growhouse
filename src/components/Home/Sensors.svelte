@@ -50,7 +50,7 @@
 
 
         {#if state["RO_ON"]}
-            <lottie-player loop autoplay mode="normal" src={JSON.stringify(glass)} style="width: 70px" />
+            <lottie-player loop autoplay mode="normal" src={JSON.stringify(glass)} style="width: 100px" />
         {/if}
         <div class="col align-center gap-10 grow space-between">
 
