@@ -39,7 +39,11 @@
             <span class="opacity-75 font-14">Water Temp</span>
         </div>
         <div class="col align-center gap-10 grow space-between">
+            {#if state["ppmstate"] == 1}
+                <lottie-player loop autoplay mode="normal" src="https://assets4.lottiefiles.com/packages/lf20_9jXVOI.json" style="width: 50px" />
+            {:else }
             <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
+            {/if}
             {#if state.hasOwnProperty("currentPPM")}
                 <span>{state.currentPPM}</span>
             {:else}
