@@ -24,6 +24,9 @@ context.cmd = function (cmd) {
     ws.send(JSON.stringify({ command: cmd }));
     console.log("SENDING CMD", cmd)
 }
+context.clearLog = function () {
+    context.commit('log', [])
+}
 context.sendNotif = function (notification) {
     return () => {
         acts.add(notification);
@@ -74,12 +77,13 @@ function start() {
                     avg.shift()
                     context.commit('avgDistance', avg)
                 }
+    
                 if (json.log)  log = [...log, json.log]
                 if (log.length > 100)  log.shift()
-                if (json.log)  context.commit('log', log)
+                 if (json.log)  context.commit('log', log)
             }
             else {
-                context.commit('log', [...context.val('log'), json.log])
+              context.commit('log', [...context.val('log'), json.log])
             }
         } catch (e) {
             console.log("Couldnt parse WS message");
@@ -88,5 +92,8 @@ function start() {
 }
 
 start()
-context.commit('avgDistance', [])
 
+
+setInterval(() => {
+    context.commit('log', [...context.val('log'), Math.random()])
+}, 1000);
