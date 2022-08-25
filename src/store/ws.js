@@ -33,6 +33,7 @@ export default context;
 
 function start() {
 
+    ws = new WebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
 
     ws.addEventListener("open", function (event) {
         console.log("WS connected");
