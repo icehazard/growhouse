@@ -50,7 +50,7 @@
 
 
         <div class="col align-center gap-10 grow space-between">
-            {#if $ws["RO_ON"]}
+            {#if state["RO_ON"]}
                 <lottie-player autoplay mode="normal" src="https://assets4.lottiefiles.com/packages/lf20_QSqGL0.json" style="width: 70px" />
             {/if}
         <Icon icon="fa6-solid:glass-water-droplet" height="24" class="primary--text" />
