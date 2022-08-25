@@ -94,6 +94,6 @@ function start() {
 start()
 
 
-setInterval(() => {
-    context.commit('log', [...context.val('log'), Math.random()])
-}, 1000);
+// setInterval(() => {
+//     context.commit('log', [...context.val('log'), Math.random()])
+// }, 1000);
