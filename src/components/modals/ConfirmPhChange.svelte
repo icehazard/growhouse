@@ -11,11 +11,6 @@
         ws.setPh(ph)
         closeModal()
     }
-
-    function close() {
-        //$modal.editPH = false;
-        closeModal()
-    }
 </script>
 
 {#if isOpen}
@@ -31,7 +26,7 @@
             </div>
             <div class="actions row shade2 pa-25 gap-10">
                 <Button block text="SAVE" primary="true" on:click={save} />
-                <Button block text="CLOSE" on:click={close} />
+                <Button block text="CLOSE" on:click={closeModal} />
             </div>
         </div>
     </div>

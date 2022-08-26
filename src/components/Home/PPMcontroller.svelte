@@ -3,6 +3,7 @@
   import { openModal } from "svelte-modals";
   import ConfirmPhChange from "comp/modals/ConfirmPhChange.svelte";
   import ConfirmPpmChange from "comp/modals/ConfirmPpmChange.svelte";
+  import ws from "@/store/ws";
 
   let ph = 580;
   let ppm = 580;
@@ -18,6 +19,6 @@
 </script>
 
 <div class="row gap-50 shade1 border curve center wrap pa-20 grow">
-  <Dial text="PPM" number={ppm} on:click={ppmEmit} />
-  <Dial text="pH" number={ph} on:click={phEmit} decimal="100" />
+  <Dial text="PPM" active={$ws.ws.ppmstate} number={ppm} on:click={ppmEmit} />
+  <Dial text="pH" active={$ws.ws.phstate} number={ph} on:click={phEmit} decimal="100" />
 </div>

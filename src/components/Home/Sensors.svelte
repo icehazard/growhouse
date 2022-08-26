@@ -1,14 +1,13 @@
 <script>
     import Icon from "@iconify/svelte";
     import { Pulse } from "svelte-loading-spinners";
-    import ws from '@/store/ws'
+
     import _ from "lodash"
     import glass from '@/assets/lottie/glass.json'
 
     export let state = {};
     export let avgDistance = [];
 </script>
-
 <div class="col gap-20 text-center">
     <div class="row border pa-20 gap-50 curve w100 wrap shade1">
         <div class="col align-center gap-10 grow space-between">

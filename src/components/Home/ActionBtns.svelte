@@ -31,7 +31,7 @@
         <span class="font-14 opacity-75">Test Notification</span>
     </div>
     <div class="col center gap-10">
-        <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommand("on")}>
+        <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommand("on") } class:borderPrimary={$ws.ws.RO_ON}>
             <Icon color={col} icon="mdi:water-plus-outline" width="30" />
         </button>
         <span class="font-14 opacity-75">Refill Tank</span>
