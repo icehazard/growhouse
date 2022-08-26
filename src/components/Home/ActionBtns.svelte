@@ -12,7 +12,7 @@
 <div class="row gap-20 shade1 border curve wrap pa-20 grow center">
     <div class="col center gap-10">
         <button
-            class="h-100 shade3 w-100 center curve shadow fast"
+            class="h-100 shade3 w-100 center curve shadow fast shine"
             value="RESTART"
             on:click={() => runCommand("restart")}
         >
@@ -22,7 +22,7 @@
     </div>
     <div class="col center gap-10">
         <button
-            class="h-100 shade3 w-100 center curve shadow fast"
+            class="h-100 shade3 w-100 center curve shadow fast shine"
             value="TEST NOTIF"
             on:click={() => runCommand("notif")}
         >
@@ -31,20 +31,20 @@
         <span class="font-14 opacity-75">Test Notification</span>
     </div>
     <div class="col center gap-10">
-        <button class="h-100 shade3 w-100 center curve shadow fast" on:click={() => runCommand("on")}>
+        <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommand("on")}>
             <Icon color={col} icon="mdi:water-plus-outline" width="30" />
         </button>
         <span class="font-14 opacity-75">Refill Tank</span>
     </div>
     <div class="col center gap-10">
-        <button class="h-100 shade3 w-100 center curve shadow fast" on:click={() => runCommand("dinfo")}>
+        <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommand("dinfo")}>
             <Icon color={col} icon="ant-design:info-circle-outlined" width="30" />
         </button>
         <span class="font-14 opacity-75">DINFO</span>
     </div>
     <div class="col center gap-10">
         <button
-            class="h-100 shade3 w-100 center curve shadow fast"
+            class="h-100 shade3 w-100 center curve shadow fast shine"
             on:click={() => runCommand("fetchConfig")}
         >
             <Icon color={col} icon="ion:cog-sharp" width="30" />
@@ -53,7 +53,7 @@
     </div>
     <div class="col center gap-10">
         <button
-            class="h-100 shade3 w-100 center curve shadow fast"
+            class="h-100 shade3 w-100 center curve shadow fast shine"
             on:click={() => runCommand("romoff")}
         >
             <Icon color={col} icon="healthicons:running-water-outline" width="30" />
@@ -62,7 +62,7 @@
     </div>
     <div class="col center gap-10">
         <button
-            class="h-100 shade3 w-100 center curve shadow fast"
+            class="h-100 shade3 w-100 center curve shadow fast shine"
             on:click={() => runCommand("feedinfo")}
         >
             <Icon color={col} icon="fluent:food-20-regular" width="30" />

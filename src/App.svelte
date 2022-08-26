@@ -3,12 +3,8 @@
 	import routes from "./router/index";
 	import { fade } from "svelte/transition";
 	import { Modals, closeModal } from "svelte-modals";
-	// import "@/store/ws.js";
 	import { Notifications, acts } from "@tadashi/svelte-notification";
-	import ConfirmPhChange from "comp/modals/ConfirmPhChange.svelte";
-  import ConfirmPpmChange from "comp/modals/ConfirmPpmChange.svelte";
-  import modal from '@/store/modal.js'
-  import MediaQuery from "@/assets/library/MediaQuery.svelte";
+	import MediaQuery from "@/assets/library/MediaQuery.svelte";
 
 	function add(notification) {
 		return () => {
@@ -36,7 +32,7 @@
 		/>
 	</Modals>
 	<Router {routes} />
-	
+
 	<Notifications />
 	<!-- <ConfirmPhChange isOpen={$modal.editPH} />
 	<ConfirmPpmChange isOpen={$modal.editPPM}/> -->

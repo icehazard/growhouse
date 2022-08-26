@@ -3,7 +3,6 @@
     import { closeModal } from "svelte-modals";
     import { scale } from "svelte/transition";
     import ws from "@/store/ws.js";
-    import modal from "@/store/modal.js";
 
     export let isOpen;
     export let ph = 0;
