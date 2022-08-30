@@ -5,8 +5,8 @@
   import ConfirmPpmChange from "comp/modals/ConfirmPpmChange.svelte";
   import ws from "@/store/ws";
 
-  let ph = 580;
-  let ppm = 580;
+  let ph = $ws.ws.ph * 100;
+  let ppm = $ws.ws.currentPPM;
 
   function ppmEmit(val) {
     ppm = val.detail;

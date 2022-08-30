@@ -23,7 +23,7 @@
     });
 
     onMount(() => {
-        ws.clearLog();
+        //ws.clearLog();
         goBot();
     });
 </script>

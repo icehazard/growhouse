@@ -66,7 +66,7 @@
     <button
         class="absolute border round p-center shade2 h-150 w-150 z-3 shadow fast"
         on:click={tap}
-        class:borderPrimary={active}
+        class:borderPrimary={active == 1} 
     />
     <div class="absolute p-center z-3 weight-300 text-center nopointer">
         <div class="col gap-10">
