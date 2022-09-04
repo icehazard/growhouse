@@ -3,7 +3,7 @@
     import { closeModal } from "svelte-modals";
     import { scale } from "svelte/transition";
     import ws from "@/store/ws.js";
-    import Checkbox from "svelte-checkbox";
+    import Checkbox from "comp/atoms/Checkbox.svelte"
 
     export let isOpen;
     export let ppm = 0;
@@ -62,10 +62,57 @@
                 <span>Are you sure you want to change the PPM to {ppm}?</span>
             </div>
             <div class="body pa-25 pt-30 gap-20 col">
-                <span>SILICA<input type="checkbox" bind:checked={SILICA}></span>
-                <span>A<input type="checkbox" bind:checked={A}></span>
-                <span>B<input type="checkbox" bind:checked={B}></span>
-                <span>CALMAG<input type="checkbox" bind:checked={CALMAG}></span>
+                <button class="row align-center">
+
+                <Checkbox
+                        secondaryColor="var(--shade5)"
+                        primaryColor="var(--primary)"
+                        duration="150"
+                        size="2rem"
+                        bind:checked={SILICA}
+                        label="Silica"
+                        mask="true"
+                />
+                </button>
+
+                <button class="row align-center">
+                <Checkbox
+                        secondaryColor="var(--shade5)"
+                        primaryColor="var(--primary)"
+                        duration="150"
+                        size="2rem"
+                        bind:checked={A}
+                        label="A"
+                        mask="true"
+                />
+                </button>
+                <button class="row align-center">
+
+                <Checkbox
+                        secondaryColor="var(--shade5)"
+                        primaryColor="var(--primary)"
+                        duration="150"
+                        size="2rem"
+                        bind:checked={B}
+                        label="B"
+                        mask="true"
+                />
+                </button>
+                <button class="row align-center">
+                <Checkbox
+                        secondaryColor="var(--shade5)"
+                        primaryColor="var(--primary)"
+                        duration="150"
+                        size="2rem"
+                        bind:checked={CALMAG}
+                        label="Calmag"
+                        mask="true"
+                />
+                </button>
+<!--                <span>SILICA<input type="checkbox" bind:checked={SILICA}></span>-->
+<!--                <span>A<input type="checkbox" bind:checked={A}></span>-->
+<!--                <span>B<input type="checkbox" bind:checked={B}></span>-->
+<!--                <span>CALMAG<input type="checkbox" bind:checked={CALMAG}></span>-->
             </div>
             <div class="actions row shade2 pa-25 gap-10">
                 <Button block text="SAVE" primary="true" on:click={save} />

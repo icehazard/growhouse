@@ -70,7 +70,7 @@ function start() {
                 if (!avg) context.commit('avgDistance', [])
                 if (!log) context.commit('log', [])
                 let dist = Number(json.distance.toFixed(2))
-                if (json.distance && dist > 0) context.commit('avgDistance', [...avg, dist])
+                if (json.distance && dist > 0 && dist < 150) context.commit('avgDistance', [...avg, dist])
                 if (json.currentPPM < 0) json.currentPPM = "N/A";
                 if (json.probePPM < 0) json.probePPM = "N/A";
                 if (avg.length > 60) {
