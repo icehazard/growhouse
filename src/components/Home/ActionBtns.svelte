@@ -79,16 +79,18 @@
         <span class="font-14 opacity-75">FEEDINFO</span>
     </div>
     <div class="col center gap-10">
-        <Toggle
-                label="Feeding schedule"
-                switchColor="#eee"
-                toggledColor="#24a148"
-                untoggledColor="#fa4d56"
-                on="On"
-                off="Off"
-                bind:toggled={$ws.ws.state.FEED_STATE}
-                on:toggle={flipSchedule}
-        />
+        {#if $ws.ws.state.FEED_STATE}
+            <Toggle
+                    label="Feeding schedule"
+                    switchColor="#eee"
+                    toggledColor="#24a148"
+                    untoggledColor="#fa4d56"
+                    on="On"
+                    off="Off"
+                    bind:toggled={$ws.ws.state.FEED_STATE}
+                    on:toggle={flipSchedule}
+            />
+        {/if}
     </div>
 </div>
 
