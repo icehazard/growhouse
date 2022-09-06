@@ -17,7 +17,7 @@
         ws.cmdMiddleman(cmd);
     }
     function flipSchedule() {
-        feedScheduleOn = !feedScheduleOn;
+        //feedScheduleOn = !feedScheduleOn;
     }
     $: {
         feedScheduleOn, al()
