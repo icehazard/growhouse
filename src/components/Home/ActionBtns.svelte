@@ -16,6 +16,9 @@
         console.log("Flipping schedule")
         ws.cmdMiddleman($ws.ws.state.FEED_STATE == 1 ? "feedScheduleOff" : "feedScheduleOn");
     }
+    function al(data) {
+        alert(data)
+    }
 </script>
 
 <div class="row gap-20 shade1 border curve wrap pa-20 grow center">
@@ -88,7 +91,7 @@
                     on="On"
                     off="Off"
                     bind:toggled={$ws.ws.state.FEED_STATE}
-                    on:toggle={flipSchedule}
+                    on:toggle={al}
             />
         {/if}
     </div>
