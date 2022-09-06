@@ -92,7 +92,7 @@
                     on="On"
                     off="Off"
                     bind:toggled={$ws.ws.state.FEED_STATE}
-                    on:toggle={al}
+                    on:change={al}
             />
         {/if}
     </div>
