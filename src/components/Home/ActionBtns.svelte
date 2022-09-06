@@ -14,7 +14,7 @@
     }
     function flipSchedule() {
         console.log("Flipping schedule")
-        ws.cmdMiddleman(ws.ws.state.FEED_STATE == "feedScheduleOn" ? "feedScheduleOff" : "feedScheduleOn");
+        ws.cmdMiddleman($ws.ws.state.FEED_STATE == 1 ? "feedScheduleOff" : "feedScheduleOn");
     }
 </script>
 
