@@ -5,9 +5,19 @@
 
     let feedScheduleOn = false;
     let col = "var(--primary)";
-
+    let hoursArray = []
+    let nextFeeds = []
     $: {
-        $ws.ws.hasOwnProperty("state"), feedScheduleOn = $ws.ws.state ? $ws.ws.state.FEED_STATE : false
+        if ($ws.ws.hasOwnProperty("state")) {
+
+            feedScheduleOn = $ws.ws.state ? $ws.ws.state.FEED_STATE : false
+            hoursArray = []
+
+            for (let i = 0; i < 24; i += $ws.ws.state.FEED_EVERY_X_HOURS) {
+                hoursArray.push(i)
+                nextFeeds.push(new Date(Math.floor(Date.now() / (3600 * 3e3))))
+            }
+        }
     }
 
     function runCommand(cmd) {
@@ -19,9 +29,9 @@
     function flipSchedule() {
         //feedScheduleOn = !feedScheduleOn;
     }
-    $: {
-        feedScheduleOn, al()
-    }
+    // $: {
+    //     feedScheduleOn, al()
+    // }
     function al(data) {
         ws.cmdMiddleman(feedScheduleOn ? "feedScheduleOff" : "feedScheduleOn");
         //feedScheduleOn = !feedScheduleOn;
@@ -99,7 +109,10 @@
                     on="On"
                     off="Off"
                     bind:toggled={feedScheduleOn}
+                    on:click={al}
             />
+            Feeding hours are: {hoursArray} <br/>
+            Feed duration is set to {$ws.ws.state.RUN_DURATION/1000} secs
         {/if}
     </div>
 </div>
