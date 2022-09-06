@@ -105,11 +105,11 @@
     <div class="col center gap-10">
         <button
             class="h-100 shade3 w-100 center curve shadow fast shine"
-            on:click={() => runCommand("feedinfo")}
+            on:click={() => runCommandMiddleman("refill")}
         >
             <Icon color={col} icon="fluent:food-20-regular" width="30" />
         </button>
-        <span class="font-14 opacity-75">FEEDINFO</span>
+        <span class="font-14 opacity-75">REFTEST</span>
     </div>
     <div class="col center gap-10">
         {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("FEED_STATE")}
