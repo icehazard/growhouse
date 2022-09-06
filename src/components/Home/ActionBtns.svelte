@@ -19,6 +19,7 @@
     function al(data) {
         console.log(data.detail)
         ws.cmdMiddleman($ws.ws.state.FEED_STATE == 1 ? "feedScheduleOff" : "feedScheduleOn");
+        $ws.ws.state.FEED_STATE = !$ws.ws.state.FEED_STATE
     }
 </script>
 
