@@ -1,7 +1,9 @@
 <script>
     import ws from "@/store/ws.js";
     import Icon from "@iconify/svelte";
+    import Toggle from "svelte-toggle";
 
+    let feedScheduleOn = false;
     let col = "var(--primary)";
 
     function runCommand(cmd) {
@@ -68,6 +70,17 @@
             <Icon color={col} icon="fluent:food-20-regular" width="30" />
         </button>
         <span class="font-14 opacity-75">FEEDINFO</span>
+    </div>
+    <div class="col center gap-10">
+        <Toggle
+                label="Feeding schedule"
+                switchColor="#eee"
+                toggledColor="#24a148"
+                untoggledColor="#fa4d56"
+                on="On"
+                off="Off"
+                bind:toggled={$ws.ws.state.FEED_STATE}
+        />
     </div>
 </div>
 

@@ -73,6 +73,9 @@ function start() {
                 if (json.distance && dist > 0 && dist < 150) context.commit('avgDistance', [...avg, dist])
                 if (json.currentPPM < 0) json.currentPPM = "N/A";
                 if (json.probePPM < 0) json.probePPM = "N/A";
+                if (json.state) {
+                    context.commit("state", json.state)
+                }
                 if (avg.length > 60) {
                     avg.shift()
                     context.commit('avgDistance', avg)
