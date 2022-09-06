@@ -9,6 +9,13 @@
     function runCommand(cmd) {
         ws.cmd(cmd);
     }
+    function runCommandMiddleman(cmd) {
+        ws.cmdMiddleman(cmd);
+    }
+    function flipSchedule() {
+        console.log("Flipping schedule")
+        ws.cmdMiddleman(feedScheduleOn ? "feedScheduleOn" : "feedScheduleOff");
+    }
 </script>
 
 <div class="row gap-20 shade1 border curve wrap pa-20 grow center">
@@ -80,6 +87,7 @@
                 on="On"
                 off="Off"
                 bind:toggled={$ws.ws.state.FEED_STATE}
+                on:toggle={flipSchedule}
         />
     </div>
 </div>

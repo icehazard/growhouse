@@ -27,6 +27,10 @@ context.cmd = function (cmd) {
     ws.send(JSON.stringify({ command: cmd }));
     console.log("SENDING CMD", cmd)
 }
+context.cmdMiddleman = function (cmd) {
+    ws.send(JSON.stringify({ middleman: 1, command: cmd }));
+    console.log("SENDING CMD", cmd)
+}
 context.clearLog = function () {
     context.commit('log', [])
 }
