@@ -6,6 +6,10 @@
     let feedScheduleOn = false;
     let col = "var(--primary)";
 
+    $: {
+        $ws.ws.state.FEED_STATE, feedScheduleOn = $ws.ws.state.FEED_STATE
+    }
+
     function runCommand(cmd) {
         ws.cmd(cmd);
     }
@@ -18,8 +22,8 @@
     }
     function al(data) {
         console.log(data.detail)
-        ws.cmdMiddleman($ws.ws.state.FEED_STATE == 1 ? "feedScheduleOff" : "feedScheduleOn");
-        $ws.ws.state.FEED_STATE = !$ws.ws.state.FEED_STATE
+        ws.cmdMiddleman(feedScheduleOn ? "feedScheduleOff" : "feedScheduleOn");
+        //$ws.ws.state.FEED_STATE = !$ws.ws.state.FEED_STATE
     }
 </script>
 
@@ -92,7 +96,7 @@
                     untoggledColor="#fa4d56"
                     on="On"
                     off="Off"
-                    bind:toggled={$ws.ws.state.FEED_STATE}
+                    bind:toggled={feedScheduleOn}
                     on:click={al}
             />
         {/if}
