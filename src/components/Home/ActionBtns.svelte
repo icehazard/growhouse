@@ -7,7 +7,7 @@
     let col = "var(--primary)";
 
     $: {
-        $ws.ws.state.FEED_STATE, feedScheduleOn = $ws.ws.state.FEED_STATE
+        $ws.ws.hasOwnProperty("state"), feedScheduleOn = $ws.ws.state.FEED_STATE
     }
 
     function runCommand(cmd) {
