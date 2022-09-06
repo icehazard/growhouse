@@ -21,14 +21,12 @@
             for (let i = 0; i < 24; i += $ws.ws.state.FEED_EVERY_X_HOURS) {
                 hoursArray.push(i)
 
-                let next = start.add(i, 'hour')
+                let next = start.add(i+3, 'hour')
                 nextFeeds.push(next.fromNow())
                 console.log(next.fromNow())
             }
 
             nextFeed = nextFeeds.filter(i => i.indexOf("ago") === -1)[0]
-            console.log(nextFeed)
-            console.log("==========================")
         }
     }
 
