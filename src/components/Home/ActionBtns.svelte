@@ -2,21 +2,33 @@
     import ws from "@/store/ws.js";
     import Icon from "@iconify/svelte";
     import Toggle from "svelte-toggle";
+    import dayjs from "dayjs"
+    var relativeTime = require('dayjs/plugin/relativeTime')
+    dayjs.extend(relativeTime)
 
     let feedScheduleOn = false;
     let col = "var(--primary)";
     let hoursArray = []
     let nextFeeds = []
+    let nextFeed = "";
     $: {
         if ($ws.ws.hasOwnProperty("state")) {
 
             feedScheduleOn = $ws.ws.state ? $ws.ws.state.FEED_STATE : false
             hoursArray = []
 
+            let start = dayjs().startOf('day')
             for (let i = 0; i < 24; i += $ws.ws.state.FEED_EVERY_X_HOURS) {
                 hoursArray.push(i)
-                nextFeeds.push(new Date(Math.floor(Date.now() / (3600 * 3e3))))
+
+                let next = start.add(i, 'hour')
+                nextFeeds.push(next.fromNow())
+                console.log(next.fromNow())
             }
+
+            nextFeed = nextFeeds.filter(i => i.indexOf("ago") === -1)[0]
+            console.log(nextFeed)
+            console.log("==========================")
         }
     }
 
@@ -112,7 +124,8 @@
                     on:click={al}
             />
             Feeding hours are: {hoursArray} <br/>
-            Feed duration is set to {$ws.ws.state.RUN_DURATION/1000} secs
+            Feed duration is set to {$ws.ws.state.RUN_DURATION/1000} secs <br/>
+            Next feed ~{nextFeed}
         {/if}
     </div>
 </div>
