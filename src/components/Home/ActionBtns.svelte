@@ -20,9 +20,12 @@
         console.log("Flipping schedule")
         ws.cmdMiddleman($ws.ws.state.FEED_STATE == 1 ? "feedScheduleOff" : "feedScheduleOn");
     }
+    $: {
+        feedScheduleOn, al()
+    }
     function al(data) {
         ws.cmdMiddleman(feedScheduleOn ? "feedScheduleOff" : "feedScheduleOn");
-        feedScheduleOn = !feedScheduleOn;
+        //feedScheduleOn = !feedScheduleOn;
         //$ws.ws.state.FEED_STATE = !$ws.ws.state.FEED_STATE
     }
 </script>
@@ -97,7 +100,6 @@
                     on="On"
                     off="Off"
                     bind:toggled={feedScheduleOn}
-                    on:click={al}
             />
         {/if}
     </div>
