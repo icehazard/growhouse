@@ -79,10 +79,10 @@
         <span class="font-14 opacity-75">Refill Tank</span>
     </div>
     <div class="col center gap-10">
-        <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommand("dinfo")}>
+        <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommand("feedon")}>
             <Icon color={col} icon="ant-design:info-circle-outlined" width="30" />
         </button>
-        <span class="font-14 opacity-75">DINFO</span>
+        <span class="font-14 opacity-75">FEEDON</span>
     </div>
     <div class="col center gap-10">
         <button
