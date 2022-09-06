@@ -99,7 +99,6 @@
                     on="On"
                     off="Off"
                     bind:toggled={feedScheduleOn}
-                    on:click={flipSchedule}
             />
         {/if}
     </div>
