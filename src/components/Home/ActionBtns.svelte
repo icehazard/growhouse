@@ -79,7 +79,7 @@
         <span class="font-14 opacity-75">FEEDINFO</span>
     </div>
     <div class="col center gap-10">
-        {#if $ws.ws && $ws.ws.state && $ws.ws.state.FEED_STATE}
+        {#if ws.ws && ws.ws.state && ws.ws.state.FEED_STATE}
             <Toggle
                     label="Feeding schedule"
                     switchColor="#eee"
@@ -87,7 +87,7 @@
                     untoggledColor="#fa4d56"
                     on="On"
                     off="Off"
-                    bind:toggled={$ws.ws.state.FEED_STATE}
+                    bind:toggled={ws.ws.state.FEED_STATE}
                     on:toggle={flipSchedule}
             />
         {/if}
