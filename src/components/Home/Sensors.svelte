@@ -60,7 +60,7 @@
             <Icon icon="fa6-solid:glass-water-droplet" height="24" class="primary--text" />
         {/if}
 
-        {#if avgDistance.length > 50}
+        {#if avgDistance.length > 5}
             <span>{(((66-_.mean(avgDistance)) / 66) * 100).toFixed(1)}%</span>
         {:else}
             <Pulse color="var(--primary)" size="20" />
