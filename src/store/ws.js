@@ -44,6 +44,8 @@ export default context;
 
 function start() {
 
+    context.commit('avgDistance', [])
+
     ws = new ReconnectingWebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
 
     ws.addEventListener("open", function (event) {
