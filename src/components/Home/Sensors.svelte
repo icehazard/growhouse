@@ -1,7 +1,7 @@
 <script>
     import Icon from "@iconify/svelte";
     import { Pulse } from "svelte-loading-spinners";
-
+    import "@lottiefiles/lottie-player";
     import _ from "lodash"
     import glass from '@/assets/lottie/glass.json'
 
