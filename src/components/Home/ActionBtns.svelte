@@ -23,7 +23,7 @@
 
                 let next = start.add(i+3, 'hour')
                 nextFeeds.push(next.fromNow())
-                console.log(next.fromNow())
+                //console.log(next.fromNow())
             }
 
             nextFeed = nextFeeds.filter(i => i.indexOf("ago") === -1)[0]

@@ -7,6 +7,21 @@
 
     export let state = {};
     export let avgDistance = [];
+    let refined = 0;
+    $: {
+        avgDistance;
+        let n = avgDistance
+        n = _.sortBy(n)
+        if (n.length > 50) {
+            console.log('Sorted', n)
+            n.splice(0, 20)
+            console.log('Splice 1', n)
+
+            n.splice(-20)
+            console.log('Splice 2', n)
+        }
+        refined = parseInt((((66-_.mean(n)) / 66) * 100))
+    }
 </script>
 <div class="col gap-20 text-center">
     <div class="row border pa-20 gap-50 curve w100 wrap shade1">
@@ -60,8 +75,8 @@
             <Icon icon="fa6-solid:glass-water-droplet" height="24" class="primary--text" />
         {/if}
 
-        {#if avgDistance.length > 5}
-            <span>{(((66-_.mean(avgDistance)) / 66) * 100).toFixed(1)}%</span>
+        {#if refined}
+            <span>{refined}%</span>
         {:else}
             <Pulse color="var(--primary)" size="20" />
         {/if}
