@@ -63,12 +63,12 @@
     <div class="col center gap-10">
         <button
             class="h-100 shade3 w-100 center curve shadow fast shine"
-            value="TEST NOTIF"
-            on:click={() => runCommand("notif")}
+            value="1MIN FEED"
+            on:click={() => runCommandMiddleman("minfeed")}
         >
             <Icon color={col} icon="akar-icons:bell" width="25" />
         </button>
-        <span class="font-14 opacity-75">Test Notification</span>
+        <span class="font-14 opacity-75">1MIN FEED</span>
     </div>
     <div class="col center gap-10">
         <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommand("on") } class:borderPrimary={$ws.ws.RO_ON}>
@@ -107,7 +107,7 @@
         >
             <Icon color={col} icon="fluent:food-20-regular" width="30" />
         </button>
-        <span class="font-14 opacity-75">REFTEST</span>
+        <span class="font-14 opacity-75">REFILL</span>
     </div>
     <div class="col center gap-10">
         {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("FEED_STATE")}
