@@ -13,12 +13,9 @@
         let n = avgDistance
         n = _.sortBy(n)
         if (n.length > 50) {
-            console.log('Sorted', n)
             n.splice(0, 20)
-            console.log('Splice 1', n)
 
             n.splice(-20)
-            console.log('Splice 2', n)
         }
         refined = parseInt((((66-_.mean(n)) / 66) * 100))
     }
