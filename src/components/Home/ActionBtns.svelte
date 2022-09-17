@@ -126,6 +126,34 @@
             Next feed ~{nextFeed}
         {/if}
     </div>
+    <div class="col center gap-10">
+        {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_PPM")}
+            <Toggle
+                    label="Auto-adjust PPM"
+                    switchColor="#eee"
+                    toggledColor="#24a148"
+                    untoggledColor="#fa4d56"
+                    on="On"
+                    off="Off"
+                    bind:toggled={feedScheduleOn}
+                    on:click={al}
+            />
+        {/if}
+    </div>
+    <div class="col center gap-10">
+        {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_PH")}
+            <Toggle
+                    label="Auto-adjust PH"
+                    switchColor="#eee"
+                    toggledColor="#24a148"
+                    untoggledColor="#fa4d56"
+                    on="On"
+                    off="Off"
+                    bind:toggled={feedScheduleOn}
+                    on:click={al}
+            />
+        {/if}
+    </div>
 </div>
 
 <style>
