@@ -124,7 +124,7 @@
         <span class="font-14 opacity-75">REFILL</span>
     </div>
 </div>
-<div class="row gap-20 shade1 border curve wrap pa-20 grow center">
+<div class="col center gap-10">
     <div class="col center gap-10">
         {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("FEED_STATE")}
             <Toggle
