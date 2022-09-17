@@ -6,7 +6,7 @@
     var relativeTime = require('dayjs/plugin/relativeTime')
     dayjs.extend(relativeTime)
 
-    let feedScheduleOn = false;
+    let adjustPPMOn, adjustPHOn, feedScheduleOn = false;
     let col = "var(--primary)";
     let hoursArray = []
     let nextFeeds = []
@@ -42,10 +42,14 @@
     // $: {
     //     feedScheduleOn, al()
     // }
-    function al(data) {
+    function al() {
         ws.cmdMiddleman(feedScheduleOn ? "feedScheduleOff" : "feedScheduleOn");
-        //feedScheduleOn = !feedScheduleOn;
-        //$ws.ws.state.FEED_STATE = !$ws.ws.state.FEED_STATE
+    }
+    function adjustPHOn() {
+        ws.cmdMiddleman(adjustPHOn ? "adjustPHOff" : "adjustPHOn");
+    }
+    function adjustPPMOn() {
+        ws.cmdMiddleman(adjustPPMOn ? "adjustPPMOff" : "adjustPPMOn");
     }
 </script>
 
@@ -135,8 +139,8 @@
                     untoggledColor="#fa4d56"
                     on="On"
                     off="Off"
-                    bind:toggled={feedScheduleOn}
-                    on:click={al}
+                    bind:toggled={adjustPPMOn}
+                    on:click={adjustPPM}
             />
         {/if}
     </div>
@@ -149,8 +153,8 @@
                     untoggledColor="#fa4d56"
                     on="On"
                     off="Off"
-                    bind:toggled={feedScheduleOn}
-                    on:click={al}
+                    bind:toggled={adjustPHOn}
+                    on:click={adjustPH}
             />
         {/if}
     </div>
