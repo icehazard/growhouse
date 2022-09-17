@@ -15,6 +15,9 @@
         if ($ws.ws.hasOwnProperty("state")) {
 
             feedScheduleOn = $ws.ws.state ? $ws.ws.state.FEED_STATE : false
+            adjustPPMOn = $ws.ws.state ? $ws.ws.state.ADJUST_PPM : false
+            adjustPHOn = $ws.ws.state ? $ws.ws.state.ADJUST_PH : false
+
             hoursArray = []
 
             let start = dayjs().startOf('day')
