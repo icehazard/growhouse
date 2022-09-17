@@ -42,13 +42,13 @@
     // $: {
     //     feedScheduleOn, al()
     // }
-    function al() {
+    function adjustSchedule() {
         ws.cmdMiddleman(feedScheduleOn ? "feedScheduleOff" : "feedScheduleOn");
     }
-    function adjustPHOn() {
+    function adjustPH() {
         ws.cmdMiddleman(adjustPHOn ? "adjustPHOff" : "adjustPHOn");
     }
-    function adjustPPMOn() {
+    function adjustPPM() {
         ws.cmdMiddleman(adjustPPMOn ? "adjustPPMOff" : "adjustPPMOn");
     }
 </script>
@@ -123,7 +123,7 @@
                     on="On"
                     off="Off"
                     bind:toggled={feedScheduleOn}
-                    on:click={al}
+                    on:click={adjustSchedule}
             />
             Feeding hours are: {hoursArray} <br/>
             Feed duration is set to {$ws.ws.state.RUN_DURATION/1000} secs <br/>
