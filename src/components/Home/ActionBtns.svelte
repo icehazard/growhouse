@@ -7,7 +7,7 @@
     var relativeTime = require('dayjs/plugin/relativeTime')
     dayjs.extend(relativeTime)
 
-    let adjustPPMOn, adjustPHOn, feedScheduleOn = false;
+    let adjustPPMOn, adjustPHOn, adjustWaterOn, feedScheduleOn = false;
     let col = "var(--primary)";
     let hoursArray = []
     let nextFeeds = []
@@ -18,6 +18,7 @@
             feedScheduleOn = $ws.ws.state ? $ws.ws.state.FEED_STATE : false
             adjustPPMOn = $ws.ws.state ? $ws.ws.state.ADJUST_PPM : false
             adjustPHOn = $ws.ws.state ? $ws.ws.state.ADJUST_PH : false
+            adjustWaterOn = $ws.ws.state ? $ws.ws.state.ADJUST_WATER : false
 
             hoursArray = []
 
@@ -59,6 +60,9 @@
 
     function adjustPPM() {
         ws.cmdMiddleman(adjustPPMOn ? "adjustPPMOff" : "adjustPPMOn");
+    }
+    function adjustWater() {
+        ws.cmdMiddleman(adjustWaterOn ? "adjustWaterOff" : "adjustWaterOn");
     }
 </script>
 
@@ -149,6 +153,20 @@
                         off="Off"
                         bind:toggled={adjustPHOn}
                         on:click={adjustPH}
+                />
+            {/if}
+        </div>
+        <div class="col center gap-10">
+            {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_WATER")}
+                <Toggle
+                        label="Auto-adjust Water"
+                        switchColor="#eee"
+                        toggledColor="#24a148"
+                        untoggledColor="#fa4d56"
+                        on="On"
+                        off="Off"
+                        bind:toggled={adjustWaterOn}
+                        on:click={adjustWater}
                 />
             {/if}
         </div>
