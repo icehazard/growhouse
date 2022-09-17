@@ -125,23 +125,6 @@
     </div>
     <div class="row gap-20 shade1 border curve wrap pa-20 grow center">
         <div class="col center gap-10">
-            {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("FEED_STATE")}
-                <Toggle
-                        label="Feeding schedule"
-                        switchColor="#eee"
-                        toggledColor="#24a148"
-                        untoggledColor="#fa4d56"
-                        on="On"
-                        off="Off"
-                        bind:toggled={feedScheduleOn}
-                        on:click={adjustSchedule}
-                />
-                Feeding hours are: {hoursArray} <br/>
-                Feed duration is set to {$ws.ws.state.RUN_DURATION / 1000} secs <br/>
-                Next feed ~{nextFeed}
-            {/if}
-        </div>
-        <div class="col center gap-10">
             {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_PPM")}
                 <Toggle
                         label="Auto-adjust PPM"
@@ -167,6 +150,23 @@
                         bind:toggled={adjustPHOn}
                         on:click={adjustPH}
                 />
+            {/if}
+        </div>
+        <div class="col center gap-10">
+            {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("FEED_STATE")}
+                <Toggle
+                        label="Feeding schedule"
+                        switchColor="#eee"
+                        toggledColor="#24a148"
+                        untoggledColor="#fa4d56"
+                        on="On"
+                        off="Off"
+                        bind:toggled={feedScheduleOn}
+                        on:click={adjustSchedule}
+                />
+                Feeding hours are: {hoursArray} <br/>
+                Feed duration is set to {$ws.ws.state.RUN_DURATION / 1000} secs <br/>
+                Next feed ~{nextFeed}
             {/if}
         </div>
     </div>
