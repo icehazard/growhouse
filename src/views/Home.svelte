@@ -10,7 +10,7 @@
 </script>
 
 <main class="col container my-50 gap-40 grow">
-    <div>Firmware version {$ws.v}</div>
+    <div>Firmware version {$ws.ws.v}</div>
     <Sensors state={$ws.ws} avgDistance={$ws.avgDistance} />
     <div class="col gap-50" class:row={$mq.xl_}>
         <PPMcontroller />
