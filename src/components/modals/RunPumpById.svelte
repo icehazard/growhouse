@@ -16,12 +16,12 @@
         closeModal()
     }
 
-    export let A = true
-    export let B = true
-    export let SILICA = true
-    export let CALMAG = true
-    export let PHUP = true
-    export let PHDOWN = true
+    export let A = false
+    export let B = false
+    export let SILICA = false
+    export let CALMAG = false
+    export let PHUP = false
+    export let PHDOWN = false
     let duration = 0
 
     let MASK_SILICA = 1;
