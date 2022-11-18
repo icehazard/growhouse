@@ -16,6 +16,9 @@ const context = persist('ws', data)
 context.setPPMByPPM = function (ppm, TOTAL_MASK) {
     ws.send(JSON.stringify({ command: "setPPMByPPM", value: ppm, mask: TOTAL_MASK }));
 }
+context.runPumpById = function (id, duration) {
+    ws.send(JSON.stringify({ command: "runpumpbyid", id, duration}));
+}
 context.setPh = function (ph) {
     let fmt = ph * 10
     ws.send(JSON.stringify({ command: "setPH", value: fmt }));

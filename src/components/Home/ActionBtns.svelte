@@ -3,6 +3,9 @@
     import Icon from "@iconify/svelte";
     import Toggle from "svelte-toggle";
     import dayjs from "dayjs"
+    import { openModal } from "svelte-modals";
+
+    import RunPumpById from "comp/modals/RunPumpById.svelte";
 
     var relativeTime = require('dayjs/plugin/relativeTime')
     dayjs.extend(relativeTime)
@@ -136,6 +139,17 @@
         </button>
         <span class="font-14 opacity-75">REF BOTTLE</span>
     </div>
+
+    <div class="col center gap-10">
+        <button
+                class="h-100 shade3 w-100 center curve shadow fast shine"
+                on:click={() =>     openModal(RunPumpById)}
+        >
+            <Icon color={col} icon="fluent:food-20-regular" width="30"/>
+        </button>
+        <span class="font-14 opacity-75">RUN SPEC PUMP</span>
+    </div>
+
     <div class="row gap-20 shade1 border curve wrap pa-20 grow center">
         <div class="col center gap-10">
             {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_PPM")}
