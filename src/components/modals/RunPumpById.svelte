@@ -6,10 +6,9 @@
     import Checkbox from "comp/atoms/Checkbox.svelte"
 
     export let isOpen;
-    export let ppm = 0;
 
     function save() {
-        ws.setPPMByPPM(ppm, TOTAL_MASK);
+        ws.runPumpByMask(TOTAL_MASK, duration);
         closeModal()
     }
 
@@ -23,6 +22,7 @@
     export let CALMAG = true
     export let PHUP = true
     export let PHDOWN = true
+    let duration = 0
 
     let MASK_SILICA = 1;
     let MASK_A = 2;
@@ -140,6 +140,8 @@
                             mask="true"
                     />
                 </button>
+
+                <input type="value" name="duration" placeholder="duration" bind:value={duration}/>
             </div>
             <div class="actions row shade2 pa-25 gap-10">
                 <Button block text="RUN PUMP(S)" primary="true" on:click={save} />
