@@ -92,7 +92,7 @@
 
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="eos-icons:science-outlined" height="24" class="primary--text" />
-            {#if state.hasOwnProperty("ph")}
+            {#if state.hasOwnProperty("ph") && state.ph}
                 <span>{state.ph.toFixed(2)}</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
