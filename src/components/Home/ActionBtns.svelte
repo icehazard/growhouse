@@ -38,7 +38,7 @@
 
             if (!nextFeed || !nextFeed.length) {
              //let first = nextFeeds[0]
-                let next = dayjs().startOf('day').add(1, 'day') + start.add($ws.ws.state.START_HOUR, 'hour')
+                let next = dayjs().startOf('day').add(1, 'day').add($ws.ws.state.START_HOUR, 'hour')
                 nextFeed = next.fromNow()
             }
         }
