@@ -26,7 +26,7 @@
             hoursArray = []
 
             let start = dayjs().startOf('day')
-            for (let i = 0; i < 24; i += $ws.ws.state.FEED_EVERY_X_HOURS) {
+            for (let i = $ws.ws.state.START_HOUR; i < $ws.ws.state.END_HOUR; i += $ws.ws.state.FEED_EVERY_X_HOURS) {
                 hoursArray.push(i)
 
                 let next = start.add(i + 3, 'hour')
