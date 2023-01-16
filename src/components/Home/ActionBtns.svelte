@@ -34,7 +34,7 @@
                 //console.log(next.fromNow())
             }
 
-            nextFeed = nextFeeds.filter(i => i.indexOf("ago") === -1)[0]
+            nextFeed = nextFeeds.filter(i => i.indexOf("ago") === -1)[0] || nextFeeds[0]
         }
     }
 
