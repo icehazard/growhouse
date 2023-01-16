@@ -34,7 +34,13 @@
                 //console.log(next.fromNow())
             }
 
-            nextFeed = nextFeeds.filter(i => i.indexOf("ago") === -1)[0] || nextFeeds[0]
+            nextFeed = nextFeeds.filter(i => i.indexOf("ago") === -1)[0]
+
+            if (!nextFeed || !nextFeed.length) {
+             //let first = nextFeeds[0]
+                let next = dayjs().startOf('day').add(1, 'day') + start.add($ws.ws.state.START_HOUR, 'hour')
+                nextFeed = next.fromNow()
+            }
         }
     }
 
