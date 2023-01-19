@@ -148,7 +148,7 @@
 
                 <input type="value" name="duration" placeholder="duration" bind:value={duration}/>
             </div>
-            <div class="actions row shade2 pa-25 gap-10">
+            <div class="actions row wrap shade2 pa-25 gap-10">
                 <Button block text="10S" primary="true" on:click={run("10000")} />
                 <Button block text="15S" primary="true" on:click={run("15000")} />
                 <Button block text="30S" primary="true" on:click={run("30000")} />
