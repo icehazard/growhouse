@@ -66,7 +66,7 @@
 
         <div class="col align-center gap-10 grow space-between">
 
-        {#if state["RO_ON"]}
+        {#if state["TAPO_STATUS"]["RO"]}
             <lottie-player loop autoplay mode="normal" src={JSON.stringify(glass)} style="width: 50px" />
         {:else }
             <Icon icon="fa6-solid:glass-water-droplet" height="24" class="primary--text" />
