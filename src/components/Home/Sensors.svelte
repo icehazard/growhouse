@@ -42,8 +42,8 @@
         </div>
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="carbon:temperature-celsius" height="24" class="primary--text" />
-            {#if state.hasOwnProperty("waterTemp")}
-                <span>{state.waterTemp.toFixed(2)}</span>
+            {#if state.hasOwnProperty("waterTempC")}
+                <span>{state.waterTempC.toFixed(2)}</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}
