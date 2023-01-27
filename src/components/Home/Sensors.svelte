@@ -7,18 +7,6 @@
 
     export let state = {};
     export let tankPerc = 0;
-    <!--let refined = 0;-->
-    <!--$: {-->
-    <!--    avgDistance;-->
-    <!--    let n = avgDistance-->
-    <!--    n = _.sortBy(n)-->
-    <!--    if (n.length > 50) {-->
-    <!--        n.splice(0, 20)-->
-
-    <!--        n.splice(-20)-->
-    <!--    }-->
-    <!--    refined = parseInt((((66-_.mean(n)) / 66) * 100))-->
-    // }
 </script>
 <div class="col gap-20 text-center">
     <div class="row border pa-20 gap-50 curve w100 wrap shade1">
