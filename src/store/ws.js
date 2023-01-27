@@ -7,8 +7,7 @@ export let ws;
 
 const data = {
     ws: {},
-    log: [],
-    avgDistance: []
+    log: []
 }
 
 const context = persist('ws', data)
@@ -47,9 +46,6 @@ context.sendNotif = function (notification) {
 export default context;
 
 function start() {
-
-    context.commit('avgDistance', [])
-
     ws = new ReconnectingWebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
 
     ws.addEventListener("open", function (event) {
@@ -75,24 +71,15 @@ function start() {
 
             if (!json.log) {
                 context.commit('ws', json)
-                let avg = context.val('avgDistance');
                 let log = context.val('log');
-                if (!avg) context.commit('avgDistance', [])
                 if (!log) context.commit('log', [])
                 let dist = Number(json.distance)
-                if (json.distance && dist > 0 && dist < 150) context.commit('avgDistance', [...avg, dist])
                 if (json.currentPPM < 0) json.currentPPM = "N/A";
                 if (json.probePPM < 0) json.probePPM = "N/A";
                 if (json.state) {
                     context.commit("state", json.state)
                 }
 
-                avg = context.val('avgDistance');
-                if (avg.length > 60) {
-                    avg.shift()
-                    context.commit('avgDistance', avg)
-                }
-    
                 if (json.log)  log = [...log, json.log]
                 // if (log.length > 100)  log.shift()
                  if (json.log)  context.commit('log', {time: dayjs().format(), data: log})

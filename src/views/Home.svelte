@@ -11,7 +11,7 @@
 
 <main class="col container my-50 gap-40 grow">
     <div>Firmware version {$ws.ws.v}</div>
-    <Sensors state={$ws.ws} avgDistance={$ws.avgDistance} />
+    <Sensors state={$ws.ws} tankPerc={$ws.ws.tankPerc} />
     <div class="col gap-50" class:row={$mq.xl_}>
         <PPMcontroller />
         <ActionBtns />
