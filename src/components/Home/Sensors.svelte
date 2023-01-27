@@ -61,7 +61,7 @@
         {/if}
 
         {#if tankPerc}
-            <span>{tankPerc}%</span>
+            <span>{tankPerc.toFixed(1)}%</span>
         {:else}
             <Pulse color="var(--primary)" size="20" />
         {/if}
