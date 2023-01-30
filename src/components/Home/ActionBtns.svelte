@@ -101,7 +101,7 @@
                 class:borderPrimary={$ws.ws['TAPO_STATUS'] ? $ws.ws['TAPO_STATUS']['RO'] : false}>
             <Icon color={col} icon="mdi:water-plus-outline" width="30"/>
         </button>
-        <span class="font-14 opacity-75">Refill Tank</span>
+        <span class="font-14 opacity-75">Add water</span>
     </div>
     <div class="col center gap-10">
         <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommand("feedon")}>
@@ -134,7 +134,7 @@
         >
             <Icon color={col} icon="fluent:food-20-regular" width="30"/>
         </button>
-        <span class="font-14 opacity-75">REFILL</span>
+        <span class="font-14 opacity-75">Fix Tank PH/EC</span>
     </div>
     <div class="col center gap-10">
         <button
