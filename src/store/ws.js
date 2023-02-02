@@ -73,12 +73,16 @@ function start() {
         try {
             let json = JSON.parse(event.data);
 
-            if (json.data) {
-                for (let n of json.data)
-                    if (n.notif) {
-                        context.sendNotif(n.notif)()
-                    }
-            }
+            try {
+                if (json.data) {
+                    let data = JSON.parse(json.data)
+
+                    for (let n of data)
+                        if (n.notif) {
+                            context.sendNotif(n.notif)()
+                        }
+                }
+            } catch (e) {}
 
             if (!json.log) {
                 context.commit('ws', json)
