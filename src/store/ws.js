@@ -34,6 +34,15 @@ context.cmdMiddleman = function (cmd) {
     ws.send(JSON.stringify({ middleman: 1, command: cmd }));
     console.log("SENDING CMD", cmd)
 }
+context.updateConfig = function (type, data) {
+    ws.send(JSON.stringify({ middleman: 1, command: "updateConfig", type, data }));
+    console.log("SENDING CMD updateConfig")
+}
+context.patchConfig = function (type, data) {
+    ws.send(JSON.stringify({ middleman: 1, command: "patchConfig", type, data }));
+    console.log("SENDING CMD patchConfig")
+}
+
 context.clearLog = function () {
     context.commit('log', [])
 }
@@ -64,9 +73,11 @@ function start() {
         try {
             let json = JSON.parse(event.data);
 
-            if (json.notif) {
-                context.sendNotif(json.notif)()
-                return
+            if (json.data) {
+                for (let n of notif)
+                    if (n.notif) {
+                        context.sendNotif(n.notif)()
+                    }
             }
 
             if (!json.log) {
@@ -81,8 +92,9 @@ function start() {
                 }
 
                 if (json.log)  log = [...log, json.log]
-                // if (log.length > 100)  log.shift()
-                 if (json.log)  context.commit('log', {time: dayjs().format(), data: log})
+                if (log.length > 200)  log.shift()
+                 if (json.log)
+                     context.commit('log', {time: dayjs().format(), data: log})
             }
             else {
               context.commit('log', [...context.val('log'), {time: dayjs().format(), data: json.log}])

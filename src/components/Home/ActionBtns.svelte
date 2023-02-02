@@ -3,7 +3,7 @@
     import Icon from "@iconify/svelte";
     import Toggle from "svelte-toggle";
     import dayjs from "dayjs"
-    import { openModal } from "svelte-modals";
+    import {openModal} from "svelte-modals";
 
     import RunPumpById from "comp/modals/RunPumpById.svelte";
 
@@ -15,6 +15,7 @@
     let hoursArray = []
     let nextFeeds = []
     let nextFeed = "";
+    let _feederState = [];
     $: {
         if ($ws.ws.hasOwnProperty("state")) {
 
@@ -37,11 +38,19 @@
             nextFeed = nextFeeds.filter(i => i.indexOf("ago") === -1)[0]
 
             if (!nextFeed || !nextFeed.length) {
-             //let first = nextFeeds[0]
+                //let first = nextFeeds[0]
                 let next = dayjs().startOf('day').add(1, 'day').add($ws.ws.state.START_HOUR, 'hour')
                 nextFeed = next.fromNow()
             }
         }
+    }
+
+    $:  if ($ws.ws.state) {
+        let arr = [];
+        for (let i of Object.keys($ws.ws.state))
+            arr.push(i)
+        _feederState = arr;
+        //console.log(_feederState)
     }
 
     function runCommand(cmd) {
@@ -70,8 +79,70 @@
     function adjustPPM() {
         ws.cmdMiddleman(adjustPPMOn ? "adjustPPMOff" : "adjustPPMOn");
     }
+
     function adjustWater() {
         ws.cmdMiddleman(adjustWaterOn ? "adjustWaterOff" : "adjustWaterOn");
+    }
+
+    function isNumeric(value) {
+        return /^-?\d+$/.test(value);
+    }
+
+    function isInteger(x) {
+        return typeof x === "number" && isFinite(x) && Math.floor(x) === x;
+    }
+
+    function isFloat(x) {
+        return !!(x % 1);
+    }
+
+    function saveFeederState() {
+        let payload = {skipByHour: []}
+        for (let f of _feederState) {
+            if (f == "skipByHour")
+                continue;
+
+            let e = document.getElementById(f);
+            payload[f] = isInteger(e.value) ? parseInt(e.value) : (isFloat(e.value) ? parseFloat(e.value) : e.value);
+            console.log(`${f}:${e.value}`)
+        }
+
+        ws.updateConfig("feeder", payload);
+    }
+
+    function saveConfig(field) {
+        let payload = {skipByHour: []}
+        for (let f of _feederState) {
+            if (typeof _feederState[f] === 'object' || Array.isArray(_feederState[f]))
+                continue;
+
+            let e = document.getElementById(f);
+            payload[f] = isInteger(e.value) ? parseInt(e.value) : (isFloat(e.value) ? parseFloat(e.value) : e.value);
+            console.log(`${f}:${e.value}`)
+        }
+        ws.updateConfig("config", payload);
+    }
+
+    function patchState(event) {
+        let field = event.currentTarget.getAttribute('id')
+        console.log("Patching feederstate field", )
+        let e = document.getElementById(field);
+        let res = isNumeric(e.value) ? parseInt(e.value) : (isFloat(e.value) ? parseFloat(e.value) : e.value);
+
+        let payload = {}
+        payload[field] = res;
+        ws.patchConfig("feeder", payload);
+    }
+
+    function patchConfig(event) {
+        let field = event.currentTarget.getAttribute('id')
+        console.log("Patching config", field)
+        let e = document.getElementById(field);
+        let res = isNumeric(e.value) ? parseInt(e.value) : (isFloat(e.value) ? parseFloat(e.value) : e.value);
+
+        let payload = {}
+        payload[field] = res;
+        ws.patchConfig("config", payload);
     }
 </script>
 
@@ -214,6 +285,24 @@
                 Feeding hours are: {hoursArray} <br/>
                 Feed duration is set to {$ws.ws.state.RUN_DURATION / 1000} secs <br/>
                 Next feed ~{nextFeed}
+            {/if}
+        </div>
+        <div class="col align-start center gap-10 font-10">
+            {#if $ws.ws.state}
+                {#each Object.entries($ws.ws.state) as [name, val]}
+                    <div class="row"> {name}:<input type="text" id={name} value={val}
+                                                    on:change={patchState}/></div>
+                {/each}
+            {/if}
+        </div>
+        <div class="col align-start center gap-10 font-10">
+            {#if $ws.ws.config}
+                {#each Object.entries($ws.ws.config) as [fname, val]}
+                    {#if typeof val !== 'object'}
+                        <div class="row"> {fname}:<input type="text" id={fname} value={val}
+                                                         on:change={() => patchConfig(fname)}/></div>
+                    {/if}
+                {/each}
             {/if}
         </div>
     </div>

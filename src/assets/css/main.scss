@@ -36,15 +36,18 @@ a {
     // -webkit-appearance: none;
   //  appearance: none;
     border-radius: 0;
-    background: none;
+    //background: none;
     color: inherit;
     border: none;
     text-align: inherit;
     text-decoration: none;
     font: inherit;
-    cursor: pointer;
     resize: vertical;
-    
+    background-color: #2c2c2e;
+    margin-left: 5%;
+    padding: 2px;
+    border-radius: 2px;
+    font-size: 0.8rem;
 }
 
 .container {
