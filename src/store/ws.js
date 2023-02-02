@@ -73,38 +73,37 @@ function start() {
         try {
             let json = JSON.parse(event.data);
 
-            try {
-                if (json.data) {
-                    let data = JSON.parse(json.data)
+            let log = context.val('log');
+            if (!log) context.commit('log', [])
 
-                    for (let n of data)
-                        if (n.notif) {
-                            context.sendNotif(n.notif)()
-                        }
-                }
-            } catch (e) {}
+            if (json.notif) {
+                context.sendNotif(json.notif)()
+                // if (log.length)
+                //     log = [...log, json.notif.message]
+                // else
+                //     log = [json.notif.message]
+
+                context.commit('log', [...context.val('log'), {time: dayjs().format(), data: json.notif.message}])
+            }
+
+            if (log.length > 200)  log.shift()
 
             if (!json.log) {
                 context.commit('ws', json)
-                let log = context.val('log');
-                if (!log) context.commit('log', [])
+
                 let dist = Number(json.distance)
                 if (json.currentPPM < 0) json.currentPPM = "N/A";
                 if (json.probePPM < 0) json.probePPM = "N/A";
                 if (json.state) {
                     context.commit("state", json.state)
                 }
-
-                if (json.log)  log = [...log, json.log]
-                if (log.length > 200)  log.shift()
-                 if (json.log)
-                     context.commit('log', {time: dayjs().format(), data: log})
             }
             else {
+              //log = [...log, json.log]
               context.commit('log', [...context.val('log'), {time: dayjs().format(), data: json.log}])
             }
         } catch (e) {
-            console.log("Couldnt parse WS message");
+            console.log("Couldnt parse WS message", e, event.data);
         }
     });
 }

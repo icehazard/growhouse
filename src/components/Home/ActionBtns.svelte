@@ -300,7 +300,7 @@
                 {#each Object.entries($ws.ws.config) as [fname, val]}
                     {#if typeof val !== 'object'}
                         <div class="row"> {fname}:<input type="text" id={fname} value={val}
-                                                         on:change={() => patchConfig(fname)}/></div>
+                                                         on:change={patchConfig}/></div>
                     {/if}
                 {/each}
             {/if}
