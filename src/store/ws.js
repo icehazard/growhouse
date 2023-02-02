@@ -74,7 +74,7 @@ function start() {
             let json = JSON.parse(event.data);
 
             if (json.data) {
-                for (let n of notif)
+                for (let n of json.data)
                     if (n.notif) {
                         context.sendNotif(n.notif)()
                     }
