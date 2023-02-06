@@ -89,10 +89,11 @@
             transition:scale={{ duration: 100, opacity: 0, start: 1.1 }}
     >
         <div class="shade3 curve  gap-20 col w-400 overflow-hidden autopointer">
-            <div class="body pa-25 pt-30 gap-20 col">
-                <span class="font-24">Run Pump By ID</span>
-            </div>
-            <div class="body pa-25 pt-30 gap-20 col">
+
+            <div class="body pa-25 pt-30 gap-20 col h-600 overflow-auto">
+                <div class="body pa-25 pt-30 col">
+                    <span class="font-20">Chip Config</span>
+                </div>
                 <div class="col align-start center gap-10 font-10">
                     {#if $ws.ws.state}
                         {#each Object.entries($ws.ws.state) as [name, val]}
@@ -100,6 +101,9 @@
                                                             on:change={patchState}/></div>
                         {/each}
                     {/if}
+                </div>
+                <div class="body pa-25 pt-30 col">
+                    <span class="font-20">Feeder Config</span>
                 </div>
                 <div class="col align-start center gap-10 font-10">
                     {#if $ws.ws.config}
@@ -111,9 +115,9 @@
                         {/each}
                     {/if}
                 </div>
-                <div class="actions row wrap shade2 pa-25 gap-10">
-                    <span> Config is auto saved </span>
-                </div>
+            </div>
+            <div class="actions row wrap shade2 pa-25 gap-10">
+                <Button block text="CLOSE" on:click={close} />
             </div>
         </div>
     </div>
