@@ -17,7 +17,8 @@
         <WateringController />
         <EcController />
     </div> -->
-    <Sensors state={$ws.ws} avgDistance={$ws.avgDistance} />
+    <div>Firmware version {$ws.ws.v}</div>
+    <Sensors state={$ws.ws} tankPerc={$ws.ws.tankPerc} />
     <div class="col gap-50" class:row={$mq.xl_}>
         <PPMcontroller />
         <ActionBtns />
