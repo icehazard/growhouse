@@ -97,7 +97,7 @@
                 value="1MIN FEED"
                 on:click={() => runCommandMiddleman("minfeed")}
         >
-            <Icon color={col} icon="akar-icons:bell" width="25"/>
+            <Icon color={col} icon="mdi:food-apple-outline" width="25"/>
         </button>
         <span class="font-14 opacity-75">1MIN FEED</span>
     </div>
@@ -128,7 +128,7 @@
                 class="h-100 shade3 w-100 center curve shadow fast shine"
                 on:click={() => runCommand("romoff")}
         >
-            <Icon color={col} icon="healthicons:running-water-outline" width="30"/>
+            <Icon color={col} icon="mdi:pump-off" width="30"/>
         </button>
         <span class="font-14 opacity-75">ROMOFF</span>
     </div>
@@ -137,7 +137,7 @@
                 class="h-100 shade3 w-100 center curve shadow fast shine"
                 on:click={() => runCommandMiddleman("refill")}
         >
-            <Icon color={col} icon="fluent:food-20-regular" width="30"/>
+            <Icon color={col} icon="game-icons:auto-repair" width="30"/>
         </button>
         <span class="font-14 opacity-75">Fix Tank PH/EC</span>
     </div>
@@ -146,7 +146,7 @@
                 class="h-100 shade3 w-100 center curve shadow fast shine"
                 on:click={() => runCommandMiddleman("bottle")}
         >
-            <Icon color={col} icon="fluent:food-20-regular" width="30"/>
+            <Icon color={col} icon="fluent:drink-bottle-32-regular" width="30"/>
         </button>
         <span class="font-14 opacity-75">REF BOTTLE</span>
     </div>
@@ -156,7 +156,7 @@
                 class="h-100 shade3 w-100 center curve shadow fast shine"
                 on:click={() =>     openModal(RunPumpById)}
         >
-            <Icon color={col} icon="fluent:food-20-regular" width="30"/>
+            <Icon color={col} icon="mdi:water-pump" width="30"/>
         </button>
         <span class="font-14 opacity-75">RUN SPEC PUMP</span>
     </div>
@@ -166,7 +166,7 @@
                    class="h-100 shade3 w-100 center curve shadow fast shine"
                    on:click={() =>     openModal(Config)}
            >
-               <Icon color={col} icon="fluent:food-20-regular" width="30"/>
+               <Icon color={col} icon="ion:cog-sharp" width="30"/>
            </button>
            <span class="font-14 opacity-75">Config</span>
        </div>
