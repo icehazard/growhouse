@@ -147,6 +147,7 @@
 </script>
 
 <div class="row gap-20 shade1 border curve wrap pa-20 grow center">
+   <div class="row align-center wrap gap-10">
     <div class="col center gap-10">
         <button
                 class="h-100 shade3 w-100 center curve shadow fast shine"
@@ -226,8 +227,9 @@
         </button>
         <span class="font-14 opacity-75">RUN SPEC PUMP</span>
     </div>
+   </div>
 
-    <div class="row gap-20 shade1 border curve wrap pa-20 grow center">
+    <div class="row gap-20 shade1 border curve wrap pa-20 grow center w100">
         <div class="col center gap-10">
             {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_PPM")}
                 <Toggle
@@ -319,6 +321,14 @@
         box-shadow: none;
         filter: brightness(0.98);
 
+    }
+
+    input{
+        background-color: #2c2c2e;
+    margin-left: 5%;
+    padding: 2px;
+    border-radius: 2px;
+    font-size: 0.8rem;
     }
 
 

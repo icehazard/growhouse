@@ -62,15 +62,15 @@
     });
 </script>
 
-<div class="round border h-200 w-200 relative overflow-hidden" bind:this={dial}>
+<div class="round border h-170 w-170 relative overflow-hidden" bind:this={dial}>
     <button
-        class="absolute border round p-center shade2 h-150 w-150 z-3 shadow fast"
+        class="absolute border round p-center shade2 h-120 w-120 z-3 shadow fast"
         on:click={tap}
         class:borderPrimary={active == 1} 
     />
     <div class="absolute p-center z-3 weight-300 text-center nopointer">
         <div class="col gap-10">
-            <span class="font-28 text-center" in:fly={{ y: -20 }}
+            <span class="font-24 text-center" in:fly={{ y: -20 }}
                 >{Math.round(value) / decimal}</span
             >
             <span class="font-14 opacity-75">{text}</span>
