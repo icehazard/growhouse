@@ -12,6 +12,11 @@
         closeModal()
     }
 
+    function run(ms) {
+        ws.runPumpByMask(TOTAL_MASK, ms);
+        closeModal()
+    }
+
     function close() {
         closeModal()
     }
@@ -22,7 +27,7 @@
     export let CALMAG = false
     export let PHUP = false
     export let PHDOWN = false
-    let duration = 0
+    let duration = 5000
 
     let MASK_SILICA = 1;
     let MASK_A = 2;
@@ -143,7 +148,10 @@
 
                 <input type="value" name="duration" placeholder="duration" bind:value={duration}/>
             </div>
-            <div class="actions row shade2 pa-25 gap-10">
+            <div class="actions row wrap shade2 pa-25 gap-10">
+                <Button block text="10S" primary="true" on:click={ () => run("10000")} />
+                <Button block text="15S" primary="true" on:click={ () => run("15000")} />
+                <Button block text="30S" primary="true" on:click={ () => run("30000")} />
                 <Button block text="RUN PUMP(S)" primary="true" on:click={save} />
                 <Button block text="CLOSE" on:click={close} />
             </div>

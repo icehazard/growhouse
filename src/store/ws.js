@@ -7,8 +7,7 @@ export let ws;
 
 const data = {
     ws: {},
-    log: [],
-    avgDistance: []
+    log: []
 }
 
 const context = persist('ws', data)
@@ -35,6 +34,15 @@ context.cmdMiddleman = function (cmd) {
     ws.send(JSON.stringify({ middleman: 1, command: cmd }));
     console.log("SENDING CMD", cmd)
 }
+context.updateConfig = function (type, data) {
+    ws.send(JSON.stringify({ middleman: 1, command: "updateConfig", type, data }));
+    console.log("SENDING CMD updateConfig")
+}
+context.patchConfig = function (type, data) {
+    ws.send(JSON.stringify({ middleman: 1, command: "patchConfig", type, data }));
+    console.log("SENDING CMD patchConfig")
+}
+
 context.clearLog = function () {
     context.commit('log', [])
 }
@@ -47,9 +55,6 @@ context.sendNotif = function (notification) {
 export default context;
 
 function start() {
-
-    context.commit('avgDistance', [])
-
     ws = new ReconnectingWebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
 
     ws.addEventListener("open", function (event) {
@@ -68,40 +73,37 @@ function start() {
         try {
             let json = JSON.parse(event.data);
 
+            let log = context.val('log');
+            if (!log) context.commit('log', [])
+
             if (json.notif) {
                 context.sendNotif(json.notif)()
-                return
+                // if (log.length)
+                //     log = [...log, json.notif.message]
+                // else
+                //     log = [json.notif.message]
+
+                context.commit('log', [...context.val('log'), {time: dayjs().format(), data: json.notif.message}])
             }
+
+            if (log.length > 200)  log.shift()
 
             if (!json.log) {
                 context.commit('ws', json)
-                let avg = context.val('avgDistance');
-                let log = context.val('log');
-                if (!avg) context.commit('avgDistance', [])
-                if (!log) context.commit('log', [])
+
                 let dist = Number(json.distance)
-                if (json.distance && dist > 0 && dist < 150) context.commit('avgDistance', [...avg, dist])
                 if (json.currentPPM < 0) json.currentPPM = "N/A";
                 if (json.probePPM < 0) json.probePPM = "N/A";
                 if (json.state) {
                     context.commit("state", json.state)
                 }
-
-                avg = context.val('avgDistance');
-                if (avg.length > 60) {
-                    avg.shift()
-                    context.commit('avgDistance', avg)
-                }
-    
-                if (json.log)  log = [...log, json.log]
-                // if (log.length > 100)  log.shift()
-                 if (json.log)  context.commit('log', {time: dayjs().format(), data: log})
             }
             else {
+              //log = [...log, json.log]
               context.commit('log', [...context.val('log'), {time: dayjs().format(), data: json.log}])
             }
         } catch (e) {
-            console.log("Couldnt parse WS message");
+            console.log("Couldnt parse WS message", e, event.data);
         }
     });
 }

@@ -6,19 +6,7 @@
     import glass from '@/assets/lottie/glass.json'
 
     export let state = {};
-    export let avgDistance = [];
-    let refined = 0;
-    $: {
-        avgDistance;
-        let n = avgDistance
-        n = _.sortBy(n)
-        if (n.length > 50) {
-            n.splice(0, 20)
-
-            n.splice(-20)
-        }
-        refined = parseInt((((66-_.mean(n)) / 66) * 100))
-    }
+    export let tankPerc = 0;
 </script>
 <div class="col gap-20 text-center">
     <div class="row border pa-20 gap-50 curve w100 wrap shade1">
@@ -42,8 +30,8 @@
         </div>
         <div class="col align-center gap-10 grow space-between">
             <Icon icon="carbon:temperature-celsius" height="24" class="primary--text" />
-            {#if state.hasOwnProperty("waterTemp")}
-                <span>{state.waterTemp.toFixed(2)}</span>
+            {#if state.hasOwnProperty("waterTempC")}
+                <span>{state.waterTempC.toFixed(2)}</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}
@@ -66,14 +54,14 @@
 
         <div class="col align-center gap-10 grow space-between">
 
-        {#if state["RO_ON"]}
+        {#if state["TAPO_STATUS"] && state["TAPO_STATUS"]["RO"]}
             <lottie-player loop autoplay mode="normal" src={JSON.stringify(glass)} style="width: 50px" />
         {:else }
             <Icon icon="fa6-solid:glass-water-droplet" height="24" class="primary--text" />
         {/if}
 
-        {#if refined}
-            <span>{refined}%</span>
+        {#if tankPerc}
+            <span>{tankPerc.toFixed(1)}%</span>
         {:else}
             <Pulse color="var(--primary)" size="20" />
         {/if}
