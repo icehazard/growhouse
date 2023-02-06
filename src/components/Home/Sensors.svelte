@@ -34,7 +34,6 @@
                 res.flower.push(i)
             //console.log({vpsat, vpair, vpd})
         }
-        console.log(res)
 
         res.prop = [res.prop[0], res.prop[res.prop.length-1]]
         res.eflv = [res.eflv[0], res.eflv[res.eflv.length-1]]
