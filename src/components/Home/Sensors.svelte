@@ -4,7 +4,6 @@
     import "@lottiefiles/lottie-player";
     import _ from "lodash"
     import glass from '@/assets/lottie/glass.json'
-    import calcVpd from 'calc-vpd'
 
     export let state = {};
     export let tankPerc = 0;
