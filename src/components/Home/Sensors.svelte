@@ -4,9 +4,52 @@
     import "@lottiefiles/lottie-player";
     import _ from "lodash"
     import glass from '@/assets/lottie/glass.json'
+    import calcVpd from 'calc-vpd'
 
     export let state = {};
     export let tankPerc = 0;
+
+    function vpd(tmp, hmd, airtemp) {
+        const vpsat = (610.78 * Math.pow(10, (7.5 * tmp) / (tmp + 237.3)))/1000
+        const vpair = ((610.78 * Math.pow(10, (7.5 * airtemp) / (airtemp + 237.3)))/1000) * (hmd/100)
+        const vpd = vpsat - vpair
+        console.log(vpd)
+        // const swv = (217 * vp) / (tmp + 273.15)
+        // amount of saturated water vapor
+        //const vpd = ((100 - hmd) * swv) / 100
+    }
+    const TEMP_DIFF = 0.5;
+    function vpdt(tmp) {
+        let res = { prop: [], eflv: [], flower: []}
+        for (let i = 0; i <= 100; i += 1) {
+            const vpsat = (610.78 * Math.pow(10, (7.5 * (tmp+TEMP_DIFF)) / ((tmp+TEMP_DIFF) + 237.3)))/1000
+            const vpair = ((610.78 * Math.pow(10, (7.5 * tmp) / (tmp + 237.3)))/1000) * (i/100)
+            const vpd = vpsat - vpair
+
+            if (vpd >= 0.4 && vpd < 0.8)
+                res.prop.push(i)
+            else if (vpd >= 0.8 && vpd < 1.2)
+                res.eflv.push(i)
+            else if (vpd >= 1.2 && vpd < 1.6)
+                res.flower.push(i)
+            //console.log({vpsat, vpair, vpd})
+        }
+        console.log(res)
+
+        res.prop = [res.prop[0], res.prop[res.prop.length-1]]
+        res.eflv = [res.eflv[0], res.eflv[res.eflv.length-1]]
+        res.flower = [res.flower[0], res.flower[res.flower.length-1]]
+
+        return res
+        // const swv = (217 * vp) / (tmp + 273.15)
+        // amount of saturated water vapor
+        //const vpd = ((100 - hmd) * swv) / 100
+    }
+
+    let info;
+    //Veg/Early FL: {vpdt(state.tempC).eflv[0]} - {vpdt(state.tempC).eflv[1]}
+    $: state.tempC, info = vpdt(state.tempC);
+
 </script>
 <div class="col gap-20 text-center">
     <div class="row border pa-20 gap-50 curve w100 wrap shade1">
@@ -14,6 +57,8 @@
             <Icon icon="carbon:humidity" height="24" class="primary--text" />
             {#if state.hasOwnProperty("humi") && Number.isFinite(state.humi) && state.humi}
                 <span>{state.humi.toFixed(2)}</span>
+                <span>Veg/EarlyFL: {info.eflv[0]}%-{info.eflv[1]}%</span>
+                <span>FL: {info.flower[0]}%-{info.flower[1]}%</span>
             {:else}
                 <Pulse color="var(--primary)" size="20" />
             {/if}

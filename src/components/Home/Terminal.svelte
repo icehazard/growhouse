@@ -38,7 +38,6 @@
             <Icon icon="ant-design:close-outlined"/>
         </button>
     </div>
-    {#if $ws.log && $ws.log.length}
         {#each $ws.log as item}
             <div class="row gap-10 align-end">
             <span class="font-14 opacity-75">
@@ -47,7 +46,6 @@
                 <span>{item.data}</span>
             </div>
         {/each}
-    {/if}
 </div>
 
 <style>
