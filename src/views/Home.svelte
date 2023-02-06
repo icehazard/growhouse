@@ -17,16 +17,16 @@
         <WateringController />
         <EcController />
     </div> -->
-    <div>Firmware version {$ws.ws.v}</div>
+    <div class="absolute italic p-top pa-10 font-12">Firmware version {$ws.ws.v}</div>
     <Sensors state={$ws.ws} tankPerc={$ws.ws.tankPerc} />
     <div class="col gap-50" class:row={$mq.xl_}>
-        <PPMcontroller />
+        <Terminal />
         <ActionBtns />
     </div>
  
     <Notifications />
     <div class="col gap-50" class:row={$mq.xl_}>
+        <PPMcontroller />
         <Graph />
-        <Terminal />
     </div>
 </main>
