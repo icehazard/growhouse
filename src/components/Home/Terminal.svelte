@@ -29,7 +29,7 @@
     });
 </script>
 
-<div class="overlay col pa-20 gap-10 curve border grow relative" bind:this={el}>
+<div class="shade1 overlay col pa-20 gap-10 curve border grow relative" bind:this={el}>
     <div class="sticky p-left p-top row justify-end gap-10">
         <button class="curve shade3 pa-7 shine center" on:click={goBot}>
             <Icon icon="bi:chevron-double-down"/>
@@ -38,7 +38,6 @@
             <Icon icon="ant-design:close-outlined"/>
         </button>
     </div>
-    {#if $ws.log && $ws.log.length}
         {#each $ws.log as item}
             <div class="row gap-10 align-end">
             <span class="font-14 opacity-75">
@@ -47,6 +46,5 @@
                 <span>{item.data}</span>
             </div>
         {/each}
-    {/if}
 </div>
 

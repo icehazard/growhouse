@@ -99,15 +99,7 @@
         border-bottom: 1px solid var(--shade3);
     }
 
-    .loader {
-        width: 50px;
-        height: 100px;
-        display: inline-block;
-        position: relative;
-        border: 2px solid #37c19b;
-        animation: fill 2s linear infinite alternate;
-        color: #37c19b;
-    }
+ 
 
     @keyframes fill {
         0% {

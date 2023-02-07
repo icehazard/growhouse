@@ -6,6 +6,7 @@
     import {openModal} from "svelte-modals";
 
     import RunPumpById from "comp/modals/RunPumpById.svelte";
+    import Config from "comp/modals/Config";
 
     var relativeTime = require('dayjs/plugin/relativeTime')
     dayjs.extend(relativeTime)
@@ -15,7 +16,6 @@
     let hoursArray = []
     let nextFeeds = []
     let nextFeed = "";
-    let _feederState = [];
     $: {
         if ($ws.ws.hasOwnProperty("state")) {
 
@@ -45,13 +45,6 @@
         }
     }
 
-    $:  if ($ws.ws.state) {
-        let arr = [];
-        for (let i of Object.keys($ws.ws.state))
-            arr.push(i)
-        _feederState = arr;
-        //console.log(_feederState)
-    }
 
     function runCommand(cmd) {
         ws.cmd(cmd);
@@ -84,66 +77,6 @@
         ws.cmdMiddleman(adjustWaterOn ? "adjustWaterOff" : "adjustWaterOn");
     }
 
-    function isNumeric(value) {
-        return /^-?\d+$/.test(value);
-    }
-
-    function isInteger(x) {
-        return typeof x === "number" && isFinite(x) && Math.floor(x) === x;
-    }
-
-    function isFloat(x) {
-        return !!(x % 1);
-    }
-
-    function saveFeederState() {
-        let payload = {skipByHour: []}
-        for (let f of _feederState) {
-            if (f == "skipByHour")
-                continue;
-
-            let e = document.getElementById(f);
-            payload[f] = isInteger(e.value) ? parseInt(e.value) : (isFloat(e.value) ? parseFloat(e.value) : e.value);
-            console.log(`${f}:${e.value}`)
-        }
-
-        ws.updateConfig("feeder", payload);
-    }
-
-    function saveConfig(field) {
-        let payload = {skipByHour: []}
-        for (let f of _feederState) {
-            if (typeof _feederState[f] === 'object' || Array.isArray(_feederState[f]))
-                continue;
-
-            let e = document.getElementById(f);
-            payload[f] = isInteger(e.value) ? parseInt(e.value) : (isFloat(e.value) ? parseFloat(e.value) : e.value);
-            console.log(`${f}:${e.value}`)
-        }
-        ws.updateConfig("config", payload);
-    }
-
-    function patchState(event) {
-        let field = event.currentTarget.getAttribute('id')
-        console.log("Patching feederstate field", )
-        let e = document.getElementById(field);
-        let res = isNumeric(e.value) ? parseInt(e.value) : (isFloat(e.value) ? parseFloat(e.value) : e.value);
-
-        let payload = {}
-        payload[field] = res;
-        ws.patchConfig("feeder", payload);
-    }
-
-    function patchConfig(event) {
-        let field = event.currentTarget.getAttribute('id')
-        console.log("Patching config", field)
-        let e = document.getElementById(field);
-        let res = isNumeric(e.value) ? parseInt(e.value) : (isFloat(e.value) ? parseFloat(e.value) : e.value);
-
-        let payload = {}
-        payload[field] = res;
-        ws.patchConfig("config", payload);
-    }
 </script>
 
 <div class="row gap-20 shade1 border curve wrap pa-20 grow center">
@@ -164,7 +97,7 @@
                 value="1MIN FEED"
                 on:click={() => runCommandMiddleman("minfeed")}
         >
-            <Icon color={col} icon="akar-icons:bell" width="25"/>
+            <Icon color={col} icon="mdi:food-apple-outline" width="25"/>
         </button>
         <span class="font-14 opacity-75">1MIN FEED</span>
     </div>
@@ -195,7 +128,7 @@
                 class="h-100 shade3 w-100 center curve shadow fast shine"
                 on:click={() => runCommand("romoff")}
         >
-            <Icon color={col} icon="healthicons:running-water-outline" width="30"/>
+            <Icon color={col} icon="mdi:pump-off" width="30"/>
         </button>
         <span class="font-14 opacity-75">ROMOFF</span>
     </div>
@@ -204,7 +137,7 @@
                 class="h-100 shade3 w-100 center curve shadow fast shine"
                 on:click={() => runCommandMiddleman("refill")}
         >
-            <Icon color={col} icon="fluent:food-20-regular" width="30"/>
+            <Icon color={col} icon="game-icons:auto-repair" width="30"/>
         </button>
         <span class="font-14 opacity-75">Fix Tank PH/EC</span>
     </div>
@@ -213,7 +146,7 @@
                 class="h-100 shade3 w-100 center curve shadow fast shine"
                 on:click={() => runCommandMiddleman("bottle")}
         >
-            <Icon color={col} icon="fluent:food-20-regular" width="30"/>
+            <Icon color={col} icon="fluent:drink-bottle-32-regular" width="30"/>
         </button>
         <span class="font-14 opacity-75">REF BOTTLE</span>
     </div>
@@ -223,10 +156,21 @@
                 class="h-100 shade3 w-100 center curve shadow fast shine"
                 on:click={() =>     openModal(RunPumpById)}
         >
-            <Icon color={col} icon="fluent:food-20-regular" width="30"/>
+            <Icon color={col} icon="mdi:water-pump" width="30"/>
         </button>
         <span class="font-14 opacity-75">RUN SPEC PUMP</span>
     </div>
+
+       <div class="col center gap-10">
+           <button
+                   class="h-100 shade3 w-100 center curve shadow fast shine"
+                   on:click={() =>     openModal(Config)}
+           >
+               <Icon color={col} icon="ion:cog-sharp" width="30"/>
+           </button>
+           <span class="font-14 opacity-75">Config</span>
+       </div>
+
    </div>
 
     <div class="row gap-20 shade1 border curve wrap pa-20 grow center w100">
@@ -289,24 +233,6 @@
                 Next feed ~{nextFeed}
             {/if}
         </div>
-        <div class="col align-start center gap-10 font-10">
-            {#if $ws.ws.state}
-                {#each Object.entries($ws.ws.state) as [name, val]}
-                    <div class="row"> {name}:<input type="text" id={name} value={val}
-                                                    on:change={patchState}/></div>
-                {/each}
-            {/if}
-        </div>
-        <div class="col align-start center gap-10 font-10">
-            {#if $ws.ws.config}
-                {#each Object.entries($ws.ws.config) as [fname, val]}
-                    {#if typeof val !== 'object'}
-                        <div class="row"> {fname}:<input type="text" id={fname} value={val}
-                                                         on:change={patchConfig}/></div>
-                    {/if}
-                {/each}
-            {/if}
-        </div>
     </div>
 </div>
 
@@ -323,13 +249,6 @@
 
     }
 
-    input{
-        background-color: #2c2c2e;
-    margin-left: 5%;
-    padding: 2px;
-    border-radius: 2px;
-    font-size: 0.8rem;
-    }
 
 
 </style>
