@@ -24,7 +24,7 @@
     </div>
  
     <Notifications />
-    <div class="col gap-50" class:row={$mq.xl_}>
+    <div class="col gap-50 h-500" class:row={$mq.xl_}>
         <Graph />
         <Terminal />
     </div>
