@@ -122,6 +122,10 @@
   gap: 5px;
 }
 
+.gap-7 {
+  gap: 5px;
+}
+
 .gap-10 {
   gap: 10px;
 }
@@ -153,6 +157,7 @@
 .gap-100 {
   gap: 100px;
 }
+
 
 //SIZING
 
@@ -415,6 +420,10 @@
   opacity: 1;
 }
 
+.opacity-90 {
+  opacity: 0.9;
+}
+
 .opacity-80 {
   opacity: 0.8;
 }
@@ -472,7 +481,7 @@
   min-width: max-content;
 }
 
-.ratio {
+.ratio-1-1 {
   aspect-ratio: 1;
 }
 

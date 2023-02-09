@@ -24,12 +24,11 @@
     });
 
     onMount(() => {
-        //ws.clearLog();
         goBot();
     });
 </script>
 
-<div class="shade1 overlay col pa-20 gap-10 curve border grow relative" bind:this={el}>
+<div class="shade2 overlay col pa-20 gap-7 curve border grow relative" bind:this={el}>
     <div class="sticky p-left p-top row justify-end gap-10">
         <button class="curve shade3 pa-7 shine center" on:click={goBot}>
             <Icon icon="bi:chevron-double-down"/>
@@ -40,10 +39,10 @@
     </div>
         {#each $ws.log as item}
             <div class="row gap-10 align-end">
-            <span class="font-14 opacity-75">
-                {dayjs(item.time).format("HH:mm")}
+            <span class="font-10 opacity-75">
+                {dayjs(item.time).format("D/M HH:mm")}
             </span>
-                <span>{item.data}</span>
+                <span class="font-12 weight-300 opacity-90">{item.data}</span>
             </div>
         {/each}
 </div>

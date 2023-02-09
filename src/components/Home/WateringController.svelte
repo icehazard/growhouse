@@ -108,14 +108,4 @@
         animation: fill 2s linear infinite alternate;
         color: #37c19b;
     }
-
-    @keyframes fill {
-        0% {
-            box-shadow: 0 0 inset;
-        }
-
-        100% {
-            box-shadow: 0 -100px inset;
-        }
-    }
 </style>
