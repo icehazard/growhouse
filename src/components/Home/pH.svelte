@@ -6,7 +6,7 @@
 </script>
 
 <div class="grow align-center col gap-50 h-500">
-    <div class="col gap-50 align-center h-250">
+    <div class="col gap-50 align-center h-250 space-between">
         <span class="weight-300 font-26  opacity-75">pH</span>
         <Gauge value={$ws.ws.ph} max='12'/>
         <div class="weight-300 font-12 opacity-75">pH scale</div>

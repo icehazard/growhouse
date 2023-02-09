@@ -18,11 +18,11 @@
 </script>
 
 <div class="grow align-center col gap-50 h-500">
-    <div class="col gap-40 align-center h-250">
-        <span class="weight-300 font-26  opacity-75">Water</span>
+    <div class="col gap-40 align-center h-250 space-between">
+        <span class="weight-300 font-26 opacity-75">Water</span>
         <div class="loader center" bind:this={el}>
-            <span class="shade2 pa-7 center curve shadow white--text weight-300 font-24">
-                {$ws.ws.tankPerc || 0}
+            <span class="shade3 pa-7 center border curve shadow white--text weight-300 font-24">
+                {Math.round($ws.ws.tankPerc).toFixed(1) || 0}
             </span>
         </div>
         <div class="weight-300 font-12 opacity-75">Percent</div>
@@ -81,7 +81,7 @@
 
 <style>
     .loader {
-        width: 80px;
+        width: 100px;
         height: 120px;
         display: flex;
         position: relative;
