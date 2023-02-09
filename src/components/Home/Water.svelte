@@ -22,7 +22,7 @@
         <span class="weight-300 font-26 opacity-75">Water</span>
         <div class="loader center" bind:this={el}>
             <span class="shade3 pa-7 center border curve shadow white--text weight-300 font-24">
-                {Math.round($ws.ws.tankPerc).toFixed(1) || 0}
+                {Math.round($ws.ws.tankPerc) || 0}
             </span>
         </div>
         <div class="weight-300 font-12 opacity-75">Percent</div>
