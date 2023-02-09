@@ -177,7 +177,7 @@
         <div class="col center gap-10">
             {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_PPM")}
                 <Toggle
-                        label="Auto-adjust PPM"
+                        label="Fix PPM"
                         switchColor="#eee"
                         toggledColor="#24a148"
                         untoggledColor="#fa4d56"
@@ -191,7 +191,7 @@
         <div class="col center gap-10">
             {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_PH")}
                 <Toggle
-                        label="Auto-adjust PH"
+                        label="Fix PH"
                         switchColor="#eee"
                         toggledColor="#24a148"
                         untoggledColor="#fa4d56"
@@ -205,7 +205,7 @@
         <div class="col center gap-10">
             {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_WATER")}
                 <Toggle
-                        label="Auto-adjust Water"
+                        label="Add Water"
                         switchColor="#eee"
                         toggledColor="#24a148"
                         untoggledColor="#fa4d56"

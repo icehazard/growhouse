@@ -70,7 +70,7 @@
             </div>
             <div class="row space-between ">
                 <button class="row align-center gap-10">
-                    <div class="opacity-75">Auto Feeding Schedule</div>
+                    <div class="opacity-75">Watering Schedule</div>
                 </button>
                 <div class="row center gap-20">
                     <Toggle
