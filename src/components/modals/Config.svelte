@@ -92,7 +92,7 @@
 
             <div class="body pa-25 pt-30 gap-20 col h-600 overflow-auto">
                 <div class="body pa-25 pt-30 col">
-                    <span class="font-20">Chip Config</span>
+                    <span class="font-20">Feeder Config</span>
                 </div>
                 <div class="col align-start center gap-10 font-10">
                     {#if $ws.ws.state}
@@ -103,7 +103,7 @@
                     {/if}
                 </div>
                 <div class="body pa-25 pt-30 col">
-                    <span class="font-20">Feeder Config</span>
+                    <span class="font-20">Chip Config</span>
                 </div>
                 <div class="col align-start center gap-10 font-10">
                     {#if $ws.ws.config}

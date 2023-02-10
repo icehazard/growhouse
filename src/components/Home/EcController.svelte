@@ -61,7 +61,7 @@
     <div class="row space-between">
         <div class="col center">
             <Toggle
-                label="Auto-adjust PPM"
+                label="Fix PPM"
                 switchColor="#eee"
                 toggledColor="#37C19B"
                 untoggledColor="#fa4d56"
