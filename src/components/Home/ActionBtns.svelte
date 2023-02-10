@@ -249,13 +249,5 @@
 
     }
 
-    input{
-        background-color: #2c2c2e;
-    margin-left: 5%;
-    padding: 2px;
-    border-radius: 2px;
-    font-size: 0.8rem;
-    }
-
 
 </style>

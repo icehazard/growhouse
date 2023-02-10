@@ -7,7 +7,16 @@
     import Toggle from "svelte-toggle";
 
     export let isOpen;
-    
+
+    let tapo1 = false;
+    let tapo2 = false;
+    let tapo3 = false;
+    let tapo4 = false;
+    let tapo5 = false;
+
+    function toggler(val, state) {
+        console.log(val, state);
+    }
 </script>
 
 {#if isOpen}
@@ -29,6 +38,8 @@
                         </div>
                         <div class="center">
                             <Toggle
+                                bind:toggled={tapo1}
+                                on:click={() => toggler("tapo1", !tapo1)}
                                 hideLabel
                                 switchColor="#eee"
                                 toggledColor="#37C19B"
@@ -36,7 +47,7 @@
                             />
                         </div>
                     </div>
-                    <hr class="w100"> 
+                    <hr class="w100" />
                     <div class="row w100 px-20 gap-20">
                         <div class="center">
                             <Icon height="20" icon="mdi:plug-socket-us" />
@@ -47,6 +58,8 @@
                         </div>
                         <div class="center">
                             <Toggle
+                                bind:toggled={tapo2}
+                                on:click={() => toggler("tapo2", !tapo2)}
                                 hideLabel
                                 switchColor="#eee"
                                 toggledColor="#37C19B"
@@ -54,7 +67,7 @@
                             />
                         </div>
                     </div>
-                    <hr class="w100"> 
+                    <hr class="w100" />
                     <div class="row w100 px-20 gap-20">
                         <div class="center">
                             <Icon height="20" icon="mdi:plug-socket-us" />
@@ -65,6 +78,8 @@
                         </div>
                         <div class="center">
                             <Toggle
+                                bind:toggled={tapo3}
+                                on:click={() => toggler("tapo3", !tapo3)}
                                 hideLabel
                                 switchColor="#eee"
                                 toggledColor="#37C19B"
@@ -72,7 +87,7 @@
                             />
                         </div>
                     </div>
-                    <hr class="w100"> 
+                    <hr class="w100" />
                     <div class="row w100 px-20 gap-20">
                         <div class="center">
                             <Icon height="20" icon="material-symbols:light-mode-outline-sharp" />
@@ -83,6 +98,8 @@
                         </div>
                         <div class="center">
                             <Toggle
+                                bind:toggled={tapo4}
+                                on:click={() => toggler("tapo4", !tapo4)}
                                 hideLabel
                                 switchColor="#eee"
                                 toggledColor="#37C19B"
@@ -90,7 +107,7 @@
                             />
                         </div>
                     </div>
-                    <hr class="w100"> 
+                    <hr class="w100" />
                     <div class="row w100 px-20 gap-20">
                         <div class="center">
                             <Icon height="20" icon="mdi:plug-socket-us" />
@@ -101,6 +118,8 @@
                         </div>
                         <div class="center">
                             <Toggle
+                                bind:toggled={tapo5}
+                                on:click={() => toggler("tapo5", !tapo5)}
                                 hideLabel
                                 switchColor="#eee"
                                 toggledColor="#37C19B"
