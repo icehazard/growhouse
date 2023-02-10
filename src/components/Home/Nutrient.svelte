@@ -3,12 +3,13 @@
     import Gauge from "comp/atoms/Gauge.svelte";
     import Toggle from "svelte-toggle";
     import ws from "@/store/ws";
+    
 </script>
 
 <div class="grow align-center col gap-50 h-500">
     <div class="col gap-50 align-center h-250 space-between">
         <span class="weight-300 font-26 opacity-75">Nutrients</span>
-        <Gauge value={$ws.ws.currentPPM} max='1400'/>
+        <Gauge value={$ws.ws?.currentPPM} max='1400'/>
         <div class="weight-300 font-12 opacity-75">ppm</div>
     </div>
     <div class="col w100 gap-10">
