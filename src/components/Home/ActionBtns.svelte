@@ -11,7 +11,7 @@
     var relativeTime = require('dayjs/plugin/relativeTime')
     dayjs.extend(relativeTime)
 
-    let adjustPPMOn, adjustPHOn, adjustWaterOn, feedScheduleOn = false;
+    let adjustPPMOn, adjustPHOn, adjustWaterOn, feedScheduleOn, autoDosing = false;
     let col = "var(--primary)";
     let hoursArray = []
     let nextFeeds = []
@@ -23,6 +23,7 @@
             adjustPPMOn = $ws.ws.state ? $ws.ws.state.ADJUST_PPM : false
             adjustPHOn = $ws.ws.state ? $ws.ws.state.ADJUST_PH : false
             adjustWaterOn = $ws.ws.state ? $ws.ws.state.ADJUST_WATER : false
+            autoDosing = $ws.ws.state ? $ws.ws.state.AUTO_DOSING : false
 
             hoursArray = []
 
@@ -65,6 +66,9 @@
         ws.cmdMiddleman(feedScheduleOn ? "feedScheduleOff" : "feedScheduleOn");
     }
 
+    function autoDosingSchedule() {
+        ws.cmdMiddleman(autoDosing ? "autoDosingOff" : "autoDosingOn");
+    }
     function adjustPH() {
         ws.cmdMiddleman(adjustPHOn ? "adjustPHOff" : "adjustPHOn");
     }
@@ -135,7 +139,7 @@
     <div class="col center gap-10">
         <button
                 class="h-100 shade3 w-100 center curve shadow fast shine"
-                on:click={() => runCommandMiddleman("refill")}
+                on:click={() => runCommandMiddleman("fixtank")}
         >
             <Icon color={col} icon="game-icons:auto-repair" width="30"/>
         </button>
@@ -174,48 +178,62 @@
    </div>
 
     <div class="row gap-20 shade1 border curve wrap pa-20 grow center w100">
-        <div class="col center gap-10">
-            {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_PPM")}
-                <Toggle
-                        label="Fix PPM"
-                        switchColor="#eee"
-                        toggledColor="#24a148"
-                        untoggledColor="#fa4d56"
-                        on="On"
-                        off="Off"
-                        bind:toggled={adjustPPMOn}
-                        on:click={adjustPPM}
-                />
-            {/if}
-        </div>
-        <div class="col center gap-10">
-            {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_PH")}
-                <Toggle
-                        label="Fix PH"
-                        switchColor="#eee"
-                        toggledColor="#24a148"
-                        untoggledColor="#fa4d56"
-                        on="On"
-                        off="Off"
-                        bind:toggled={adjustPHOn}
-                        on:click={adjustPH}
-                />
-            {/if}
-        </div>
-        <div class="col center gap-10">
-            {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_WATER")}
-                <Toggle
-                        label="Add Water"
-                        switchColor="#eee"
-                        toggledColor="#24a148"
-                        untoggledColor="#fa4d56"
-                        on="On"
-                        off="Off"
-                        bind:toggled={adjustWaterOn}
-                        on:click={adjustWater}
-                />
-            {/if}
-        </div>
+<!--        <div class="col center gap-10">-->
+<!--            {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_PPM")}-->
+<!--                <Toggle-->
+<!--                        label="Fix PPM"-->
+<!--                        switchColor="#eee"-->
+<!--                        toggledColor="#24a148"-->
+<!--                        untoggledColor="#fa4d56"-->
+<!--                        on="On"-->
+<!--                        off="Off"-->
+<!--                        bind:toggled={adjustPPMOn}-->
+<!--                        on:click={adjustPPM}-->
+<!--                />-->
+<!--            {/if}-->
+<!--        </div>-->
+<!--        <div class="col center gap-10">-->
+<!--            {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_PH")}-->
+<!--                <Toggle-->
+<!--                        label="Fix PH"-->
+<!--                        switchColor="#eee"-->
+<!--                        toggledColor="#24a148"-->
+<!--                        untoggledColor="#fa4d56"-->
+<!--                        on="On"-->
+<!--                        off="Off"-->
+<!--                        bind:toggled={adjustPHOn}-->
+<!--                        on:click={adjustPH}-->
+<!--                />-->
+<!--            {/if}-->
+<!--        </div>-->
+<!--        <div class="col center gap-10">-->
+<!--            {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("ADJUST_WATER")}-->
+<!--                <Toggle-->
+<!--                        label="Add Water"-->
+<!--                        switchColor="#eee"-->
+<!--                        toggledColor="#24a148"-->
+<!--                        untoggledColor="#fa4d56"-->
+<!--                        on="On"-->
+<!--                        off="Off"-->
+<!--                        bind:toggled={adjustWaterOn}-->
+<!--                        on:click={adjustWater}-->
+<!--                />-->
+<!--            {/if}-->
+<!--        </div>-->
+                <div class="col center gap-10">
+                    {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("AUTO_DOSING")}
+                        <Toggle
+                                label="Auto Dosing"
+                                switchColor="#eee"
+                                toggledColor="#24a148"
+                                untoggledColor="#fa4d56"
+                                on="On"
+                                off="Off"
+                                bind:toggled={autoDosing}
+                                on:click={autoDosingSchedule}
+                        />
+                    {/if}
+                </div>
         <div class="col center gap-10">
             {#if $ws.ws && $ws.ws.state && $ws.ws.state.hasOwnProperty("FEED_STATE")}
                 <Toggle

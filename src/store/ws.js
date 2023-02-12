@@ -83,7 +83,7 @@ function start() {
                 // else
                 //     log = [json.notif.message]
 
-                context.commit('log', [...context.val('log'), {time: dayjs().format(), data: json.notif.message}])
+                context.commit('log', [...context.val('log'), {time: dayjs().format(), data: {log: json.notif.message, level: "info"}}])
             }
 
             if (log.length > 200)  log.shift()
@@ -100,7 +100,10 @@ function start() {
             }
             else {
               //log = [...log, json.log]
-              context.commit('log', [...context.val('log'), {time: dayjs().format(), data: json.log}])
+                if (!json.level)
+                    json.level = "info";
+
+              context.commit('log', [...context.val('log'), {time: dayjs().format(), data: {log: json.log, level: json.level}}])
             }
         } catch (e) {
             console.log("Couldnt parse WS message", e, event.data);
