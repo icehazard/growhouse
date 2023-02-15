@@ -28,7 +28,7 @@
     });
 </script>
 
-<div class="shade2 overlay col pa-20 gap-7 curve border grow relative" bind:this={el}>
+<div class="shade2 overlay col pa-20 gap-7 curve border grow relative h100" bind:this={el}>
     <div class="sticky p-left p-top row justify-end gap-10">
         <button class="curve shade3 pa-7 shine center" on:click={goBot}>
             <Icon icon="bi:chevron-double-down"/>
