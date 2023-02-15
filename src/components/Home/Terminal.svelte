@@ -56,10 +56,10 @@
 
 <div class="shade2 col gap-7 curve grow relative pa-15 overflow-y h100" bind:this={el}>
     <div class="sticky p-right p-top row justify-end gap-10 ">
-        <button class="curve shade3 pa-7 shine center" data-tooltip="Scroll down"  on:click={goBot}>
+        <button class="curve shade3 pa-7 shine center" data-tooltip="Scroll down" on:click={goBot}>
             <Icon icon="bi:chevron-double-down"/>
         </button>
-        <button class="curve shade3 pa-7 shine center" data-tooltip="Clear logs"  on:click={ws.clearLog}>
+        <button class="curve shade3 pa-7 shine center" data-tooltip="Clear logs" on:click={ws.clearLog}>
             <Icon icon="ant-design:close-outlined"/>
         </button>
         <button class="curve shade3 pa-7 shine center" data-tooltip="Level 'Debug' logs" on:click={levelDebug}>
@@ -74,13 +74,15 @@
     </div>
     <div class="col overflow-y absolute ">
         {#each $ws.log as item}
-            <!--{item.data.level}-->
-            <div class="row gap-10 align-end">
+            {#if LEVELS[item.data.level] <= level || level == LEVEL_ALL }
+                <!--{item.data.level}-->
+                <div class="row gap-10 align-end">
             <span class="font-10 opacity-75">
                 {dayjs(item.time).format("D/M HH:mm")}
             </span>
-                <span class="font-12 weight-300 opacity-90">{item.data.log}</span>
-            </div>
+                    <span class="font-12 weight-300 opacity-90">{item.data.log}</span>
+                </div>
+            {/if}
         {/each}
     </div>
 </div>
