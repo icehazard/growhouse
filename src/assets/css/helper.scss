@@ -412,6 +412,11 @@
   overflow: hidden;
 }
 
+.overflow-y{
+  overflow: hidden;
+  overflow-y: overlay;
+}
+
 .hidden {
   visibility: hidden;
 }
