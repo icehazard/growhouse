@@ -40,18 +40,21 @@
 
     function levelDebug() {
         level = LEVEL_DEBUG;
+        setTimeout(goBot, 1)
     }
 
     function levelInfo() {
         level = LEVEL_INFO;
+        setTimeout(goBot, 1)
     }
 
     function levelAll() {
         level = LEVEL_ALL;
+        setTimeout(goBot, 1)
     }
 </script>
 
-<div class="shade2 overlay col pa-20 gap-7 curve border grow relative" bind:this={el}>
+<div class="shade2 overlay col pa-20 gap-7 curve border grow relative min-height-300px" bind:this={el}>
     <div class="sticky p-left p-top row justify-end gap-10">
         <button class="curve shade3 pa-7 shine center" data-tooltip="Scroll down"  on:click={goBot}>
             <Icon icon="bi:chevron-double-down"/>

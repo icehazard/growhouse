@@ -12,14 +12,14 @@
 <main class="col container my-50 gap-40 grow">
     <div class="absolute italic p-top pa-10 font-12">Firmware version {$ws.ws.v}</div>
     <Sensors state={$ws.ws} tankPerc={$ws.ws.tankPerc} />
-    <div class="col gap-50 h-600" class:row={$mq.xl_}>
+    <div class="col gap-50 h-650" class:row={$mq.xl_}>
         <Terminal />
         <ActionBtns />
     </div>
- 
-    <Notifications />
     <div class="col gap-50" class:row={$mq.xl_}>
         <PPMcontroller />
         <Graph />
     </div>
+    <Notifications />
+
 </main>

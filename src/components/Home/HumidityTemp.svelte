@@ -4,7 +4,7 @@
     import Graph from "comp/modals/Graph";
     import ws from "@/store/ws";
     
-    const TEMP_DIFF = 0.5;
+    const TEMP_DIFF = 5;
     
     function humidityRangeFinder(tmp, humi) {
         humi = Math.round(humi)

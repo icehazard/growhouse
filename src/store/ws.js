@@ -69,12 +69,28 @@ function start() {
         console.log("Encountered error, trying to reconnect");
     });
 
-    ws.addEventListener("message", function (event) {
+    ws.addEventListener("message", function (event, isBinary) {
         try {
             let json = JSON.parse(event.data);
 
+            if (json.type == "Buffer") {
+                let arr = []
+                for (let i of json.data)
+                    arr.push(String.fromCharCode(i))
+
+                try {
+                    json = JSON.parse(arr.join(""))
+                }
+                catch(e) {
+                    console.log("Couldnt parse WS message", e, json);
+                }
+            }
+
             let log = context.val('log');
             if (!log) context.commit('log', [])
+
+            if (isBinary)
+                console.log("Binary data logged!")
 
             if (json.notif) {
                 context.sendNotif(json.notif)()
