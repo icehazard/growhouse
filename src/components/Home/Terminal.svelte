@@ -54,8 +54,8 @@
     }
 </script>
 
-<div class="shade2 overlay col pa-20 gap-7 curve border grow relative min-height-300px" bind:this={el}>
-    <div class="sticky p-left p-top row justify-end gap-10">
+<div class="shade2 col gap-7 curve grow relative pa-15 overflow-y h100" bind:this={el}>
+    <div class="sticky p-right p-top row justify-end gap-10 ">
         <button class="curve shade3 pa-7 shine center" data-tooltip="Scroll down"  on:click={goBot}>
             <Icon icon="bi:chevron-double-down"/>
         </button>
@@ -72,8 +72,8 @@
             <Icon icon="mdi:eye-circle"/>
         </button>
     </div>
-    {#each $ws.log as item}
-        {#if LEVELS[item.data.level] <= level || level == LEVEL_ALL }
+    <div class="col overflow-y absolute ">
+        {#each $ws.log as item}
             <!--{item.data.level}-->
             <div class="row gap-10 align-end">
             <span class="font-10 opacity-75">
@@ -81,7 +81,7 @@
             </span>
                 <span class="font-12 weight-300 opacity-90">{item.data.log}</span>
             </div>
-        {/if}
-    {/each}
+        {/each}
+    </div>
 </div>
 
