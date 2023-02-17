@@ -8,6 +8,7 @@
     import RunPumpById from "comp/modals/RunPumpById.svelte";
     import Config from "comp/modals/Config";
     import Tapos from "comp/modals/Tapo";
+    import Recipe from "comp/modals/Recipe";
 
     var relativeTime = require('dayjs/plugin/relativeTime')
     dayjs.extend(relativeTime)
@@ -185,6 +186,16 @@
                 <Icon color={col} icon="ion:cog-sharp" width="30"/>
             </button>
             <span class="font-14 opacity-75">Tapos</span>
+        </div>
+
+        <div class="col center gap-10">
+            <button
+                    class="h-100 shade3 w-100 center curve shadow fast shine"
+                    on:click={() =>     openModal(Recipe)}
+            >
+                <Icon color={col} icon="arcticons:recipe-keeper" width="30"/>
+            </button>
+            <span class="font-14 opacity-75">Auto-dosing Recipe</span>
         </div>
 
     </div>
