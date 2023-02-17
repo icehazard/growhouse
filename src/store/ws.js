@@ -30,6 +30,10 @@ context.cmd = function (cmd) {
     ws.send(JSON.stringify({ command: cmd }));
     console.log("SENDING CMD", cmd)
 }
+context.tapo = function (tapo, state, duration) {
+    ws.send(JSON.stringify({ command: "tapo", tapo, state, duration }));
+    console.log("SENDING CMD", { command: "tapo", tapo, state, duration })
+}
 context.cmdMiddleman = function (cmd) {
     ws.send(JSON.stringify({ middleman: 1, command: cmd }));
     console.log("SENDING CMD", cmd)
@@ -42,6 +46,7 @@ context.patchConfig = function (type, data) {
     ws.send(JSON.stringify({ middleman: 1, command: "patchConfig", type, data }));
     console.log("SENDING CMD patchConfig")
 }
+
 
 context.clearLog = function () {
     context.commit('log', [])

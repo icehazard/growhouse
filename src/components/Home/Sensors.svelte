@@ -55,7 +55,7 @@
     <div class="col gap-20">
         <div class="row curve w100 wrap gap-10 text">
             <Icon icon="carbon:humidity" width="20"/>
-            Ideal RH based on <b>{state.tempC}°C</b> air temp and <b>{state.tempC + TEMP_DIFF}°C</b> leaf temp
+            Ideal RH based on <b>{state.tempC}°C</b> air temp and <b>{(state.tempC + TEMP_DIFF).toFixed(2)}°C</b> leaf temp
             <Icon icon="mdi:sprout" width="18" color="yellow" title="Seedling stage"/> {info.prop[0]}%-{info.prop[1]}%
             <Icon icon="mdi:cannabis" width="20" color="lightgreen" title="Late veg & Early flowering"/> {info.eflv[0]}%-{info.eflv[1]}%
             <Icon icon="fa6-solid:cannabis" color="green" title="Flowering stage" width="20"/>{info.flower[0]}%-{info.flower[1]}%
