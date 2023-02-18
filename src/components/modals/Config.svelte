@@ -4,7 +4,7 @@
     import {scale} from "svelte/transition";
     import ws from "@/store/ws.js";
     import Checkbox from "comp/atoms/Checkbox.svelte"
-
+    import Checkboxnew from "comp/atoms/Checkboxnew.svelte"
     export let isOpen;
     let _feederState = [];
 

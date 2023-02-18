@@ -1,10 +1,12 @@
 <script>
     import Button from "comp/atoms/Button.svelte";
-    import { closeModal } from "svelte-modals";
-    import { scale } from "svelte/transition";
+    import {closeModal} from "svelte-modals";
+    import {scale} from "svelte/transition";
     import ws from "@/store/ws.js";
     import Checkbox from "comp/atoms/Checkbox.svelte"
-    import { onMount } from 'svelte';
+    import Checkboxnew from "comp/atoms/Checkboxnew.svelte"
+
+    import {onMount} from 'svelte';
 
     export let isOpen;
 
@@ -18,31 +20,25 @@
     }
 
 
-     let A = false
-     let B = false
-     let SILICA = false
-     let CALMAG = false
+    let A = false
+    let B = false
+    let SILICA = false
+    let CALMAG = false
 
 
     let TOTAL_MASK = 0;
 
-    onMount(async() => {
-        console.log("On mount called")
+    onMount(async () => {
         let m = $ws.ws.state.PPM_MASK
         console.log(m)
-        // setTimeout(() => {
-        //     if (m & MASK_SILICA)
-        //         SILICA = true
-        //     if (m & MASK_A)
-        //         A = true
-        //     if (m & MASK_B)
-        //         B = true
-        //     if (m & MASK_CALMAG)
-        //         CALMAG = true
-        // }, 10)
-
-        //
-        // TOTAL_MASK = m;
+        if (m & MASK_SILICA)
+            SILICA = true
+        if (m & MASK_A)
+            A = true
+        if (m & MASK_B)
+            B = true
+        if (m & MASK_CALMAG)
+            CALMAG = true
     });
 
     let MASK_SILICA = 1;
@@ -65,6 +61,7 @@
 
         console.log("New mask is", TOTAL_MASK);
     }
+
     //
     // $: {
     //     let m = $ws.ws.state.PPM_MASK
@@ -86,9 +83,9 @@
 
 {#if isOpen}
     <div
-        role="dialog"
-        class="modal center fixed p-center z-4 nopointer border"
-        transition:scale={{ duration: 100, opacity: 0, start: 1.1 }}
+            role="dialog"
+            class="modal center fixed p-center z-4 nopointer border"
+            transition:scale={{ duration: 100, opacity: 0, start: 1.1 }}
     >
         <div class="shade3 curve  gap-20 col w-400 overflow-hidden autopointer">
             <div class="body pa-25 pt-30 gap-20 col">
@@ -96,68 +93,14 @@
                 <span>When tank is auto-dosed, following nutes will be used:</span>
             </div>
             <div class="body pa-25 pt-30 gap-20 col">
-                <button class="row align-center">
-
-                <Checkbox
-                        secondaryColor="var(--shade5)"
-                        primaryColor="var(--primary)"
-                        duration="150"
-                        size="2rem"
-                        bind:checked={SILICA}
-                        label="Silica"
-                        mask="true"
-                        id="Silica"
-                />
-                </button>
-
-                <button class="row align-center">
-                <Checkbox
-                        secondaryColor="var(--shade5)"
-                        primaryColor="var(--primary)"
-                        duration="150"
-                        size="2rem"
-                        bind:checked={A}
-                        label="A"
-                        mask="true"
-                        id="A"
-
-                />
-                </button>
-                <button class="row align-center">
-
-                <Checkbox
-                        secondaryColor="var(--shade5)"
-                        primaryColor="var(--primary)"
-                        duration="150"
-                        size="2rem"
-                        bind:checked={B}
-                        label="B"
-                        mask="true"
-                        id="B"
-
-                />
-                </button>
-                <button class="row align-center">
-                <Checkbox
-                        secondaryColor="var(--shade5)"
-                        primaryColor="var(--primary)"
-                        duration="150"
-                        size="2rem"
-                        bind:checked={CALMAG}
-                        label="Calmag"
-                        mask="true"
-                        id="CALMAG"
-
-                />
-                </button>
-<!--                <span>SILICA<input type="checkbox" bind:checked={SILICA}></span>-->
-<!--                <span>A<input type="checkbox" bind:checked={A}></span>-->
-<!--                <span>B<input type="checkbox" bind:checked={B}></span>-->
-<!--                <span>CALMAG<input type="checkbox" bind:checked={CALMAG}></span>-->
+                <Checkboxnew bind:checked={SILICA} label="Silica"></Checkboxnew>
+                <Checkboxnew bind:checked={A} label="A"></Checkboxnew>
+                <Checkboxnew bind:checked={B} label="B"></Checkboxnew>
+                <Checkboxnew bind:checked={CALMAG} label="Calmag"></Checkboxnew>
             </div>
             <div class="actions row shade2 pa-25 gap-10">
-                <Button block text="SAVE" primary="true" on:click={save} />
-                <Button block text="CLOSE" on:click={close} />
+                <Button block text="SAVE" primary="true" on:click={save}/>
+                <Button block text="CLOSE" on:click={close}/>
             </div>
         </div>
     </div>
