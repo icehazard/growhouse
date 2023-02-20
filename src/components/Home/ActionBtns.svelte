@@ -9,6 +9,7 @@
     import Config from "comp/modals/Config";
     import Tapos from "comp/modals/Tapo";
     import Recipe from "comp/modals/Recipe";
+    import Feed from "comp/modals/Feed";
 
     var relativeTime = require('dayjs/plugin/relativeTime')
     dayjs.extend(relativeTime)
@@ -101,12 +102,12 @@
         <div class="col center gap-10">
             <button
                     class="h-100 shade3 w-100 center curve shadow fast shine"
-                    value="1MIN FEED"
-                    on:click={() => runCommandMiddleman("minfeed")}
+                    value="FEED"
+                    on:click={() => openModal(Feed)}
             >
                 <Icon color={col} icon="mdi:food-apple-outline" width="25"/>
             </button>
-            <span class="font-14 opacity-75">1MIN FEED</span>
+            <span class="font-14 opacity-75">FEED</span>
         </div>
         <div class="col center gap-10">
             <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommand("on") }

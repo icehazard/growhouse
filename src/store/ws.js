@@ -34,6 +34,13 @@ context.tapo = function (tapo, state, duration) {
     ws.send(JSON.stringify({ command: "tapo", tapo, state, duration }));
     console.log("SENDING CMD", { command: "tapo", tapo, state, duration })
 }
+context.feed = function (duration) {
+    ws.send(JSON.stringify({ command: "tapo", tapo: "FEED", state: 1, duration: duration }));
+    ws.send(JSON.stringify({ command: "tapo", tapo: "OUT", state: 1, duration: duration*2 }));
+    ws.send(JSON.stringify({ command: "tapo", tapo: "BUFFER", state: 1, duration: duration*2 }));
+
+    console.log("SENDING FEED")
+}
 context.cmdMiddleman = function (cmd) {
     ws.send(JSON.stringify({ middleman: 1, command: cmd }));
     console.log("SENDING CMD", cmd)

@@ -36,7 +36,7 @@
     const LEVEL_INFO = 1;
     const LEVEL_ALL = 3;
 
-    let level = LEVEL_INFO;
+    let level = LEVEL_DEBUG;
 
     function levelDebug() {
         level = LEVEL_DEBUG;
@@ -55,20 +55,20 @@
 </script>
 
 <div class="shade2 col gap-7 curve grow relative pa-15 overflow-y h100" bind:this={el}>
-    <div class="sticky p-right p-top row justify-end gap-10 ">
-        <button class="curve shade3 pa-7 shine center" data-tooltip="Scroll down" on:click={goBot}>
+    <div class="sticky p-right p-top row justify-end gap-10 z-2">
+        <button class="curve shade3 pa-7 shine center borderPrimary" data-tooltip="Scroll down" on:click={goBot}>
             <Icon icon="bi:chevron-double-down"/>
         </button>
-        <button class="curve shade3 pa-7 shine center" data-tooltip="Clear logs" on:click={ws.clearLog}>
+        <button class="curve shade3 pa-7 shine center borderPrimary" data-tooltip="Clear logs" on:click={ws.clearLog}>
             <Icon icon="ant-design:close-outlined"/>
         </button>
-        <button class="curve shade3 pa-7 shine center" data-tooltip="Level 'Debug' logs" on:click={levelDebug}>
+        <button class="curve shade3 pa-7 shine center borderPrimary" data-tooltip="Level 'Debug' logs" on:click={levelDebug}>
             <Icon icon="carbon:debug"/>
         </button>
-        <button class="curve shade3 pa-7 shine center" data-tooltip="Level 'Info' logs" on:click={levelInfo}>
+        <button class="curve shade3 pa-7 shine center borderPrimary" data-tooltip="Level 'Info' logs" on:click={levelInfo}>
             <Icon icon="material-symbols:info"/>
         </button>
-        <button class="curve shade3 pa-7 shine center" data-tooltip="All logs" on:click={levelAll}>
+        <button class="curve shade3 pa-7 shine center borderPrimary" data-tooltip="All logs" on:click={levelAll}>
             <Icon icon="mdi:eye-circle"/>
         </button>
     </div>
