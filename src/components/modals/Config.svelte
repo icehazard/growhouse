@@ -91,25 +91,25 @@
         <div class="shade3 curve  gap-20 col w-400 overflow-hidden autopointer">
 
             <div class="body pa-25 pt-30 gap-20 col h-600 overflow-auto">
-                <div class="body pa-25 pt-30 col">
+                <div class="body col">
                     <span class="font-20">Feeder Config</span>
                 </div>
                 <div class="col align-start center gap-10 font-10">
                     {#if $ws.ws.state}
                         {#each Object.entries($ws.ws.state) as [name, val]}
-                            <div class="row"> {name}:<input type="text" id={name} value={val}
+                            <div class="row align-center w100"><div class="config-label w50 font-11"> {name}: </div><input type="text" id={name} class="config-input" value={val}
                                                             on:change={patchState}/></div>
                         {/each}
                     {/if}
                 </div>
-                <div class="body pa-25 pt-30 col">
+                <div class="body col">
                     <span class="font-20">Chip Config</span>
                 </div>
                 <div class="col align-start center gap-10 font-10">
                     {#if $ws.ws.config}
                         {#each Object.entries($ws.ws.config) as [fname, val]}
                             {#if typeof val !== 'object'}
-                                <div class="row"> {fname}:<input type="text" id={fname} value={val}
+                                <div class="row align-center w100"> <div class="config-label w50 font-11">{fname}:</div><input type="text" class="config-input" id={fname} value={val}
                                                                  on:change={patchConfig}/></div>
                             {/if}
                         {/each}

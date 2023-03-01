@@ -149,9 +149,12 @@
                 <input type="value" name="duration" placeholder="duration" bind:value={duration}/>
             </div>
             <div class="actions row wrap shade2 pa-25 gap-10">
+                <Button block text="500MS" primary="true" on:click={ () => run("500")} />
+                <Button block text="750MS" primary="true" on:click={ () => run("750")} />
+                <Button block text="1S" primary="true" on:click={ () => run("1000")} />
+                <Button block text="2S" primary="true" on:click={ () => run("2000")} />
                 <Button block text="10S" primary="true" on:click={ () => run("10000")} />
                 <Button block text="15S" primary="true" on:click={ () => run("15000")} />
-                <Button block text="30S" primary="true" on:click={ () => run("30000")} />
                 <Button block text="RUN PUMP(S)" primary="true" on:click={save} />
                 <Button block text="CLOSE" on:click={close} />
             </div>

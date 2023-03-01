@@ -199,6 +199,17 @@
             <span class="font-14 opacity-75">Auto-dosing Recipe</span>
         </div>
 
+
+        <div class="col center gap-10">
+            <button
+                    class="h-100 shade3 w-100 center curve shadow fast shine"
+                    on:click={() =>     ws.cmd("update")}
+            >
+                <Icon color={col} icon="arcticons:recipe-keeper" width="30"/>
+            </button>
+            <span class="font-14 opacity-75">Update</span>
+        </div>
+
     </div>
 
     <div class="row gap-20 shade1 border curve wrap pa-20 grow center w100">

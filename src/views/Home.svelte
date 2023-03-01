@@ -7,10 +7,14 @@
     import { Notifications } from "@tadashi/svelte-notification";
     import ws from "@/store/ws";
     import { mq } from "@/assets/library/MediaQuery.svelte";
+    import prettyMilliseconds from 'pretty-ms';
+
 </script>
 
 <main class="col container my-50 gap-40 grow">
-    <div class="absolute italic p-top pa-10 font-12">Firmware version {$ws.ws.v}</div>
+    <div class="absolute italic p-top pt-10 font-12">Firmware version {$ws.ws.v}</div>
+    <div class="absolute italic p-top pt-30 font-12">Uptime: {$ws.ws.uptime ? prettyMilliseconds($ws.ws.uptime) : "N/A"}</div>
+
     <Sensors state={$ws.ws} tankPerc={$ws.ws.tankPerc} />
     <div class="col gap-50 " class:row={$mq.xl_}>
       <div class="grow h-500">
