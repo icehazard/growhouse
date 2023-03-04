@@ -95,7 +95,7 @@
                     value="RESTART"
                     on:click={() => runCommand("restart")}
             >
-                <Icon color={col} icon="ic:twotone-restart-alt" height="30"/>
+                <Icon color={col} icon="ic:twotone-restart-alt" height="45"/>
             </button>
             <span class="font-14 opacity-75">Restart</span>
         </div>
@@ -105,20 +105,20 @@
                     value="FEED"
                     on:click={() => openModal(Feed)}
             >
-                <Icon color={col} icon="mdi:food-apple-outline" width="25"/>
+                <Icon color={col} icon="mdi:food-apple-outline" width="45"/>
             </button>
             <span class="font-14 opacity-75">FEED</span>
         </div>
         <div class="col center gap-10">
             <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommand("on") }
                     class:borderPrimary={$ws.ws['TAPO_STATUS'] ? $ws.ws['TAPO_STATUS']['RO'] : false}>
-                <Icon color={col} icon="mdi:water-plus-outline" width="30"/>
+                <Icon color={col} icon="mdi:water-plus-outline" width="45"/>
             </button>
             <span class="font-14 opacity-75">Add water</span>
         </div>
         <div class="col center gap-10">
             <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommandMiddleman("test")}>
-                <Icon color={col} icon="ant-design:info-circle-outlined" width="30"/>
+                <Icon color={col} icon="ant-design:info-circle-outlined" width="45"/>
             </button>
             <span class="font-14 opacity-75">TEST</span>
         </div>
@@ -127,7 +127,7 @@
                     class="h-100 shade3 w-100 center curve shadow fast shine"
                     on:click={() => runCommand("fetchConfig")}
             >
-                <Icon color={col} icon="ion:cog-sharp" width="30"/>
+                <Icon color={col} icon="ion:cog-sharp" width="45"/>
             </button>
             <span class="font-14 opacity-75">FETCH CONF</span>
         </div>
@@ -136,7 +136,7 @@
                     class="h-100 shade3 w-100 center curve shadow fast shine"
                     on:click={() => runCommand("romoff")}
             >
-                <Icon color={col} icon="mdi:pump-off" width="30"/>
+                <Icon color={col} icon="mdi:pump-off" width="45"/>
             </button>
             <span class="font-14 opacity-75">ROMOFF</span>
         </div>
@@ -145,7 +145,7 @@
                     class="h-100 shade3 w-100 center curve shadow fast shine"
                     on:click={() => runCommandMiddleman("fixtank")}
             >
-                <Icon color={col} icon="game-icons:auto-repair" width="30"/>
+                <Icon color={col} icon="game-icons:auto-repair" width="45"/>
             </button>
             <span class="font-14 opacity-75">Fix Tank PH/EC</span>
         </div>
@@ -154,7 +154,7 @@
                     class="h-100 shade3 w-100 center curve shadow fast shine"
                     on:click={() => runCommandMiddleman("bottle")}
             >
-                <Icon color={col} icon="fluent:drink-bottle-32-regular" width="30"/>
+                <Icon color={col} icon="fluent:drink-bottle-32-regular" width="45"/>
             </button>
             <span class="font-14 opacity-75">REF BOTTLE</span>
         </div>
@@ -164,7 +164,7 @@
                     class="h-100 shade3 w-100 center curve shadow fast shine"
                     on:click={() =>     openModal(RunPumpById)}
             >
-                <Icon color={col} icon="mdi:water-pump" width="30"/>
+                <Icon color={col} icon="game-icons:fizzing-flask" width="45"/>
             </button>
             <span class="font-14 opacity-75">RUN SPEC PUMP</span>
         </div>
@@ -174,7 +174,7 @@
                     class="h-100 shade3 w-100 center curve shadow fast shine"
                     on:click={() =>     openModal(Config)}
             >
-                <Icon color={col} icon="ion:cog-sharp" width="30"/>
+                <Icon color="gray" icon="icon-park-twotone:setting-two" width="45"/>
             </button>
             <span class="font-14 opacity-75">Config</span>
         </div>
@@ -184,7 +184,7 @@
                     class="h-100 shade3 w-100 center curve shadow fast shine"
                     on:click={() =>     openModal(Tapos)}
             >
-                <Icon color={col} icon="ion:cog-sharp" width="30"/>
+                <Icon color="white" icon="mdi:plug-socket-us" width="45"/>
             </button>
             <span class="font-14 opacity-75">Tapos</span>
         </div>
@@ -194,7 +194,7 @@
                     class="h-100 shade3 w-100 center curve shadow fast shine"
                     on:click={() =>     openModal(Recipe)}
             >
-                <Icon color={col} icon="arcticons:recipe-keeper" width="30"/>
+                <Icon color={col} icon="twemoji:scroll" width="45"/>
             </button>
             <span class="font-14 opacity-75">Auto-dosing Recipe</span>
         </div>
@@ -205,7 +205,7 @@
                     class="h-100 shade3 w-100 center curve shadow fast shine"
                     on:click={() =>     ws.cmd("update")}
             >
-                <Icon color={col} icon="arcticons:recipe-keeper" width="30"/>
+                <Icon color={col} icon="icon-park:update-rotation" width="45"/>
             </button>
             <span class="font-14 opacity-75">Update</span>
         </div>

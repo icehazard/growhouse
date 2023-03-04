@@ -20,10 +20,10 @@
 
     const TEMP_DIFF = 2.8;
 
-    function vpdt(tmp) {
+    function vpdt(tmp, night) {
         let res = {prop: [], eflv: [], flower: []}
         for (let i = 0; i <= 100; i += 1) {
-            const vpsat = (610.78 * Math.pow(10, (7.5 * (tmp + TEMP_DIFF)) / ((tmp + TEMP_DIFF) + 237.3))) / 1000
+            const vpsat = (610.78 * Math.pow(10, (7.5 * (tmp + (night ? 0 : TEMP_DIFF))) / ((tmp + (night ? 0 : TEMP_DIFF)) + 237.3))) / 1000
             const vpair = ((610.78 * Math.pow(10, (7.5 * tmp) / (tmp + 237.3))) / 1000) * (i / 100)
             const vpd = vpsat - vpair
 
@@ -46,19 +46,29 @@
         //const vpd = ((100 - hmd) * swv) / 100
     }
 
-    let info;
+    let info, infoNight;
     //Veg/Early FL: {vpdt(state.tempC).eflv[0]} - {vpdt(state.tempC).eflv[1]}
-    $: state.tempC, info = vpdt(state.tempC);
+    $: state.tempC, info = vpdt(state.tempC, false), infoNight = vpdt(state.tempC, true);
 
 </script>
 {#if state.tempC}
     <div class="col gap-20">
         <div class="row curve w100 wrap gap-10 text">
+            <Icon icon="material-symbols:clear-day" width="20"/>
             <Icon icon="carbon:humidity" width="20"/>
+
             Ideal RH based on <b>{state.tempC}°C</b> air temp and <b>{(state.tempC + TEMP_DIFF).toFixed(2)}°C</b> leaf temp
             <Icon icon="mdi:sprout" width="18" color="yellow" title="Seedling stage"/> {info.prop[0]}%-{info.prop[1]}%
             <Icon icon="mdi:cannabis" width="20" color="lightgreen" title="Late veg & Early flowering"/> {info.eflv[0]}%-{info.eflv[1]}%
             <Icon icon="fa6-solid:cannabis" color="green" title="Flowering stage" width="20"/>{info.flower[0]}%-{info.flower[1]}%
+        </div>
+        <div class="row curve w100 wrap gap-10 text">
+            <Icon icon="ic:twotone-mode-night" width="20"/>
+            <Icon icon="carbon:humidity" width="20"/>
+            (During lights off) Ideal RH based on air temp = leaf temp = <b>{(state.tempC).toFixed(2)}°C</b>
+            <Icon icon="mdi:sprout" width="18" color="yellow" title="Seedling stage"/> {infoNight.prop[0]}%-{infoNight.prop[1]}%
+            <Icon icon="mdi:cannabis" width="20" color="lightgreen" title="Late veg & Early flowering"/> {infoNight.eflv[0]}%-{infoNight.eflv[1]}%
+            <Icon icon="fa6-solid:cannabis" color="green" title="Flowering stage" width="20"/>{infoNight.flower[0]}%-{infoNight.flower[1]}%
         </div>
     </div>
 {/if}
