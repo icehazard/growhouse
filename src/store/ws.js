@@ -89,6 +89,7 @@ function start() {
 
     ws.addEventListener("open", function (event) {
         console.log("WS connected");
+        context.cmdMiddleman("latestLogs");
     });
 
     ws.addEventListener("close", function (event) {
