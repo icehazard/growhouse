@@ -20,7 +20,7 @@ context.runPumpByMask = function (mask, duration) {
 }
 context.setPh = function (ph) {
     let fmt = ph * 10
-    ws.send(JSON.stringify({ command: "setPH", value: fmt }));
+    ws.send(JSON.stringify({ command: "setPH", value: fmt, calib: true }));
 }
 context.runTest = function () {
     ws.send(JSON.stringify({ command: "test" }));
@@ -45,6 +45,10 @@ context.cmdMiddleman = function (cmd) {
     ws.send(JSON.stringify({ middleman: 1, command: cmd }));
     console.log("SENDING CMD", cmd)
 }
+context.diluteTo = function (val) {
+    ws.send(JSON.stringify({ middleman: 1, command: "diluteTo", val }));
+    console.log("Diluting to", val)
+}
 context.updateConfig = function (type, data) {
     ws.send(JSON.stringify({ middleman: 1, command: "updateConfig", type, data }));
     console.log("SENDING CMD updateConfig")
@@ -66,6 +70,20 @@ context.sendNotif = function (notification) {
 }
 export default context;
 
+function parseBuffer(data) {
+    let arr = []
+    let json;
+    for (let i of data)
+        arr.push(String.fromCharCode(i))
+
+    try {
+        json = JSON.parse(arr.join(""))
+    }
+    catch(e) {
+        console.log("Couldnt parse WS message", e, json);
+    }
+    return json;
+}
 function start() {
     ws = new ReconnectingWebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
 
@@ -98,8 +116,36 @@ function start() {
                 }
             }
 
+
             let log = context.val('log');
             if (!log) context.commit('log', [])
+
+            if (json.latestLogs) {
+                context.commit('log', [])
+
+                for (let o of json.latestLogs) {
+                    if (o.data) {
+                        let l = parseBuffer(o.data);
+                        if (!l.level)
+                            l.level = "info";
+
+                        if (log.length > 200) log.shift()
+
+                        context.commit('log', [...context.val('log'), {
+                            time: dayjs().format(),
+                            data: {log: l.log, level: l.level}
+                        }])
+                    }
+                    else { //else if not buffer
+                        if (log.length > 200) log.shift()
+
+                        context.commit('log', [...context.val('log'), {
+                            time: dayjs().format(),
+                            data: {log: o.log, level: o.level}
+                        }])
+                    }
+                }
+            }
 
             if (isBinary)
                 console.log("Binary data logged!")

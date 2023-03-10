@@ -10,6 +10,7 @@
     import Tapos from "comp/modals/Tapo";
     import Recipe from "comp/modals/Recipe";
     import Feed from "comp/modals/Feed";
+    import DiluteTo from "comp/modals/DiluteTo";
 
     var relativeTime = require('dayjs/plugin/relativeTime')
     dayjs.extend(relativeTime)
@@ -110,14 +111,18 @@
             <span class="font-14 opacity-75">FEED</span>
         </div>
         <div class="col center gap-10">
-            <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommand("on") }
+            <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={
+            () => {
+                ws.tapo("TANK", 1, 0)
+                ws.tapo("RO", 1, 0)
+            }}
                     class:borderPrimary={$ws.ws['TAPO_STATUS'] ? $ws.ws['TAPO_STATUS']['RO'] : false}>
                 <Icon color={col} icon="mdi:water-plus-outline" width="45"/>
             </button>
             <span class="font-14 opacity-75">Add water</span>
         </div>
         <div class="col center gap-10">
-            <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommandMiddleman("test")}>
+            <button class="h-100 shade3 w-100 center curve shadow fast shine" on:click={() => runCommandMiddleman("latestLogs")}>
                 <Icon color={col} icon="ant-design:info-circle-outlined" width="45"/>
             </button>
             <span class="font-14 opacity-75">TEST</span>
@@ -208,6 +213,17 @@
                 <Icon color={col} icon="icon-park:update-rotation" width="45"/>
             </button>
             <span class="font-14 opacity-75">Update</span>
+        </div>
+
+        <div class="col center gap-10">
+            <button
+                    class="h-100 shade3 w-100 center curve shadow fast shine"
+                    value="Dilute"
+                    on:click={() => openModal(DiluteTo)}
+            >
+                <Icon color={col} icon="emojione-v1:divide" width="45"/>
+            </button>
+            <span class="font-14 opacity-75">Dilute</span>
         </div>
 
     </div>

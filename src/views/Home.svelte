@@ -8,16 +8,27 @@
     import ws from "@/store/ws";
     import {mq} from "@/assets/library/MediaQuery.svelte";
     import prettyMilliseconds from 'pretty-ms';
-
+    import ProgressBar from 'svelte-progress-bar'
+    let progress
+    $: {
+        if ($ws.ws.sketchSize != $ws.ws.ogSketchSize) {
+            let ratio = ($ws.ws.ogSketchSize - $ws.ws.sketchSize) / $ws.ws.ogSketchSize
+            if (progress)
+            progress.setWidthRatio(ratio);
+        }
+        else if (progress)
+            progress.setWidthRatio(0);
+    }
 </script>
+<ProgressBar bind:this={progress} color="var(--primary)" />
 
 <main class="col container my-50 gap-40 grow">
     <div class="absolute italic p-top pt-10 font-12">Firmware version {$ws.ws.v}</div>
-    <div class="absolute italic p-top pt-30 font-12">
+    <div class="absolute italic p-top pt-30 font-12" on:click={() => progress.setWidthRatio(0.4)}>
         Uptime: {$ws.ws.uptime ? prettyMilliseconds($ws.ws.uptime) : "N/A"}</div>
     {#if $ws.ws.sketchSize != $ws.ws.ogSketchSize}
-        <div class="absolute italic p-top pt-10 font-12">
-            OTA Update: {$ws.ws.ogSketchSize - $ws.ws.sketchSize} / {$ws.ws.ogSketchSize}
+        <div class="absolute italic p-top p-right pt-10 mr-100 pl-30 font-12">
+            OTA Update: {((($ws.ws.ogSketchSize - $ws.ws.sketchSize ) / $ws.ws.ogSketchSize) * 100).toFixed(2)}% done
         </div>
     {/if}
 
