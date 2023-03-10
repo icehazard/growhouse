@@ -138,6 +138,9 @@ function start() {
                         }])
                     }
                     else { //else if not buffer
+                        if (!o.level)
+                            o.level = "info";
+
                         if (log.length > 200) log.shift()
 
                         context.commit('log', [...context.val('log'), {
