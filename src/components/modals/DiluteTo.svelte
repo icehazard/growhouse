@@ -25,7 +25,7 @@
     >
         <div class="shade3 curve  gap-20 col w-400 overflow-hidden autopointer">
             <div class="body pa-25 pt-30 gap-20 col">
-                <span class="font-24">Run Pump By ID</span>
+                <span class="font-24">Water will be added and PPM reduced to the selected amount</span>
             </div>
             <div class="actions row wrap shade2 pa-25 gap-10">
                 <Button block text="100PPM" primary="true" on:click={ () => run(100)} />

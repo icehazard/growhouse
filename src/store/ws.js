@@ -133,7 +133,7 @@ function start() {
                         if (log.length > 200) log.shift()
 
                         context.commit('log', [...context.val('log'), {
-                            time: dayjs().format(),
+                            time: dayjs.unix(l.d/1000) || dayjs().format(),
                             data: {log: l.log, level: l.level}
                         }])
                     }
@@ -144,7 +144,7 @@ function start() {
                         if (log.length > 200) log.shift()
 
                         context.commit('log', [...context.val('log'), {
-                            time: dayjs().format(),
+                            time: dayjs.unix(o.d/1000) || dayjs().format(),
                             data: {log: o.log, level: o.level}
                         }])
                     }
