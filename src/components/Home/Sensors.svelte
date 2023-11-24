@@ -18,7 +18,7 @@
         //const vpd = ((100 - hmd) * swv) / 100
     }
 
-    const TEMP_DIFF = 2.8;
+    const TEMP_DIFF = -2;
 
     function vpdt(tmp, night) {
         let res = {prop: [], eflv: [], flower: []}
@@ -52,8 +52,8 @@
 
 </script>
 {#if state.tempC}
-    <div class="col gap-20">
-        <div class="row curve w100 wrap gap-10 text">
+    <div class="col gap-5">
+        <div class="row curve w100 wrap gap-2.5 text">
             <Icon icon="material-symbols:clear-day" width="20"/>
             <Icon icon="carbon:humidity" width="20"/>
 
@@ -62,7 +62,7 @@
             <Icon icon="mdi:cannabis" width="20" color="lightgreen" title="Late veg & Early flowering"/> {info.eflv[0]}%-{info.eflv[1]}%
             <Icon icon="fa6-solid:cannabis" color="green" title="Flowering stage" width="20"/>{info.flower[0]}%-{info.flower[1]}%
         </div>
-        <div class="row curve w100 wrap gap-10 text">
+        <div class="row curve w100 wrap gap-2.5 text">
             <Icon icon="ic:twotone-mode-night" width="20"/>
             <Icon icon="carbon:humidity" width="20"/>
             (During lights off) Ideal RH based on air temp = leaf temp = <b>{(state.tempC).toFixed(2)}°C</b>
@@ -72,9 +72,9 @@
         </div>
     </div>
 {/if}
-<div class="col gap-20 text-center">
-    <div class="row border pa-20 gap-50 curve w100 wrap shade1">
-        <div class="col align-center gap-10 grow space-between">
+<div class="col gap-5 text-center">
+    <div class="row border pa-20 gap-10 curve w100 wrap shade1">
+        <div class="col align-center gap-2.5 grow space-between">
             <Icon icon="carbon:humidity" height="24" class="primary--text"/>
             {#if state.hasOwnProperty("humi") && Number.isFinite(state.humi) && state.humi}
                 <span>{state.humi.toFixed(2)}</span>
@@ -83,7 +83,7 @@
             {/if}
             <span class="opacity-75 font-14">Humidity</span>
         </div>
-        <div class="col align-center gap-10 grow space-between">
+        <div class="col align-center gap-2.5 grow space-between">
             <Icon icon="carbon:temperature-celsius" height="24" class="primary--text"/>
             {#if state.hasOwnProperty("tempC") && state.tempC}
                 <span>{state.tempC.toFixed(2)}</span>
@@ -92,7 +92,7 @@
             {/if}
             <span class="opacity-75 font-14">Room Temp</span>
         </div>
-        <div class="col align-center gap-10 grow space-between">
+        <div class="col align-center gap-2.5 grow space-between">
             <Icon icon="carbon:temperature-celsius" height="24" class="primary--text"/>
             {#if state.hasOwnProperty("waterTempC")}
                 <span>{state.waterTempC.toFixed(2)}</span>
@@ -101,7 +101,7 @@
             {/if}
             <span class="opacity-75 font-14">Water Temp</span>
         </div>
-        <div class="col align-center gap-10 grow space-between">
+        <div class="col align-center gap-2.5 grow space-between">
             {#if state["ppmstate"] == 1}
                 <lottie-player loop autoplay mode="normal"
                                src="https://assets4.lottiefiles.com/packages/lf20_9jXVOI.json" style="width: 80px"/>
@@ -117,7 +117,7 @@
         </div>
 
 
-        <div class="col align-center gap-10 grow space-between">
+        <div class="col align-center gap-2.5 grow space-between">
 
             {#if state["TAPO_STATUS"] && state["TAPO_STATUS"]["RO"] > 0}
                 <lottie-player loop autoplay mode="normal" src={JSON.stringify(glass)} style="width: 50px"/>
@@ -133,7 +133,7 @@
             <span class="opacity-75 font-14">Water Tank</span>
         </div>
 
-        <div class="col align-center gap-10 grow space-between">
+        <div class="col align-center gap-2.5 grow space-between">
             <Icon icon="carbon:humidity" height="24" class="primary--text"/>
             {#if state.hasOwnProperty("waterSensorVal")}
                 <span>{state.waterSensorVal.toFixed(2)}</span>
@@ -143,7 +143,7 @@
             <span class="opacity-75 font-14">Water Sens</span>
         </div>
 
-        <div class="col align-center gap-10 grow space-between">
+        <div class="col align-center gap-2.5 grow space-between">
             <Icon icon="eos-icons:science-outlined" height="24" class="primary--text"/>
             {#if state.hasOwnProperty("ph") && state.ph}
                 <span>{state.ph.toFixed(2)}</span>

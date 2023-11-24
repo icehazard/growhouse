@@ -1,5 +1,5 @@
 .DS_Store
-node_modules
+node_modules*
 public/build/bundle.*
 Config.json
 config.js

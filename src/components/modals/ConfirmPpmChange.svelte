@@ -1,6 +1,8 @@
 <script>
     import Button from "comp/atoms/Button.svelte";
-    import { closeModal } from "svelte-modals";
+    import {closeModal} from "svelte-modals";   
+ import {clickOutside} from './click-outside.js';
+
     import { scale } from "svelte/transition";
     import ws from "@/store/ws.js";
     import Checkbox from "comp/atoms/Checkbox.svelte"
@@ -56,12 +58,12 @@
         class="modal center fixed p-center z-4 nopointer border"
         transition:scale={{ duration: 100, opacity: 0, start: 1.1 }}
     >
-        <div class="shade3 curve  gap-20 col w-400 overflow-hidden autopointer">
-            <div class="body pa-25 pt-30 gap-20 col">
+        <div class="shade3 curve  gap-5 col w-400 overflow-hidden autopointer">
+            <div class="body pa-25 pt-30 gap-5 col">
                 <span class="font-24">Update PPM</span>
                 <span>Are you sure you want to change the PPM to {ppm}?</span>
             </div>
-            <div class="body pa-25 pt-30 gap-20 col">
+            <div class="body pa-25 pt-30 gap-5 col">
                 <button class="row align-center">
 
                 <Checkbox
@@ -114,7 +116,7 @@
 <!--                <span>B<input type="checkbox" bind:checked={B}></span>-->
 <!--                <span>CALMAG<input type="checkbox" bind:checked={CALMAG}></span>-->
             </div>
-            <div class="actions row shade2 pa-25 gap-10">
+            <div class="actions row shade2 pa-25 gap-2.5">
                 <Button block text="SAVE" primary="true" on:click={save} />
                 <Button block text="CLOSE" on:click={close} />
             </div>

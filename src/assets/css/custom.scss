@@ -70,9 +70,23 @@
 
     .config-input {
         margin-left: 5px;
-        border: 1px solid #fff;
-        border-radius: 2px;
+        background-color: #1a1a1a;
+        border-radius: 3px;
         padding: 5px;
         cursor: initial;
-        font-size: 1rem;
+    }
+
+    .header-pretty {
+        color:rgb(46 248 6 / 60%);
+    }
+
+    .header-pretty:after {
+        content: "";
+        background-color:rgb(46 248 6 / 60%);
+        height: 1px;
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        margin-left: 9px;
+        opacity: .6;
     }

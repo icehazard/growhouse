@@ -17,8 +17,8 @@
     });
 </script>
 
-<div class="grow align-center col gap-50 h-500">
-    <div class="col gap-40 align-center h-250 space-between">
+<div class="grow align-center col gap-10 h-500">
+    <div class="col gap-10 align-center h-250 space-between">
         <span class="weight-300 font-26 opacity-75">Water</span>
         <div class="loader center" bind:this={el}>
             <span class="shade3 pa-7 center border curve shadow white--text weight-300 font-24">
@@ -27,8 +27,8 @@
         </div>
         <div class="weight-300 font-12 opacity-75">Percent</div>
     </div>
-    <div class="col w100 gap-10">
-        <div class="row w100 px-20 gap-20">
+    <div class="col w100 gap-2.5">
+        <div class="row w100 px-20 gap-5">
             <button class="center pa-10 shade3 round shine">
                 <Icon height="20" icon="clarity:cog-line" />
             </button>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <hr class="mx-10" />
-        <div class="row w100 px-20 gap-20">
+        <div class="row w100 px-20 gap-5">
             <button class="center pa-10 shade3 round shine">
                 <Icon height="20" icon="clarity:cog-line" />
             </button>
@@ -64,7 +64,7 @@
             </div>
         </div>
         <hr />
-        <button class="row w100 px-20 gap-20 align-center">
+        <button class="row w100 px-20 gap-5 align-center">
             <button class="center pa-10 round shine">
                 <Icon icon="lucide:pipette" />
             </button>

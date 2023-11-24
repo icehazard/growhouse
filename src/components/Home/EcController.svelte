@@ -23,35 +23,35 @@
 <div class="col shade1 border curve wrap pa-20 grow gap-30">
     <div class="row opacity-75 ">EC Controller</div>
     <div class="row grow space-between">
-        <div class="grow center col gap-10">
+        <div class="grow center col gap-2.5">
             <span class="weight-300 font-24">2323</span>
             <span class="weight-300 opacity-75">Actual</span>
             <Icon height="30" icon="fluent:live-20-regular" />
         </div>
         <hr />
-        <div class="grow center col gap-10 ">
+        <div class="grow center col gap-2.5 ">
             <span class="weight-300 font-24">1212</span>
             <span class="weight-300 opacity-75"> Required</span>
             <Icon height="30" icon="ph:target" />
         </div>
     </div>
-    <div class="row gap-50">
-        <div class="col center gap-20 weight-300 font-14">
+    <div class="row gap-10">
+        <div class="col center gap-5 weight-300 font-14">
             <span>Grow A</span>
             <Dial text="PPM" active={$ws.ws.ppmstate} number={ppm} on:click={ppmEmit} />
             <span class="opacity-75">30 %</span>
         </div>
-        <div class="col center gap-20 weight-300 font-14">
+        <div class="col center gap-5 weight-300 font-14">
             <span>Grow B</span>
             <Dial text="PPM" active={$ws.ws.ppmstate} number={ppm} on:click={ppmEmit} />
             <span class="opacity-75">30 %</span>
         </div>
-        <div class="col center gap-20 weight-300 font-14">
+        <div class="col center gap-5 weight-300 font-14">
             <span>Cal-Mag</span>
             <Dial text="PPM" active={$ws.ws.ppmstate} number={ppm} on:click={ppmEmit} />
             <span class="opacity-75">20 %</span>
         </div>
-        <div class="col center gap-20 weight-300 font-14">
+        <div class="col center gap-5 weight-300 font-14">
             <span>Silicon</span>
             <Dial text="PPM" active={$ws.ws.ppmstate} number={ppm} on:click={ppmEmit} />
             <span class="opacity-75">20 %</span>
@@ -81,7 +81,7 @@
         </div>
         <div class="col center gap-5">
             <span class="font-12">Preset</span>
-            <div class="row gap-10">
+            <div class="row gap-2.5">
                 <button class="pa-5 shade3 shine">X</button>
                 <button class="pa-5 shade3 shine">1</button>
                 <button class="pa-5 shade3 shine">2</button>

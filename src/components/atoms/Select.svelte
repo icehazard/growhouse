@@ -57,7 +57,7 @@
             autocomplete="off"
             name="name"
             type="text"
-            class="borderStrong gap-10 curve align-center px-20 h-40 mobile-w100 shade2 w100 slow"
+            class="borderStrong gap-2.5 curve align-center px-20 h-40 mobile-w100 shade2 w100 slow"
             placeholder="Select a option"
         />
         <div class="center cursor-pointer absolute icon p-right pr-10">

@@ -20,7 +20,7 @@
     <div class="round border h-170 w-170 relative overflow-hidden bg">
         <div class="absolute border round p-center shade2 h-120 w-120 z-3 shadow" />
         <div class="absolute p-center z-3 weight-300 text-center nopointer">
-            <div class="col gap-10">
+            <div class="col gap-2.5">
                 <span class="font-24 text-center pb-50" in:fly={{ y: -20 }}>
                     {value || 0}
                 </span>

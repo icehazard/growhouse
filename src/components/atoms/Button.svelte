@@ -14,7 +14,7 @@
 </script>
 
 <button
-    class="curve center shine borderStrong shade2 py-10 px-40"
+    class="curve center shine borderStrong shade2 {$$restProps.class || ''}"
     class:primary={primary}
     class:disable
     disabled={disable}

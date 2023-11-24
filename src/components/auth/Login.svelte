@@ -33,15 +33,15 @@
 </script>
 
 <div class="grow align-center z-2">
-    <form on:submit|preventDefault={handleOnSubmit} class="gap-40 col w-sm pa-60 curve glass">
-        <section class="gap-20 col ">
+    <form on:submit|preventDefault={handleOnSubmit} class="gap-10 col w-sm pa-60 curve glass">
+        <section class="gap-5 col ">
             <div class="font-36">Enter your account</div>
-            <div class="row gap-10">
+            <div class="row gap-2.5">
                 <span>Don't Have An Account?</span>
                 <a href="#/signup" class="primary--text">Sign up</a>
             </div>
         </section>
-        <section class="col gap-20">
+        <section class="col gap-5">
             <span class="red--text">{message}</span>
             <Field bind:value={username} label="Username" />
             <Field bind:value={password} label="Password" />

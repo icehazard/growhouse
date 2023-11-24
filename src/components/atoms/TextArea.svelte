@@ -18,7 +18,7 @@
     disabled={disable}
     class:disable
     type="text"
-    class="borderStrong gap-10 curve align-center pa-20 mobile-w100 shade2 w100"
+    class="borderStrong gap-2.5 curve align-center pa-20 mobile-w100 shade2 w100"
     placeholder={label}
 />
 

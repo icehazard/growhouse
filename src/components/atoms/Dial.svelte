@@ -69,7 +69,7 @@
         class:borderPrimary={active == 1} 
     />
     <div class="absolute p-center z-3 weight-300 text-center nopointer">
-        <div class="col gap-10">
+        <div class="col gap-2.5">
             <span class="font-24 text-center" in:fly={{ y: -20 }}
                 >{Math.round(value) / decimal}</span
             >

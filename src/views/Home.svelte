@@ -22,7 +22,7 @@
 </script>
 <ProgressBar bind:this={progress} color="var(--primary)" />
 
-<main class="col container my-50 gap-40 grow">
+<main class="col container my-50 gap-10 grow">
     <div class="absolute italic p-top pt-10 font-12">Firmware version {$ws.ws.v}</div>
     <div class="absolute italic p-top pt-30 font-12" on:click={() => progress.setWidthRatio(0.4)}>
         Uptime: {$ws.ws.uptime ? prettyMilliseconds($ws.ws.uptime) : "N/A"}</div>
@@ -33,15 +33,15 @@
     {/if}
 
     <Sensors state={$ws.ws} tankPerc={$ws.ws.tankPerc}/>
-    <div class="col gap-50 " class:row={$mq.xl_}>
-        <div class="grow h-500">
+    <div class="col gap-10 " class:row={$mq.xl_}>
+        <div class="grow h-500 min-w-[50%]">
             <Terminal/>
         </div>
-        <div class="grow">
+        <div class="grow min-w-[50%]">
             <ActionBtns/>
         </div>
     </div>
-    <div class="col gap-50" class:row={$mq.xl_}>
+    <div class="col gap-10" class:row={$mq.xl_}>
         <PPMcontroller/>
         <Graph/>
     </div>

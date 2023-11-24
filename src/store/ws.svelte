@@ -1,3 +1,4 @@
+<script context="module">
 import { persist } from '@/assets/library/CommonFunctions.js'
 import { acts } from "@tadashi/svelte-notification";
 import dayjs from 'dayjs'
@@ -7,16 +8,10 @@ export let ws;
 
 const data = {
     ws: {},
-    log: [],
-    "log-info": [],
-    "log-debug": [],
-    "log-error": [],
-    "log-trace": [],
+    log: []
 }
 
-const LOG_LIMIT = 500;
-
-const context = persist('ws', data)
+export context = persist('ws', data)
 
 context.setPPMByPPM = function (ppm, TOTAL_MASK) {
     ws.send(JSON.stringify({ command: "setPPMByPPM", value: ppm, mask: TOTAL_MASK }));
@@ -41,12 +36,15 @@ context.tapo = function (tapo, state, duration) {
     console.log("SENDING CMD", { command: "tapo", tapo, state, duration })
 }
 context.feed = function (duration) {
-    ws.send(JSON.stringify({ command: "feed", middleman: 1, duration: duration }));
+    ws.send(JSON.stringify({ command: "tapo", tapo: "FEED", state: 1, duration: duration }));
+    ws.send(JSON.stringify({ command: "tapo", tapo: "OUT", state: 1, duration: duration * 2 }));
+    ws.send(JSON.stringify({ command: "tapo", tapo: "BUFFER", state: 1, duration: duration * 2 }));
+
     console.log("SENDING FEED")
 }
-context.cmdMiddleman = function (cmd, val) {
-    ws.send(JSON.stringify({ middleman: 1, command: cmd, val }));
-    console.log("SENDING CMD", cmd, val)
+context.cmdMiddleman = function (cmd) {
+    ws.send(JSON.stringify({ middleman: 1, command: cmd }));
+    console.log("SENDING CMD", cmd)
 }
 context.diluteTo = function (val) {
     ws.send(JSON.stringify({ middleman: 1, command: "diluteTo", val }));
@@ -63,11 +61,7 @@ context.patchConfig = function (type, data) {
 
 
 context.clearLog = function () {
-    context.commit('log-info', [])
-    context.commit('log-error', [])
-    context.commit('log-debug', [])
-    context.commit('log-trace', [])
-
+    context.commit('log', [])
 }
 context.sendNotif = function (notification) {
     notification.lifetime = 5
@@ -75,7 +69,6 @@ context.sendNotif = function (notification) {
         acts.add(notification);
     };
 }
-export default context;
 
 function parseBuffer(data) {
     let arr = []
@@ -91,7 +84,7 @@ function parseBuffer(data) {
     }
     return json;
 }
-function start() {
+ start() {
     ws = new ReconnectingWebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
 
     ws.addEventListener("open", function (event) {
@@ -110,6 +103,12 @@ function start() {
     ws.addEventListener("message", function (event, isBinary) {
         try {
             let json = JSON.parse(event.data);
+            if (context.lastMsgTime && Date.now() - context.lastMsgTime >= 300e3) {
+                ws.reconnect()
+                console.log("Reconnecting WS after inactivity")
+            }
+            context.lastMsgTime = Date.now();
+
 
             if (json.type == "Buffer") {
                 let arr = []
@@ -124,56 +123,38 @@ function start() {
                 }
             }
 
-            if (json.log)
-                console.log("Received log", json)
 
-            if (!context.val('log-info')) context.commit('log-info', [])
-            if (!context.val('log-debug')) context.commit('log-debug', [])
-            if (!context.val('log-error')) context.commit('log-error', [])
-            if (!context.val('log-trace')) context.commit('log-trace', [])
+            let log = context.val('log');
+            if (!log) context.commit('log', [])
 
             if (json.latestLogs) {
-                context.commit('log-info', [])
-                context.commit('log-error', [])
-                context.commit('log-debug', [])
-                context.commit('log-trace', [])
-                for (let d of Object.keys(json.latestLogs)) {
-                    let o = json.latestLogs[d]
+                context.commit('log', [])
+
+                for (let o of json.latestLogs) {
                     if (o.data) {
-                        let parsed = parseBuffer(o.data);
+                        let l = parseBuffer(o.data);
                         if (!l.level)
                             l.level = "info";
 
-                        if (context.val('log-' + l.level).length > LOG_LIMIT) context.val('log-' + l.level).shift()
+                        if (log.length > 200) log.shift()
 
-                        let keyName = 'log-' + l.level;
-                        context.commit(keyName, [...context.val(keyName), {
-                            time: new Date(l.d),
+                        context.commit('log', [...context.val('log'), {
+                            time: dayjs.unix(l.d / 1000) || dayjs().format(),
                             data: { log: l.log, level: l.level }
                         }])
-
                     }
                     else { //else if not buffer
-                        for (let i of o) {
-                            if (!i.level)
-                                i.level = "info";
+                        if (!o.level)
+                            o.level = "info";
 
-                            if (context.val('log-' + i.level).length > LOG_LIMIT) context.val('log-' + i.level).shift()
+                        if (log.length > 200) log.shift()
 
-                            let keyName = 'log-' + i.level;
-
-                            context.commit(keyName, [...context.val(keyName), {
-                                time: new Date(i.d),
-                                data: { log: i.log, level: i.level }
-                            }])
-                        }
+                        context.commit('log', [...context.val('log'), {
+                            time: dayjs.unix(o.d / 1000) || dayjs().format(),
+                            data: { log: o.log, level: o.level }
+                        }])
                     }
-
                 }
-
-                let scrollConsole = context.val('scrollConsole');
-                if (!scrollConsole) context.commit('scrollConsole', true)
-
             }
 
             if (isBinary)
@@ -185,23 +166,13 @@ function start() {
                 //     log = [...log, json.notif.message]
                 // else
                 //     log = [json.notif.message]
-                let keyName = 'log-info';
-                context.commit(keyName, [...context.val('log-info'), { time: new Date(), data: { log: json.notif.message, level: "info" } }])
+
+                context.commit('log', [...context.val('log'), { time: dayjs().format(), data: { log: json.notif.message, level: "info" } }])
             }
 
-            if (json.log) {
-                //log = [...log, json.log]
-                if (!json.level)
-                    json.level = "info";
+            if (log.length > 200) log.shift()
 
-                let keyName = `log-${json.level}`
-
-                if (context.val(keyName).length > LOG_LIMIT) context.val(keyName).shift()
-
-                context.commit(keyName, [...context.val(keyName), { time: new Date(), data: { log: json.log, level: json.level } }])
-                console.log("Context size", context.val(keyName).length)
-            }
-            else {
+            if (!json.log) {
                 context.commit('ws', json)
 
                 let dist = Number(json.distance)
@@ -211,6 +182,13 @@ function start() {
                     context.commit("state", json.state)
                 }
             }
+            else {
+                //log = [...log, json.log]
+                if (!json.level)
+                    json.level = "info";
+
+                context.commit('log', [...context.val('log'), { time: dayjs().format(), data: { log: json.log, level: json.level } }])
+            }
         } catch (e) {
             console.log("Couldnt parse WS message", e, event.data);
         }
@@ -218,3 +196,4 @@ function start() {
 }
 
 start()
+</script>
