@@ -73,7 +73,7 @@
       for (let lvl of Object.keys(LEVELS)) {
         if (ws.val("log-" + lvl))
           for (let item of ws.val("log-" + lvl)) {
-            console.log("pushed log", item)
+            //console.log("pushed log", item)
             allLogs.push(item);
           }
       }
