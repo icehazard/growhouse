@@ -1,0 +1,4 @@
+On new VPS:
+
+- Change MySQL ip mysqld.cnf
+- Run passwd again to make FTP work
