@@ -92,7 +92,7 @@ function parseBuffer(data) {
     return json;
 }
 function start() {
-    ws = new ReconnectingWebSocket("ws://168.119.247.99:8000?token=Y2xpZW50OmxtYW8=");
+    ws = new ReconnectingWebSocket("ws://49.13.112.112:8000?token=Y2xpZW50OmxtYW8=");
 
     ws.addEventListener("open", function (event) {
         console.log("WS connected");
