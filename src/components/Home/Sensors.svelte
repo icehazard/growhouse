@@ -53,7 +53,7 @@
 </script>
 {#if state.tempC}
     <div class="col gap-5">
-        <div class="row curve w100 wrap gap-2.5 text">
+        <div class="row curve w100 wrap gap-2.5 text mt-3">
             <Icon icon="material-symbols:clear-day" width="20"/>
             <Icon icon="carbon:humidity" width="20"/>
 
