@@ -346,7 +346,7 @@
                 <br />
                 Feed duration is set to {$ws.ws.state.RUN_DURATION / 1000} secs
                 <br />
-                Next feed ~{nextFeed}
+                Next feed in: {$ws.ws.state.FEED_STATE > 0 ? nextFeed : "automatic feeding is off"}
             {/if}
         </div>
     </div>
