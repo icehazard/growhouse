@@ -84,6 +84,7 @@ module.exports = {
 	stats: 'errors-warnings',
 	devServer: {
 		hot: true,
+		port: 80,
 		allowedHosts: "all",
 		client: {
 			logging: 'warn',

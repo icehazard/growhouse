@@ -126,7 +126,7 @@
                     ws.tapo("RO", 1, 0);
                 }}
                 class:borderPrimary={$ws.ws["TAPO_STATUS"]
-                    ? $ws.ws["TAPO_STATUS"]["RO"]
+                    ? $ws.ws["TAPO_STATUS"]["RO"] == 1
                     : false}
             >
                 <Icon color={col} icon="mdi:water-plus-outline" width="45" />
