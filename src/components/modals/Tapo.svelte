@@ -27,7 +27,7 @@
 {#if isOpen}
     <div
         role="dialog"
-        class="flex modal center fixed p-center z-50 nopointer border w-8/12 lg:w-2/4 lg:top-2/4 rounded border-gray-600"
+        class="flex modal center fixed p-center z-50 nopointer border w-[90%] lg:w-2/4 lg:top-2/4 rounded border-gray-600"
         style="height: 70vh"
         transition:scale={{ duration: 100, opacity: 0, start: 1.1 }}
         use:clickOutside
