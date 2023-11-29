@@ -101,7 +101,7 @@
             {/if}
             <span class="opacity-75 font-14">Water Temp</span>
         </div>
-        <div class="col align-center gap-2.5 grow space-between">
+        <!-- <div class="col align-center gap-2.5 grow space-between">
             {#if state["ppmstate"] == 1}
                 <lottie-player loop autoplay mode="normal"
                                src="https://assets4.lottiefiles.com/packages/lf20_9jXVOI.json" style="width: 80px"/>
@@ -114,7 +114,7 @@
                 <Pulse color="var(--primary)" size="20"/>
             {/if}
             <span class="opacity-75 font-14">PPM</span>
-        </div>
+        </div> -->
 
 
         <div class="col align-center gap-2.5 grow space-between">
@@ -133,7 +133,7 @@
             <span class="opacity-75 font-14">Water Tank</span>
         </div>
 
-        <div class="col align-center gap-2.5 grow space-between">
+        <!-- <div class="col align-center gap-2.5 grow space-between">
             <Icon icon="carbon:humidity" height="24" class="primary--text"/>
             {#if state.hasOwnProperty("waterSensorVal")}
                 <span>{state.waterSensorVal.toFixed(2)}</span>
@@ -141,9 +141,9 @@
                 <Pulse color="var(--primary)" size="20"/>
             {/if}
             <span class="opacity-75 font-14">Water Sens</span>
-        </div>
+        </div> -->
 
-        <div class="col align-center gap-2.5 grow space-between">
+        <!-- <div class="col align-center gap-2.5 grow space-between">
             <Icon icon="eos-icons:science-outlined" height="24" class="primary--text"/>
             {#if state.hasOwnProperty("ph") && state.ph}
                 <span>{state.ph.toFixed(2)}</span>
@@ -151,6 +151,6 @@
                 <Pulse color="var(--primary)" size="20"/>
             {/if}
             <span class="opacity-75 font-14">PH</span>
-        </div>
+        </div> -->
     </div>
 </div>

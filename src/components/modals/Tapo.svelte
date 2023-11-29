@@ -20,6 +20,9 @@
 
     function toggler(tapo, state) {
         // console.log(val, state);
+        if (tapos[tapo] < 0)
+            return
+        
         ws.tapo(tapo, state, 0);
     }
 </script>
