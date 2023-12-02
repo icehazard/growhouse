@@ -54,7 +54,7 @@
             <input
             type="value"
             name="duration"
-            placeholder="or enter duration here (in millisecond)"
+            placeholder="enter duration here (in millisecond)"
             bind:value={duration}
             class="flex w-3/4 justify-center"
             style="border-bottom: 1px solid #fff;"
