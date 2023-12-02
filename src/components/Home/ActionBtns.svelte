@@ -10,6 +10,8 @@
     import Tapos from "comp/modals/Tapo";
     import Recipe from "comp/modals/Recipe";
     import Feed from "comp/modals/Feed";
+    import RObyTime from "comp/modals/RObyTime";
+
     import DiluteTo from "comp/modals/DiluteTo";
 
     var relativeTime = require("dayjs/plugin/relativeTime");
@@ -120,15 +122,13 @@
         </div>
         <div class="col center gap-2.5">
             <button
-                class="h-100 shade3 w-100 center curve shadow fast shine"
-                on:click={() => {
-                    ws.tapo("TANK", 1, 0);
-                    ws.tapo("RO", 1, 0);
-                }}
-                class:borderPrimary={$ws.ws["TAPO_STATUS"]
-                    ? $ws.ws["TAPO_STATUS"]["RO"] == 1
-                    : false}
-            >
+            class="h-100 shade3 w-100 center curve shadow fast shine"
+            value="ROBYTIME"
+            on:click={() => openModal(RObyTime)}
+            class:borderPrimary={$ws.ws["TAPO_STATUS"]
+            ? $ws.ws["TAPO_STATUS"]["RO"] == 1
+            : false}
+        >
                 <Icon color={col} icon="mdi:water-plus-outline" width="45" />
             </button>
             <span class="font-14 opacity-75">Add water</span>
@@ -200,6 +200,33 @@
             <span class="font-14 opacity-75">REF 1L BOTTLE</span>
         </div>
 
+        <div class="col center gap-2.5">
+            <button
+                class="h-100 shade3 w-100 center curve shadow fast shine"
+                on:click={() => runCommandMiddleman("bottle", 120e3 * 10)}
+            >
+                <Icon
+                    color={col}
+                    icon="fluent:drink-bottle-32-regular"
+                    width="45"
+                />
+            </button>
+            <span class="font-14 opacity-75">REFILL 10</span>
+        </div>
+
+        <div class="col center gap-2.5">
+            <button
+                class="h-100 shade3 w-100 center curve shadow fast shine"
+                on:click={() => runCommandMiddleman("bottle", 120e3 * 20)}
+            >
+                <Icon
+                    color={col}
+                    icon="fluent:drink-bottle-32-regular"
+                    width="45"
+                />
+            </button>
+            <span class="font-14 opacity-75">REFILL 20L</span>
+        </div>
 
         <div class="col center gap-2.5">
             <button
