@@ -211,7 +211,7 @@
                     width="45"
                 />
             </button>
-            <span class="font-14 opacity-75">REFILL 10</span>
+            <span class="font-14 opacity-75">REF 10L BOTTLE</span>
         </div>
 
         <div class="col center gap-2.5">
@@ -225,7 +225,7 @@
                     width="45"
                 />
             </button>
-            <span class="font-14 opacity-75">REFILL 20L</span>
+            <span class="font-14 opacity-75">REF 20L BOTTLE</span>
         </div>
 
         <div class="col center gap-2.5">
