@@ -155,15 +155,7 @@
             </button>
             <span class="font-14 opacity-75">FETCH CONF</span>
         </div>
-        <!-- <div class="col center gap-2.5">
-            <button
-                class="h-100 shade3 w-100 center curve shadow fast shine"
-                on:click={() => runCommand("romoff")}
-            >
-                <Icon color={col} icon="mdi:pump-off" width="45" />
-            </button>
-            <span class="font-14 opacity-75">ROMOFF</span>
-        </div> -->
+
         <!-- <div class="col center gap-2.5">
             <button
                 class="h-100 shade3 w-100 center curve shadow fast shine"
@@ -228,6 +220,16 @@
             <span class="font-14 opacity-75">REF 20L BOTTLE</span>
         </div>
 
+        <div class="col center gap-2.5">
+            <button
+                class="h-100 shade3 w-100 center curve shadow fast shine"
+                on:click={() => runCommand("romoff")}
+            >
+                <Icon color={col} icon="mdi:pump-off" width="45" />
+            </button>
+            <span class="font-14 opacity-75">ROMOFF</span>
+        </div>
+        
         <div class="col center gap-2.5">
             <button
                 class="h-100 shade3 w-100 center curve shadow fast shine"
